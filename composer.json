@@ -1,0 +1,16 @@
+{
+	"name": "ahmed/hogwarts",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "KhaledMahmoudSaeed",
+			"email": "khaild22k12m71f@gmail.com"
+		}
+	],
+	"require": {},
+	"autoload": {
+		"psr-4": {
+			"App\\": "app/"
+		}
+	}
+}
