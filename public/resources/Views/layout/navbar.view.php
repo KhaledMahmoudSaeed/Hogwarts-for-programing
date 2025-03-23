@@ -1,4 +1,4 @@
-<nav class="navbar" style="background-color:var(--<?= strtolower($house) ?>);">
+<nav class="navbar <?php echo $newUser ? 'hidden' : ''; ?>" style="background-color:var(--<?= strtolower($house) ?>);">
   <div class="container">
     <!-- Logo / Brand -->
     <div class="logos">

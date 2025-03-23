@@ -57,6 +57,7 @@ if ($newUser) {
             document.getElementById("popup").classList.add("hidden");
             document.getElementById("overlay").classList.add("hidden");
             document.getElementById("homepage").classList.remove("hidden");
+            document.getElementsByClassName("navbar")[0].classList.remove("hidden");
         }
     </script>
 
