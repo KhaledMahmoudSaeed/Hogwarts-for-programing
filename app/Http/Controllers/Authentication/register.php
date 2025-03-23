@@ -62,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($stmt->execute([$name, $email, $hashed_password, $role, $house_id, $wand_id])) {
             $_SESSION['new_user'] = true;
+            $_SESSION['user_id'] = $pdo->lastInsertId();
             $_SESSION['house'] = $pdo->query("SELECT name FROM houses WHERE id = $house_id")->fetchColumn();
             echo "Registration successful. Redirecting to home page...<br>";
             header("Location: /");
