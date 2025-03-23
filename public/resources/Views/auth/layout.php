@@ -25,7 +25,7 @@
     const registerPanel = document.getElementById('registerPanel');
     const page = document.getElementById("page");
     if (page.value === "register") {
-      loginPanel.style.transform = 'translateX(100%)';
+      loginPanel.style.transform = 'translateX(-100%)';
       registerPanel.style.transform = 'translateX(0)';
     } else if (page.value === "login") {
       loginPanel.style.transform = 'translateX(0)';
