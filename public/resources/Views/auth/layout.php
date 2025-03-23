@@ -15,17 +15,22 @@
   <div class="auth-container">
     <!-- Register Slider Panel -->
     <?php require('register.view.php') ?>
-
     <!-- Login Slider Panel -->
     <?php require('login.view.php') ?>
+    <input type="hidden" value="<?= $page ?>" id="page">
   </div>
 
   <script>
     const loginPanel = document.getElementById('loginPanel');
     const registerPanel = document.getElementById('registerPanel');
-
-    loginPanel.style.transform = 'translateX(0)';
-    registerPanel.style.transform = 'translateX(100%)';
+    const page = document.getElementById("page");
+    if (page.value === "register") {
+      loginPanel.style.transform = 'translateX(100%)';
+      registerPanel.style.transform = 'translateX(0)';
+    } else if (page.value === "login") {
+      loginPanel.style.transform = 'translateX(0)';
+      registerPanel.style.transform = 'translateX(100%)';
+    }
 
     document.getElementById('toRegister').addEventListener('click', function (e) {
       e.preventDefault();

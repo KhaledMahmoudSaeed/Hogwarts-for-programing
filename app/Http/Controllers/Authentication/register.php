@@ -72,9 +72,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-?>
 
-<?php
 $_SESSION['errors'] = $errors;
 $_SESSION['old'] = $_POST;
-?>
