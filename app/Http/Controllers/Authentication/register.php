@@ -1,11 +1,15 @@
 <?php
+// handel reigster logic
+use App\Core\Database;
 session_start();
 session_unset();
 
-require 'Database.php';
+$db = new Database();
+$pdo = $db->getconnection();
 
 $errors = [];
 
+// some validation on request method and entered inputs
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $name = htmlspecialchars(strip_tags($_POST['name']));
@@ -60,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['new_user'] = true;
             $_SESSION['house'] = $pdo->query("SELECT name FROM houses WHERE id = $house_id")->fetchColumn();
             echo "Registration successful. Redirecting to home page...<br>";
-            header("Location: index.php");
+            header("Location: /");
             exit;
         } else {
             echo "Registration failed.";
@@ -72,5 +76,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php
 $_SESSION['errors'] = $errors;
 $_SESSION['old'] = $_POST;
-require('Views/auth.view.php');
 ?>

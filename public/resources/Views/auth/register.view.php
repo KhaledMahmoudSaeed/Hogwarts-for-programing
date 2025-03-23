@@ -6,7 +6,7 @@
         $old = $_SESSION['old'] ?? [];
         unset($_SESSION['errors'], $_SESSION['old']);
         ?>
-        <form action="register.php" method="post">
+        <form action="/register" method="post">
             <input type="text" name="name" placeholder="Enter Name" value="<?= htmlspecialchars($old['name'] ?? '') ?>">
             <div class="error">
                 <?php if (isset($errors['name'])): ?>
@@ -14,8 +14,7 @@
                 <?php endif; ?>
             </div>
 
-            <input type="email" name="email" placeholder="Enter Email"
-                value="<?php echo $old['email'] ?? '' ?>">
+            <input type="email" name="email" placeholder="Enter Email" value="<?php echo $old['email'] ?? '' ?>">
             <div class="error">
                 <?php if (isset($errors['email'])): ?>
                     <p><?= $errors['email'] ?></p>
@@ -40,7 +39,7 @@
         <p>Already have an account? <a href="#" id="toLogin">Login here</a>.</p>
     </div>
     <div class="image-container">
-        <img src="assets/img/auth.png" alt="Magical Hogwarts">
+        <img src="resources/assets/img/auth.png" alt="Magical Hogwarts">
         <div class="text-overlay">
             <h2>Welcome to Hogwarts!</h2>
             <p>Embark on your magical journey and unlock the secrets of magic.</p>
