@@ -1,0 +1,157 @@
+:root {
+  --hufflepuff: #E4A527;
+  --gryffindor: #8b0000;
+  --ravenclaw: #113243;
+  --slytherin: #1E7352;
+  --hogwarts: #232035;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Cinzel', serif; 
+  color: #3e2723;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: 0.5em;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+button {
+  background-color: #DD852D;
+  color: #fff;
+  border: none;
+  padding: 0.5em 1em;
+  font-size: 1.2em;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  margin-top: 1em;
+}
+button:hover {
+  background-color: #BF6824;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Overlay styling for Sorting Hat */
+.img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+ }
+
+/* Sorting Hat image styling */
+#sortingHat {
+  cursor: pointer;
+  transition: transform 0.3s;
+  width:300px;
+  filter: drop-shadow(1px 1px 5px rgba(221, 133, 45, 0.7));
+  animation: float 4s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{
+      transform: translateY(-20px);
+  }
+  50%{
+      transform: translateY(20px);
+  }
+}
+#sortingHat:hover {
+  transform: scale(1.1);
+}
+
+.hidden {
+  display: none;
+}
+
+#popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff8e1;
+  font-size: 1.5em;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(221, 133, 45, 0.7);
+  z-index: 1100;
+}
+
+/* Homepage content */
+/* Navbar container */
+.navbar {
+  padding: 0.5em 1em;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.navbar .logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar .logos img {
+  width: 55px;
+  height: 50px;
+}
+.navbar .logo {
+  color: #fff;
+  font-size: 1.8em;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1em;
+}
+
+.nav-links li a {
+  padding: 0.5em 0.75em;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.nav-links li a:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
+.nav-links li a.active {
+  background-color: #DD852D;
+  color: #fff;
+}
+.navbar .buttons button{
+  margin-top: 0px;
+  margin-left: 1em;
+  font-size: 1em;
+  padding: 0.5em;
+}
