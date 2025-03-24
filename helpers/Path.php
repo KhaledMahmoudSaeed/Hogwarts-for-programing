@@ -9,4 +9,8 @@ class Path
     {
         return $this::BATH_PATH . $path;
     }
+    public function view_path($path)
+    {
+        return $this::BATH_PATH . "public/resources/Views/" . $path;
+    }
 }
