@@ -5,7 +5,6 @@ use Helpers\Path;
 class Router
 {
     private $routers = [];
-    private $path = new Path();
 
     // method to make it easy add routes with no redendancy
     public function add($uri, $controller, $method)
@@ -48,20 +47,20 @@ class Router
     // route the router to correspond controller
     public function route($uri, $method)
     {
-
+        $path = new Path();
         foreach ($this->routers as $router) {
 
             if ($router['uri'] === $uri && $router['method'] === $method) {
-                return require($this->path->base_path("app/Http/Controllers/" . $router['controller']));
-            } else {
-                $this->abort(404);
+                return require($path->base_path("app/Http/Controllers/" . $router['controller']));
             }
         }
+        $this->abort(404);
     }
 
     public function abort($code = 404)
     {
+        $path = new Path();
         http_response_code($code);
-        require $this->path->view_path("aborts/$code.php");
+        require $path->view_path("aborts/$code.php");
     }
 }
