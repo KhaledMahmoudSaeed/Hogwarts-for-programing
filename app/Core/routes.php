@@ -15,3 +15,4 @@ $router->get('/dashboard/wands', "Dashboard/wands/index.php");
 $router->get('/dashboard/courses', "Dashboard/courses/index.php");
 $router->get('/dashboard/purchases', "Dashboard/purchases/index.php");
 
+$router->get('/ollivander', "Ollivander.php");

@@ -13,6 +13,11 @@
       <li><a href="/about">About</a></li>
 
       <?php if ($isLoggedIn): ?>
+        <!-- Show Ollivander’s Store ONLY for newly registered users -->
+        <?php if (isset($_SESSION['new_user']) && $_SESSION['new_user'] === true): ?>
+          <li><a href="/ollivander">Ollivander's Store</a></li>
+          <?php unset($_SESSION['new_user']); ?>
+        <?php endif; ?>
         <!-- Visible only if user is logged in -->
         <li><a href="/dashboard" class="active">Dashboard</a></li>
         <li><a href="/courses">Courses</a></li>
@@ -30,8 +35,8 @@
       <?php else: ?>
         <!-- Visible only if user is NOT logged in -->
         <button><a href="/login">Login</a></button></li>
-          <button><a href="/register">Register</a></li>
-          <?php endif; ?>
+        <button><a href="/register">Register</a></li>
+        <?php endif; ?>
     </div>
   </div>
 </nav>

@@ -64,6 +64,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['new_user'] = true;
             $_SESSION['user_id'] = $pdo->lastInsertId();
             $_SESSION['house'] = $pdo->query("SELECT name FROM houses WHERE id = $house_id")->fetchColumn();
+            // olivinder
+            $wand_wood = $pdo->query("SELECT wood FROM wands WHERE id = $wand_id")->fetchColumn();
+            $wand_core = $pdo->query("SELECT core FROM wands WHERE id = $wand_id")->fetchColumn();
+            $_SESSION['wand'] = $wand_wood . ' with ' . $wand_core;
             echo "Registration successful. Redirecting to home page...<br>";
             header("Location: /");
             exit;

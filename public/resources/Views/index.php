@@ -8,10 +8,7 @@ $house = isset($_SESSION['house']) ? $_SESSION['house'] : "HOGWARTS";
 $wand = isset($_SESSION['house']) ?? "";
 $isLoggedIn = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
 
-// If the user is new, clear the flag so the overlay shows only once
-if ($newUser) {
-    unset($_SESSION['new_user']);
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
