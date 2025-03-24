@@ -52,5 +52,20 @@ class Database
     {
         return $this->pdo;
     }
+
+    public function all($tabelname)
+    {
+        $stmt = $this->pdo->query("SELECT * FROM $tabelname");
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+    public function one($tabelname, $id)
+    {
+        $stmt = $this->pdo->query("SELECT * FROM $tabelname WHERE id=$id");
+        $stmt->execute();
+        $result = $stmt->fetch();
+        return $result;
+    }
 }
 ?>
