@@ -10,15 +10,15 @@
     <!-- Navigation Links -->
     <ul class="nav-links">
       <li><a href="/">Home</a></li>
-      <li><a href="about.php">About</a></li>
+      <li><a href="/about">About</a></li>
 
       <?php if ($isLoggedIn): ?>
         <!-- Visible only if user is logged in -->
-        <li><a href="dashboard.php" class="active">Dashboard</a></li>
-        <li><a href="courses.php">Courses</a></li>
-        <li><a href="quizzes.php">Quizzes</a></li>
+        <li><a href="/dashboard" class="active">Dashboard</a></li>
+        <li><a href="/courses">Courses</a></li>
+        <li><a href="/quizzes">Quizzes</a></li>
       <?php endif; ?>
-      <li><a href="contact.php">Contact Us</a></li>
+      <li><a href="/contact">Contact Us</a></li>
     </ul>
     <div class="buttons">
       <?php if ($isLoggedIn): ?>
