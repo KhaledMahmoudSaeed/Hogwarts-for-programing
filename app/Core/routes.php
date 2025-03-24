@@ -9,3 +9,9 @@ $router->post('/register', 'Authentication/register.php');
 $router->post('/logout', 'Authentication/logout.php');
 $router->get('/logout', 'Authentication/logout.php');// for now 
 
+$router->get('/dashboard', "Dashboard/index.php");
+$router->get('/dashboard/users', "Dashboard/users/index.php");
+$router->get('/dashboard/wands', "Dashboard/wands/index.php");
+$router->get('/dashboard/courses', "Dashboard/courses/index.php");
+$router->get('/dashboard/purchases', "Dashboard/purchases/index.php");
+
