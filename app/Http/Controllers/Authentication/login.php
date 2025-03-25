@@ -24,7 +24,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $error = "Invalid email or password.";
     }
+    
+    $_SESSION['error'] = $error;
+    $_SESSION['old_post'] = $_POST;
+    header("location: /login");
 }
-
-$_SESSION['error'] = $error;
-$_SESSION['old_post'] = $_POST;

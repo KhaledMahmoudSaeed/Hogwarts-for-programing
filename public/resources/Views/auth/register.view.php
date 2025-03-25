@@ -1,37 +1,38 @@
+<?php
+session_start();
+$errors = $_SESSION['errors'] ?? [];
+$old = $_SESSION['old'] ?? [];
+unset($_SESSION['errors'], $_SESSION['old']);
+?>
 <div class="slider-panel register-panel" id="registerPanel">
     <div class="form-container">
         <h1>Register</h1>
-        <?php
-        $errors = $_SESSION['errors'] ?? [];
-        $old = $_SESSION['old'] ?? [];
-        unset($_SESSION['errors'], $_SESSION['old']);
-        ?>
         <form action="/register" method="post">
             <input type="text" name="name" placeholder="Enter Name" value="<?= htmlspecialchars($old['name'] ?? '') ?>">
             <div class="error">
                 <?php if (isset($errors['name'])): ?>
-                    <p><?= $errors['name'] ?></p>
+                    <p><?= htmlspecialchars($errors['name']) ?></p>
                 <?php endif; ?>
             </div>
 
-            <input type="email" name="email" placeholder="Enter Email" value="<?php echo $old['email'] ?? '' ?>">
+            <input type="email" name="email" placeholder="Enter Email" value="<?= htmlspecialchars($old['email'] ?? '') ?>">
             <div class="error">
                 <?php if (isset($errors['email'])): ?>
-                    <p><?= $errors['email'] ?></p>
+                    <p><?= htmlspecialchars($errors['email']) ?></p>
                 <?php endif; ?>
             </div>
 
             <input type="password" name="password" placeholder="Enter Password" required>
             <div class="error">
                 <?php if (isset($errors['password'])): ?>
-                    <p><?= $errors['password'] ?></p>
+                    <p><?= htmlspecialchars($errors['password']) ?></p>
                 <?php endif; ?>
             </div>
 
             <input type="password" name="confirm-password" placeholder="Confirm Password" required>
             <div class="error">
                 <?php if (isset($errors['confirm-password'])): ?>
-                    <p><?= $errors['confirm-password'] ?></p>
+                    <p><?= htmlspecialchars($errors['confirm-password']) ?></p>
                 <?php endif; ?>
             </div>
             <button type="submit">Register</button>

@@ -74,6 +74,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo "Registration failed.";
         }
+    } else {
+        $_SESSION['errors'] = $errors;
+        $_SESSION['old'] = $_POST;
+        header("Location: /register");
+        exit;
     }
 }
 
