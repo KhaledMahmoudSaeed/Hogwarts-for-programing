@@ -23,45 +23,71 @@
             <table class="min-w-full bg-white">
                 <thead class="bg-blue-500">
                     <tr>
+                        <th class="py-3 px-6 text-left text-white font-semibold">ID</th>
                         <th class="py-3 px-6 text-left text-white font-semibold">Name</th>
                         <th class="py-3 px-6 text-left text-white font-semibold">Email</th>
                         <th class="py-3 px-6 text-left text-white font-semibold">Role</th>
                         <th class="py-3 px-6 text-left text-white font-semibold">House</th>
                         <th class="py-3 px-6 text-left text-white font-semibold">Wand</th>
+                        <th class="py-3 px-6 text-left text-white font-semibold">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="text-gray-700">
                     <?php if (!empty($users)): ?>
-                        <?php $i = 0;
-                        foreach ($users as $user):
-                            // Determine cell color based on house name
-                            $houseName = $house[$i]['name'];
+                        <?php foreach ($users as $user): ?>
+                            <?php
+                            $houseName = $user['hname'];
                             $cellColor = "";
                             if (strtolower($houseName) === 'gryffindor') {
-                                $cellColor = "#b22222"; // Red for Gryffindor
+                                $cellColor = "#b22222";
                             } elseif (strtolower($houseName) === 'slytherin') {
-                                $cellColor = "#1e5128"; // Green for Slytherin
+                                $cellColor = "#1e5128";
                             } elseif (strtolower($houseName) === 'ravenclaw') {
-                                $cellColor = "#0e1a40"; // Blue for Ravenclaw
+                                $cellColor = "#0e1a40";
                             } elseif (strtolower($houseName) === 'hufflepuff') {
-                                $cellColor = "#f5e042"; // Yellow for Hufflepuff
+                                $cellColor = "#f5e042";
                             }
                             ?>
                             <tr class="border-b border-gray-200 hover:bg-gray-100 transition-opacity duration-200">
-                                <td class="py-4 px-6"><?php echo htmlspecialchars($user['name']); ?></td>
-                                <td class="py-4 px-6"><?php echo htmlspecialchars($user['email']); ?></td>
-                                <td class="py-4 px-6"><?php echo htmlspecialchars($user['role']); ?></td>
-                                <td class="py-4 px-6" style="background-color: <?php echo htmlspecialchars($cellColor); ?>;">
-                                    <?php echo htmlspecialchars($houseName); ?>
+                                <td class="py-4 px-6"><?= htmlspecialchars($user['id']); ?></td>
+                                <td class="py-4 px-6"><?= htmlspecialchars($user['uname']); ?></td>
+                                <td class="py-4 px-6"><?= htmlspecialchars($user['email']); ?></td>
+                                <td class="py-4 px-6"><?= htmlspecialchars($user['role']); ?></td>
+                                <td class="py-4 px-6" style="background-color: <?= htmlspecialchars($cellColor); ?>;">
+                                    <?= htmlspecialchars($houseName); ?>
                                 </td>
-                                <td class="py-4 px-6">
-                                    <?php echo htmlspecialchars($wand[$i]['wood']) . " " . htmlspecialchars($wand[$i]['core']); ?>
+                                <td class="py-4 px-6"><?= htmlspecialchars($user['wood'] . $user['core']); ?></td>
+                                <td class="py-4 px-6 flex space-x-2">
+                                    <!-- Show Icon -->
+                                    <a href="/dashboard/user?id=<?= $user['id']; ?>" class="text-blue-500 hover:text-blue-700">
+                                        &#128065; <!-- Eye Icon -->
+                                    </a>
+
+                                    <!-- Update Form -->
+                                    <form action="/dashboard/user/edit" method="POST" class="inline-block">
+                                        <input type="hidden" name="_method" value="GET">
+                                        <input type="hidden" name="id" value="<?= $user['id']; ?>">
+                                        <input type="hidden" name="name" value="<?= $user['uname']; ?>">
+                                        <input type="hidden" name="email" value="<?= $user['email']; ?>">
+                                        <button type="submit" class="text-green-500 hover:text-green-700">
+                                            &#9998; <!-- Pencil Icon -->
+                                        </button>
+                                    </form>
+
+                                    <!-- Delete Form -->
+                                    <form action="/dashboard/users/delete" method="POST" class="inline-block">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
+                                        <button type="submit" class="text-red-500 hover:text-red-700">
+                                            &#10060; <!-- Cross Mark Icon -->
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
-                            <?php $i++; endforeach; ?>
+                        <?php endforeach; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="5" class="py-4 px-6 text-center">No users found.</td>
+                            <td colspan="7" class="py-4 px-6 text-center">No users found.</td>
                         </tr>
                     <?php endif; ?>
                 </tbody>
