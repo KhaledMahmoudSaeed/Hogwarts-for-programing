@@ -12,6 +12,17 @@ class Database
     private $user;
     private $password;
     private $pdo;
+    private $allowed_tabels = [
+        'users',
+        'wands',
+        'houses',
+        'purchases',
+        'quizzes',
+        'magical_items',
+        'enrollments',
+        'courses',
+        'student_quiz'
+    ];
     public function __construct()
     {
         // collect connection string data from .env 
@@ -26,7 +37,6 @@ class Database
         $this->user = $_ENV["DB_USERNAME"];
         $this->password = $_ENV["DB_PASSWORD"];
 
-
         $dsn = "pgsql:host=$this->host;port=$this->port;dbname=$this->dbname";
 
         try {
@@ -34,16 +44,6 @@ class Database
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
             ]);
-
-            // echo "✅ Connected successfully to Supabase PostgreSQL!";
-
-            // Example Query
-            // $stmt = $pdo->query("SELECT *  from houses");
-            // $result = [$stmt->fetchAll()];
-            // echo '<br>';
-            // echo '<pre>';
-            // print_r($result);
-            // echo '</pre>';
         } catch (\PDOException $e) {
             die("❌ Connection failed: " . $e->getMessage());
         }
@@ -52,20 +52,157 @@ class Database
     {
         return $this->pdo;
     }
-
-    public function all($tabelname)
+    // check if entered tabel is exists in allowed list
+    public function checkExitsTable(...$tabels)
     {
-        $stmt = $this->pdo->query("SELECT * FROM $tabelname");
+        foreach ($tabels as $table) {
+            if (!in_array($table, $this->allowed_tabels)) {
+                throw new \Exception("Invalid Table: $table");
+            }
+        }
+    }
+    public function getAll(string $tabelname)
+    {
+        $stmt = $this->pdo->query("SELECT * FROM \"$tabelname\"");
         $stmt->execute();
         $result = $stmt->fetchAll();
         return $result;
     }
-    public function one($tabelname, $id)
+    public function getOne(string $tabelname, int $id)
     {
-        $stmt = $this->pdo->query("SELECT * FROM $tabelname WHERE id=$id");
-        $stmt->execute();
+        $stmt = $this->pdo->prepare("SELECT * FROM \"$tabelname\" WHERE id=:id");
+
+        $stmt->execute([":id" => $id]);
         $result = $stmt->fetch();
         return $result;
     }
+    // Insert new record 
+    public function insert(string $tableName, array $data = [])
+    {
+        $this->checkExitsTable($tableName);
+
+        if (empty($data)) {
+            throw new \Exception("No values provided for insertion");
+        }
+
+        $keys = array_keys($data);
+        $columns = implode(', ', array_map(fn($key) => "\"$key\"", $keys)); // Wrap column names in quotes
+        $placeholders = implode(', ', array_map(fn($key) => ":$key", $keys)); // Named placeholders
+
+        $stmt = $this->pdo->prepare("INSERT INTO \"$tableName\" ($columns) VALUES ($placeholders);");
+
+        // Execute with bound values
+        $stmt->execute($data);
+    }
+
+    // Update new record 
+    public function update(string $tableName, array $data, int $id)
+    {
+        $this->checkExitsTable($tableName);
+
+        if (empty($data)) {
+            throw new \Exception("No values provided for update");
+        }
+
+        $updateString = implode(', ', array_map(fn($key) => "\"$key\" = :$key", array_keys($data)));
+
+        $stmt = $this->pdo->prepare("UPDATE \"$tableName\" SET $updateString WHERE id = :id");
+
+        $data['id'] = $id; // Include ID for binding
+        $stmt->execute($data);
+    }
+
+    public function delete(string $tableName, int $id)
+    {
+        $this->checkExitsTable($tableName);
+        if (empty($id)) {
+            throw new \Exception("No values provided for dekete");
+        }
+        $stmt = $this->pdo->prepare("DELETE FROM \"$tableName\" WHERE \"id\"=:id ");
+        $stmt->execute(["id" => $id]);
+    }
+
+    // returns $selectSrting after prepare it with what user enters its details such if thier any alias or not and what colums will be SELECTED
+    // it only accept $selectors as a paramter which is an associative array contains all wanted colums and which of them will have alias 
+    public function selectString(array $selectors)
+    {
+        if (!empty($selectors)) {
+            $mapped_array = array_map(function ($column_name, $alias) {
+                // add " " to all string to prevent sql injections
+                $column_named = str_replace(".", '"."', $column_name);
+                // check whether the user want an alias or default name for this column 
+                return empty($alias) ? "\"$column_named\"" : "\"$column_named\" AS \"$alias\"";
+            }, array_keys($selectors), array_values($selectors));
+            return $selectSrting = implode(',', $mapped_array);
+        } else {
+            return $selectSrting = "*";
+        }
+    }
+    // this method provide only one JOIN 
+    public function getWithJoin(
+        string $firstTable,
+        string $firstSecondKey,
+        string $secondTable,
+        string $secondKey,
+        array $selectors = []
+    ) {
+        // check if the entered tabels are exits or allowed in our DB
+        $this->checkExitsTable($firstTable, $secondTable);
+        // construct the foreign keys
+        $keys = [
+            'first' => "\"$firstTable\".\"$firstSecondKey\"",
+            'second' => "\"$secondTable\".\"$secondKey\""
+        ];
+        $selectString = $this->selectString($selectors);// build the selectString
+
+        $stmt = $this->pdo->prepare(
+            "SELECT $selectString FROM \"$firstTable\"
+        INNER JOIN \"$secondTable\" ON {$keys['first']} = {$keys['second']}"
+        );
+
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+    // this method provide two JOIN 
+    public function getWith2Joins(
+        string $firstTable,
+        string $firstSecondKey,
+        string $firstThirdKey,
+        string $secondTable,
+        string $secondKey,
+        string $thirdTable,
+        string $thirdKey,
+        array $selectors = [],
+        $condtion = null
+    ) {
+        // check if the entered tabels are exits or allowed in our DB
+        $this->checkExitsTable($firstTable, $secondTable, $thirdTable);
+        // construct the foreign keys
+        $keys = [
+            'first_second' => "\"$firstTable\".\"$firstSecondKey\"",
+            'first_third' => "\"$firstTable\".\"$firstThirdKey\"",
+            'second' => "\"$secondTable\".\"$secondKey\"",
+            'third' => "\"$thirdTable\".\"$thirdKey\""
+        ];
+
+        $selectString = $this->selectString($selectors);// build the selectString
+        $id = "\"$firstTable\".\"id\"";// to be more strict in order retrived data beacuse of using two JOIN it
+        if ($condtion) {
+            $co = " WHERE $condtion";
+        } else {
+            $co = "";
+        }
+        $stmt = $this->pdo->prepare(
+            "SELECT $selectString FROM \"$firstTable\"
+        INNER JOIN \"$secondTable\" ON {$keys['first_second']} = {$keys['second']}
+        INNER JOIN \"$thirdTable\" ON {$keys['first_third']} = {$keys['third']} $co
+        ORDER BY $id ASC "
+        );
+        // var_dump($stmt);
+        // exit;
+        $stmt->execute();
+        $result = ($condtion) ? $stmt->fetch() : $stmt->fetchAll();
+        return $result;
+    }
 }
-?>
