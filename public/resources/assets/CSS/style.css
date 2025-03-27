@@ -5,6 +5,7 @@
   --slytherin: #1E7352;
   --hogwarts: #232035;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -16,6 +17,7 @@ html {
   font-family: 'Cinzel', serif;
   color: #3e2723;
   text-align: center;
+  scroll-behavior: smooth;
 }
 
 h1 {
@@ -24,7 +26,7 @@ h1 {
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-button {
+button:not(.btn) {
   background-color: #DD852D;
   color: #fff;
   border: none;
@@ -36,7 +38,7 @@ button {
   margin-top: 1em;
 }
 
-button:hover {
+button:hover:not(.btn) {
   background-color: #BF6824;
 }
 
@@ -217,4 +219,221 @@ a {
 
 .ok-btn:hover {
   background-color: #BF6824;
+}
+
+/* Hero Section */
+.hero {
+  background-image: url('../img/landing.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 90vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(35, 32, 53, 0.6);
+}
+
+.hero .hero-overlay {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 4em;
+  margin-bottom: 20px;
+  color: #fff;
+  text-shadow: 1px 4px 10px rgba(221, 133, 45, 0.5);
+}
+
+.hero p {
+  font-size: 1.5em;
+  margin-bottom: 30px;
+  color: #fff;
+  text-shadow: 1px 4px 10px rgba(221, 133, 45, 0.5);
+}
+
+.hero .btn {
+  color: #fff;
+  background-color: transparent;
+  border-color: transparent;
+  position: relative;
+  top: 60px;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  animation: float 3s ease-in-out infinite;
+  -webkit-animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(-10px);
+    -webkit-transform: translateY(-10px);
+    -moz-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    -o-transform: translateY(-10px);
+  }
+
+  50% {
+    transform: translateY(10px);
+    -webkit-transform: translateY(10px);
+    -moz-transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    -o-transform: translateY(10px);
+  }
+}
+
+.hero .btn:hover {
+  text-shadow: 1px 4px 10px rgba(221, 133, 45, 0.9);
+}
+
+/* Houses Section */
+.houses {
+  height: 100vh;
+  padding: 55px 20px;
+  background-image: url("../img/train.png"), url("../img/stars.png"), linear-gradient(180deg, #15111d, #323657 121.35%);
+  background-position: center 101%, 50%, bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.houses h2 {
+  font-size: 3em;
+  margin-bottom: 40px;
+  color: #fff;
+  text-shadow: 1px 4px 10px rgba(221, 133, 45, 0.5);
+}
+
+.house-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.house {
+  background: #161320;
+  color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: all ease 0.5s;
+  -webkit-transition: all ease 0.5s;
+  -moz-transition: all ease 0.5s;
+  -ms-transition: all ease 0.5s;
+  -o-transition: all ease 0.5s;
+}
+
+.house:hover {
+  box-shadow: 1px 4px 10px rgba(221, 133, 45, 0.3);
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
+
+.house img {
+  height: 150px;
+  object-fit: cover;
+}
+
+.house h3 {
+  margin: 15px 0 10px;
+  font-size: 1.8em;
+}
+
+.house:first-child:hover h3 {
+  color: var(--gryffindor);
+}
+.house:nth-child(2):hover h3 {
+  color: var(--slytherin);
+}
+.house:nth-child(3):hover h3 {
+  color: var(--ravenclaw);
+}
+.house:last-child:hover h3 {
+  color: var(--hufflepuff);
+}
+.house p {
+  padding: 0 15px 15px;
+  font-size: 1em;
+  color: #999;
+}
+
+/* Activities Section */
+.activities {
+  height: 100vh;
+  padding: 80px 20px;
+  background-image: url("../img/quidditch.png"), url("../img/stars.png"),
+    linear-gradient(180deg, #18150e, #554936 121.35%);
+  ;
+  background-position: center 101%, 50%, bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.activities h2 {
+  font-size: 3em;
+  margin-bottom: 40px;
+  color: #fff;
+  text-shadow: 1px 4px 10px rgba(221, 133, 45, 0.5);
+}
+
+.activities-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.activity {
+  background: #201C13;
+  color: #fff;
+  border-radius: 10px;
+  width: 300px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: all ease 0.5s;
+  -webkit-transition: all ease 0.5s;
+  -moz-transition: all ease 0.5s;
+  -ms-transition: all ease 0.5s;
+  -o-transition: all ease 0.5s;
+}
+
+.activity:hover {
+  box-shadow: 1px 4px 10px rgba(221, 133, 45, 0.3);
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
+.activity h3 {
+  margin-bottom: 15px;
+  font-size: 1.8em;
+}
+
+.activity:hover h3{
+  color: #BF6824;
+}
+.activity p {
+  font-size: 1em;
+  color: #999;
 }
