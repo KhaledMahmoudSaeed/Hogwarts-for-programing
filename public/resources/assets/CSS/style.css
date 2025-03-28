@@ -307,8 +307,8 @@ a {
 .houses {
   height: 100vh;
   padding: 55px 20px;
-  background-image: url("../img/train.png"), url("../img/stars.png"), linear-gradient(180deg, #15111d, #323657 121.35%);
-  background-position: center 101%, 50%, bottom;
+  background-image: url("../img/train.png"), url("../img/stars.png"), linear-gradient(180deg, #15111d, #323657 110%);
+  background-position: center 100%, 50%, bottom;
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -363,15 +363,19 @@ a {
 .house:first-child:hover h3 {
   color: var(--gryffindor);
 }
+
 .house:nth-child(2):hover h3 {
   color: var(--slytherin);
 }
+
 .house:nth-child(3):hover h3 {
   color: var(--ravenclaw);
 }
+
 .house:last-child:hover h3 {
   color: var(--hufflepuff);
 }
+
 .house p {
   padding: 0 15px 15px;
   font-size: 1em;
@@ -383,9 +387,8 @@ a {
   height: 100vh;
   padding: 80px 20px;
   background-image: url("../img/quidditch.png"), url("../img/stars.png"),
-    linear-gradient(180deg, #18150e, #554936 121.35%);
-  ;
-  background-position: center 101%, 50%, bottom;
+    linear-gradient(180deg, #18150e, #554936 110%);
+  background-position: center 100%, 50%, bottom;
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -426,15 +429,86 @@ a {
   -ms-transform: scale(1.1);
   -o-transform: scale(1.1);
 }
+
 .activity h3 {
   margin-bottom: 15px;
   font-size: 1.8em;
 }
 
-.activity:hover h3{
+.activity:hover h3 {
   color: #BF6824;
 }
+
 .activity p {
   font-size: 1em;
   color: #999;
+}
+
+/* Magical Footer */
+.magic-footer {
+  background: url('../img/footer.png') no-repeat center;
+  background-size: cover;
+  text-align: center;
+  position: relative;
+  color: #fff;
+  border-top: 3px solid #3e2723;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.footer-logo img {
+  width: 150px;
+  margin-bottom: 15px;
+  filter: drop-shadow(2px 2px 5px rgba(255, 215, 0, 0.5));
+  -webkit-filter: drop-shadow(2px 2px 5px rgba(255, 215, 0, 0.5));
+}
+
+.footer-content h2 {
+  font-size: 2em;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px rgba(255, 223, 0, 0.8);
+}
+
+.footer-content p {
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #3e2723;
+  text-shadow: 0 0 10px rgba(255, 223, 0, 0.5);
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 20px;
+}
+
+.social-links a {
+  font-size: 1.5em;
+  transition: transform 0.3s ease-in-out;
+  -webkit-transition: transform 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out;
+  -ms-transition: transform 0.3s ease-in-out;
+  -o-transition: transform 0.3s ease-in-out;
+}
+
+.social-links a:hover {
+  transform: scale(1.2);
+  text-shadow: 0 0 10px rgba(255, 223, 0, 0.5);
+}
+
+
+.copyright {
+  font-size: 1em;
+  opacity: 0.9;
+  margin-top: 20px;
+  color: #3e2723;
+  text-shadow: 0 0 10px rgba(255, 223, 0, 0.5);
 }
