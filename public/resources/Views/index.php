@@ -103,6 +103,9 @@ $isLoggedIn = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
         </section>
     </div>
 
+    <!-- Magical Footer -->
+    <?php require("resources/Views/layout/footer.view.php"); ?>
+
     <script>
         document.getElementById("sortingHat")?.addEventListener("click", function () {
             document.getElementById("popup").classList.remove("hidden");
