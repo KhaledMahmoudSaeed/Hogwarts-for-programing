@@ -116,6 +116,8 @@ $isLoggedIn = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
             document.getElementById("overlay").classList.add("hidden");
             document.getElementById("homepage").classList.remove("hidden");
             document.getElementsByClassName("navbar")[0].classList.remove("hidden");
+            document.getElementsByClassName("magic-footer")[0].classList.remove("hidden");
+
         }
     </script>
 
