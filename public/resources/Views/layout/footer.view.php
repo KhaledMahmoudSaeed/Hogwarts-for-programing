@@ -1,4 +1,4 @@
-<footer class="magic-footer">
+<footer class="magic-footer <?php echo $newUser ? 'hidden' : ''; ?>">
     <div class="footer-container">
         <div class="footer-logo">
             <img src="resources/assets/img/footer-logo.png" alt="Hogwarts Crest">
