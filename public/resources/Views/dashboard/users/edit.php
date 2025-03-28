@@ -13,7 +13,7 @@
     <div class="bg-gray-800 shadow-lg rounded-2xl p-6 w-96">
         <h2 class="text-2xl font-bold text-amber-500 mb-4 text-center">Edit Profile</h2>
 
-        <form action="/dashboard/users/update" method="POST" class="space-y-4">
+        <form action="/dashboard/user/update" method="POST" class="space-y-4">
             <!-- Name Field -->
             <div>
                 <input type="hidden" name="_method" value="PUT">

@@ -1,6 +1,5 @@
 <?php
 // create all our routers 
-$id = 1;
 $router->get('/', 'index.php');
 $router->get('/login', 'Authentication/login.view.php');
 $router->get('/register', 'Authentication/register.view.php');
@@ -11,14 +10,18 @@ $router->get('/logout', 'Authentication/logout.php');// for now
 
 $router->get('/dashboard', "Dashboard/index.php");
 
-$router->get('/dashboard/users', "Dashboard/users/index.php");
-$router->get('/dashboard/user', 'Dashboard/users/show.php');
-$router->get('/dashboard/user/edit', 'Dashboard/users/edit.php');
-$router->put('/dashboard/users/update', "Dashboard/users/update.php");
-$router->delete('/dashboard/users/delete', "Dashboard/users/destroy.php");
+/* 
+    index   /dashboard/users
+    show    /dashboard/user?id=2
+    edit    /dashboard/user/edit
+    update  /dashboard/user/update
+    store   /dashboard/user/store
+    delete  /dashboard/user/delete 
+*/
+$router->resources('/dashboard/users', "Dashboard/users/index.php");
+$router->resources('/dashboard/courses', "Dashboard/courses/index.php");
+$router->resources('/dashboard/purchases', "Dashboard/purchases/index.php");
 
 $router->get('/dashboard/wands', "Dashboard/wands/index.php");
-$router->get('/dashboard/courses', "Dashboard/courses/index.php");
-$router->get('/dashboard/purchases', "Dashboard/purchases/index.php");
 
 $router->get('/ollivander', "Ollivander.php");
