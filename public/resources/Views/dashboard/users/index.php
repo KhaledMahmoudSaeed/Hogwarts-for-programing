@@ -75,7 +75,7 @@
                                     </form>
 
                                     <!-- Delete Form -->
-                                    <form action="/dashboard/users/delete" method="POST" class="inline-block">
+                                    <form action="/dashboard/user/delete" method="POST" class="inline-block">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
                                         <button type="submit" class="text-red-500 hover:text-red-700">

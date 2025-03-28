@@ -38,17 +38,44 @@ class Router
         return $this->add($uri, $controller, "DELETE");
     }
 
-    // public function resources($uri, $controller)
-    // {
-    // return $this->add($uri, $controller, "GET");
-    // return $this->add($uri, $controller, "POST");
-    // return $this->add($uri, $controller, "PUT");
-    //  return $this->add($uri, $controller, "DELETE");
-    // }
+    public function resources($uri, $controller)
+    {
+        //index   /dashboard/users  
+        $this->get($uri, $controller);
+
+        //show    /dashboard/user?id=2
+        $uri = substr($uri, 0, -1);
+        $controller = substr_replace($controller, "show.php", 16);
+        $this->get($uri, $controller);
+
+        //edit    /dashboard/user/edit
+        $uri .= "/edit";
+        $controller = substr_replace($controller, "edit.php", 16);
+        $this->get($uri, $controller);
+
+        //update  /dashboard/user/update
+        $uri = substr_replace($uri, "update", 16);
+        $controller = substr_replace($controller, "update.php", 16);
+        $this->put($uri, $controller);
+
+        //store   /dashboard/user/store
+        $uri = substr_replace($uri, "store", 16);
+        $controller = substr_replace($controller, "store.php", 16);
+        $this->delete($uri, $controller);
+
+        //delete  /dashboard/user/delete 
+        $uri = substr_replace($uri, "delete", 16);
+        $controller = substr_replace($controller, "destroy.php", 16);
+        $this->delete($uri, $controller);
+    }
 
     // route the router to correspond controller
     public function route($uri, $method)
     {
+        // echo "<pre>";
+        // var_dump($this->routers);
+        // echo "</pre>";
+        // exit;
         $path = new Path();
         require $path->base_path("app/Http/requires.php");
 
