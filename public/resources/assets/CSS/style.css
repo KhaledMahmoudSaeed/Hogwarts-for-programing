@@ -444,6 +444,210 @@ a {
   color: #999;
 }
 
+/* About Section */
+.about {
+  background-image: url('../img/about-landing.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 90vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(35, 32, 53, 0.6);
+}
+
+.about .overlay {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  text-align: center;
+  padding: 20px;
+}
+
+.about h1 {
+  font-size: 4em;
+  margin-bottom: 20px;
+  color: #fff;
+  text-shadow: 1px 4px 10px rgba(221, 133, 45, 0.5);
+}
+
+.about p {
+  font-size: 1.5em;
+  color: #fff;
+  text-shadow: 1px 4px 10px rgba(221, 133, 45, 0.5);
+}
+
+/* History Section */
+.history {
+  padding: 55px 20px;
+  background-image: url("../img/hogwarts.png"), url("../img/stars.png"), linear-gradient(180deg, #15111d, #323657 110%);
+  background-position: center 100%, 50%, bottom;
+  background-repeat: no-repeat;
+  background-size: contain, cover;
+}
+
+.history .container {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.history h2 {
+  font-size: 3em;
+  margin-bottom: 40px;
+  color: #fff;
+  text-shadow: 1px 4px 10px rgba(221, 133, 45, 0.5);
+}
+
+.history p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #fff;
+  opacity: 0.9;
+  text-shadow: 1px 4px 10px rgba(221, 133, 45, 0.5);
+}
+
+/* Founders Section */
+.founders {
+  padding: 55px 20px;
+  background-image: url("../img/hogwarts.png"), url("../img/stars.png"), linear-gradient(180deg, #15111d, #323657 110%);
+  background-position: center 100%, 50%, bottom;
+  background-repeat: no-repeat;
+  background-size: contain, cover;
+}
+
+.founders h2 {
+  font-size: 3em;
+  margin-bottom: 40px;
+  color: #fff;
+  text-shadow: 1px 4px 10px rgba(221, 133, 45, 0.5);
+}
+
+.founder-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.founder-card {
+  background: #161320;
+  color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: all ease 0.5s;
+  -webkit-transition: all ease 0.5s;
+  -moz-transition: all ease 0.5s;
+  -ms-transition: all ease 0.5s;
+  -o-transition: all ease 0.5s;
+}
+
+.founder-card:hover {
+  box-shadow: 1px 4px 10px rgba(221, 133, 45, 0.3);
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
+
+.founder-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  transition: all ease-in-out 0.3s;
+  -webkit-transition: all ease-in-out 0.3s;
+  -moz-transition: all ease-in-out 0.3s;
+  -ms-transition: all ease-in-out 0.3s;
+  -o-transition: all ease-in-out 0.3s;
+}
+
+.founder-card:hover img {
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+}
+
+.founder-card h3 {
+  margin: 15px 0 10px;
+  font-size: 1.8em;
+  transition: all ease-in-out 0.3s;
+  -webkit-transition: all ease-in-out 0.3s;
+  -moz-transition: all ease-in-out 0.3s;
+  -ms-transition: all ease-in-out 0.3s;
+  -o-transition: all ease-in-out 0.3s;
+}
+
+.founder-card:first-child:hover h3 {
+  color: var(--gryffindor);
+}
+
+.founder-card:nth-child(2):hover h3 {
+  color: var(--hufflepuff);
+}
+
+.founder-card:nth-child(3):hover h3 {
+  color: var(--ravenclaw);
+}
+
+.founder-card:last-child:hover h3 {
+  color: var(--slytherin);
+}
+
+.founder-card p {
+  padding: 0 15px 15px;
+  font-size: 1em;
+  color: #999;
+}
+
+/* Magical Activities / Magic Section */
+.magic {
+  padding: 55px 20px;
+  background-image: url("../img/village.png"), url("../img/stars.png"),
+    linear-gradient(180deg, #15111d, #323657 110%);
+  background-position: center 100%, 50%, bottom;
+  background-repeat: no-repeat;
+  background-size: contain, cover;
+}
+
+.magic .container {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.magic h2 {
+  font-size: 3em;
+  margin-bottom: 40px;
+  color: #fff;
+  text-shadow: 1px 4px 10px rgba(221, 133, 45, 0.5);
+}
+
+.magic p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #fff;
+  opacity: 0.9;
+  text-shadow: 1px 4px 10px rgba(221, 133, 45, 0.5);
+}
+
 /* Magical Footer */
 .magic-footer {
   background: url('../img/footer.png') no-repeat center;
