@@ -1,16 +1,15 @@
 <?php
 
-// this is the view page for index
+use Helpers\Auth;
 session_start();
-
+$user_date = Auth::getAuthenticatedUser();
 $newUser = (isset($_SESSION['new_user']) && $_SESSION['new_user'] === true);
-$house = isset($_SESSION['house']) ? $_SESSION['house'] : "HOGWARTS";
-$wand = isset($_SESSION['house']) ?? "";
-$isLoggedIn = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
-$content = $_SERVER['REQUEST_URI'] === '/' ? 'home' : $_SERVER['REQUEST_URI'];
+$house = isset($user_date['house']) ? $user_date['house'] : "HOGWARTS";
+$wand = isset($user_date['wand']) ?? "";
+$isLoggedIn = isset($user_date['id']) && !empty($user_date['id']);
+$content = $_SERVER['REQUEST_URI'] === '/home' ? 'home' : $_SERVER['REQUEST_URI'];
 
-
-?>
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,6 +37,7 @@ $content = $_SERVER['REQUEST_URI'] === '/' ? 'home' : $_SERVER['REQUEST_URI'];
             <p id="houseMessage">You have been sorted into <b><?php echo $house; ?></b>!</p>
             <button onclick="closePopup()">OK</button>
         </div>
+
     <?php endif; ?>
 
     <!-- Main Homepage Content -->

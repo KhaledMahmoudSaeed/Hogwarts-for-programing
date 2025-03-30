@@ -1,6 +1,7 @@
 <?php
 // handel reigster logic
 use App\Core\Database;
+use Firebase\JWT\JWT;
 session_start();
 session_unset();
 
@@ -44,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($errors)) {
-        $role = 'student';
+
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         $house_id = $pdo->query("SELECT id FROM houses ORDER BY RANDOM() LIMIT 1")->fetchColumn();
@@ -57,23 +58,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         echo "Name: $name, Email: $email, House ID: $house_id, Wand ID: $wand_id<br>";
 
-        $stmt = $pdo->prepare("INSERT INTO users (name, email, password, role, house_id, wand_id, created_at) 
-        VALUES (?, ?, ?, ?, ?, ?, NOW())");
+        $db->insert("users", [
+            "name" => $name,
+            "email" => $email,
+            "password" => $hashed_password,
+            "house_id" => $house_id,
+            "wand_id" => $wand_id
+        ]);
 
-        if ($stmt->execute([$name, $email, $hashed_password, $role, $house_id, $wand_id])) {
-            $_SESSION['new_user'] = true;
-            $_SESSION['user_id'] = $pdo->lastInsertId();
-            $_SESSION['house'] = $pdo->query("SELECT name FROM houses WHERE id = $house_id")->fetchColumn();
-            // olivinder
-            $wand_wood = $pdo->query("SELECT wood FROM wands WHERE id = $wand_id")->fetchColumn();
-            $wand_core = $pdo->query("SELECT core FROM wands WHERE id = $wand_id")->fetchColumn();
-            $_SESSION['wand'] = $wand_wood . ' with ' . $wand_core;
-            echo "Registration successful. Redirecting to home page...<br>";
-            header("Location: /");
-            exit;
-        } else {
-            echo "Registration failed.";
-        }
+        $house = $db->getOne("houses", $house_id)['name'];
+        $wand = $db->getOne("wands", $wand_id);
+
+        $wand = $wand['wood'] . ' with ' . $wand['core'];
+        $_SESSION['new_user'] = true;
+        $payload = array(
+            "id" => $pdo->lastInsertId(),
+            "house" => $house,
+            "wand" => $wand,
+            "iat" => time(),
+            "exp" => time() + (7 * 3600),
+        );
+        $jwt = JWT::encode($payload, $_ENV['JWT_SECRET_KEY'], "HS256");
+        $_SESSION['jwt'] = $jwt;
+        echo "Registration successful. Redirecting to home page...<br>";
+        header("Location: /home");
+        exit;
     } else {
         $_SESSION['errors'] = $errors;
         $_SESSION['old'] = $_POST;

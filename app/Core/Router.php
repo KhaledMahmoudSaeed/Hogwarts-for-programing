@@ -45,27 +45,32 @@ class Router
 
         //show    /dashboard/user?id=2
         $uri = substr($uri, 0, -1);
-        $controller = substr_replace($controller, "show.php", 16);
+        $controller = substr_replace($controller, "show.php", -9);
         $this->get($uri, $controller);
 
         //edit    /dashboard/user/edit
         $uri .= "/edit";
-        $controller = substr_replace($controller, "edit.php", 16);
+        $controller = substr_replace($controller, "edit.php", -8);
         $this->get($uri, $controller);
 
         //update  /dashboard/user/update
-        $uri = substr_replace($uri, "update", 16);
-        $controller = substr_replace($controller, "update.php", 16);
+        $uri = substr_replace($uri, "update", -4);
+        $controller = substr_replace($controller, "update.php", -8);
         $this->put($uri, $controller);
 
+        //create   /dashboard/user/create
+        $uri = substr_replace($uri, "create", -6);
+        $controller = substr_replace($controller, "create.php", -10);
+        $this->get($uri, $controller);
+
         //store   /dashboard/user/store
-        $uri = substr_replace($uri, "store", 16);
-        $controller = substr_replace($controller, "store.php", 16);
-        $this->delete($uri, $controller);
+        $uri = substr_replace($uri, "store", -6);
+        $controller = substr_replace($controller, "store.php", -10);
+        $this->post($uri, $controller);
 
         //delete  /dashboard/user/delete 
-        $uri = substr_replace($uri, "delete", 16);
-        $controller = substr_replace($controller, "destroy.php", 16);
+        $uri = substr_replace($uri, "delete", -5);
+        $controller = substr_replace($controller, "destroy.php", -9);
         $this->delete($uri, $controller);
     }
 
@@ -78,7 +83,7 @@ class Router
         // exit;
         $path = new Path();
         require $path->base_path("app/Http/requires.php");
-
+        $uri = rtrim($uri, "/");
         // Extract the base URI (without query parameters) [0]
         $uriWithoutQuery = explode('?', $uri)[0];
         foreach ($this->routers as $router) {

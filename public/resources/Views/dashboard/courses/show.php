@@ -31,15 +31,10 @@
             class="mt-4 bg-green-700 text-white px-4 py-2 rounded-lg font-semibold hover:bg-gray-600 transition">
             Back
         </button>
-        <form action="/dashboard/user/edit" method="POST" class="inline-block">
-            <input type="hidden" name="_method" value="GET">
-            <input type="hidden" name="id" value="<?= $data['id']; ?>">
-            <input type="hidden" name="name" value="<?= $data['uname']; ?>">
-            <input type="hidden" name="email" value="<?= $data['email']; ?>">
-            <button type="submit" class="text-green-500 hover:text-green-700">
-                Edit Profile
-            </button>
-        </form>
+        <button
+            class="mt-6 bg-amber-500 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-amber-400 transition">
+            Edit Profile
+        </button>
 
 
     </div>

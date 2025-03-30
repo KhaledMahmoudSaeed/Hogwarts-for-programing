@@ -18,4 +18,4 @@ $users = $db->getWith2Joins(
     ]
 );
 
-require $path->view_path("dashboard/users/index.php");
+$path->view("dashboard/users/index.php", $users);

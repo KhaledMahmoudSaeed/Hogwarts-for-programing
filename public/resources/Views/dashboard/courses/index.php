@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard - Users Table</title>
+    <title>Dashboard - Courses Table</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -17,68 +17,59 @@
 <body class="min-h-screen flex flex-col items-center py-8">
     <div class="w-full max-w-6xl px-4">
         <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">
-            Dashboard - Users
+            Dashboard - Courses
         </h1>
+        <div class="flex justify-end mb-4">
+            <a href="/dashboard/course/create"
+                class="bg-green-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-green-600 transition duration-200">
+                ➕ Add Course
+            </a>
+        </div>
+
         <div class="overflow-x-auto shadow-lg rounded-lg">
             <table class="min-w-full bg-white">
                 <thead class="bg-blue-500">
                     <tr>
                         <th class="py-3 px-6 text-left text-white font-semibold">ID</th>
                         <th class="py-3 px-6 text-left text-white font-semibold">Name</th>
-                        <th class="py-3 px-6 text-left text-white font-semibold">Email</th>
-                        <th class="py-3 px-6 text-left text-white font-semibold">Role</th>
-                        <th class="py-3 px-6 text-left text-white font-semibold">House</th>
-                        <th class="py-3 px-6 text-left text-white font-semibold">Wand</th>
+                        <th class="py-3 px-6 text-left text-white font-semibold">description</th>
+                        <th class="py-3 px-6 text-left text-white font-semibold">Professor</th>
                         <th class="py-3 px-6 text-left text-white font-semibold">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="text-gray-700">
                     <?php if (!empty($data)):
                         $counter = 1 ?>
-                        <?php foreach ($data as $user): ?>
-                            <?php
-                            $houseName = $user['hname'];
-                            $cellColor = "";
-                            if (strtolower($houseName) === 'gryffindor') {
-                                $cellColor = "#b22222";
-                            } elseif (strtolower($houseName) === 'slytherin') {
-                                $cellColor = "#1e5128";
-                            } elseif (strtolower($houseName) === 'ravenclaw') {
-                                $cellColor = "#0e1a40";
-                            } elseif (strtolower($houseName) === 'hufflepuff') {
-                                $cellColor = "#f5e042";
-                            }
+                        <?php foreach ($data as $course):
                             ?>
+
                             <tr class="border-b border-gray-200 hover:bg-gray-100 transition-opacity duration-200">
                                 <td class="py-4 px-6"><?= htmlspecialchars($counter++); ?></td>
-                                <td class="py-4 px-6"><?= htmlspecialchars($user['uname']); ?></td>
-                                <td class="py-4 px-6"><?= htmlspecialchars($user['email']); ?></td>
-                                <td class="py-4 px-6"><?= htmlspecialchars($user['role']); ?></td>
-                                <td class="py-4 px-6" style="background-color: <?= htmlspecialchars($cellColor); ?>;">
-                                    <?= htmlspecialchars($houseName); ?>
-                                </td>
-                                <td class="py-4 px-6"><?= htmlspecialchars($user['wood'] . $user['core']); ?></td>
+                                <td class="py-4 px-6"><?= htmlspecialchars($course['pname']); ?></td>
+                                <td class="py-4 px-6"><?= htmlspecialchars($course['cname']); ?></td>
+                                <td class="py-4 px-6"><?= htmlspecialchars($course['description']); ?></td>
                                 <td class="py-4 px-6 flex space-x-2">
                                     <!-- Show Icon -->
-                                    <a href="/dashboard/user?id=<?= $user['id']; ?>" class="text-blue-500 hover:text-blue-700">
+                                    <a href="/dashboard/course?id=<?= $course['id']; ?>"
+                                        class="text-blue-500 hover:text-blue-700">
                                         &#128065; <!-- Eye Icon -->
                                     </a>
 
                                     <!-- Update Form -->
-                                    <form action="/dashboard/user/edit" method="POST" class="inline-block">
+                                    <form action="/dashboard/course/edit" method="POST" class="inline-block">
                                         <input type="hidden" name="_method" value="GET">
-                                        <input type="hidden" name="id" value="<?= $user['id']; ?>">
-                                        <input type="hidden" name="name" value="<?= $user['uname']; ?>">
-                                        <input type="hidden" name="email" value="<?= $user['email']; ?>">
+                                        <input type="hidden" name="id" value="<?= $course['id']; ?>">
+                                        <input type="hidden" name="cname" value="<?= $course['cname']; ?>">
+                                        <input type="hidden" name="description" value="<?= $course['description']; ?>">
                                         <button type="submit" class="text-green-500 hover:text-green-700">
                                             &#9998; <!-- Pencil Icon -->
                                         </button>
                                     </form>
 
                                     <!-- Delete Form -->
-                                    <form action="/dashboard/user/delete" method="POST" class="inline-block">
+                                    <form action="/dashboard/course/delete" method="POST" class="inline-block">
                                         <input type="hidden" name="_method" value="DELETE">
-                                        <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
+                                        <input type="hidden" name="id" value="<?php echo $course['id']; ?>">
                                         <button type="submit" class="text-red-500 hover:text-red-700">
                                             &#10060; <!-- Cross Mark Icon -->
                                         </button>

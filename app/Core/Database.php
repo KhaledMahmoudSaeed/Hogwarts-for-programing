@@ -63,7 +63,7 @@ class Database
     }
     public function getAll(string $tabelname)
     {
-        $stmt = $this->pdo->query("SELECT * FROM \"$tabelname\"");
+        $stmt = $this->pdo->query("SELECT * FROM \"$tabelname\" ");
         $stmt->execute();
         $result = $stmt->fetchAll();
         return $result;
@@ -74,6 +74,17 @@ class Database
 
         $stmt->execute([":id" => $id]);
         $result = $stmt->fetch();
+        return $result;
+
+    }
+    public function where(string $tabelname, string $condtion, array $selectors = [])
+    {
+        $this->checkExitsTable($tabelname);
+        $selectString = $this->selectString($selectors);// build the selectString
+
+        $stmt = $this->pdo->prepare("SELECT $selectString FROM \"$tabelname\" WHERE $condtion ");
+        $stmt->execute();
+        $result = $stmt->fetchAll();
         return $result;
     }
     // Insert new record 
@@ -106,7 +117,7 @@ class Database
 
         $updateString = implode(', ', array_map(fn($key) => "\"$key\" = :$key", array_keys($data)));
 
-        $stmt = $this->pdo->prepare("UPDATE \"$tableName\" SET $updateString WHERE id = :id");
+        $stmt = $this->pdo->prepare("UPDATE \"$tableName\" SET $updateString WHERE id = :id ");
 
         $data['id'] = $id; // Include ID for binding
         $stmt->execute($data);
@@ -133,9 +144,9 @@ class Database
                 // check whether the user want an alias or default name for this column 
                 return empty($alias) ? "\"$column_named\"" : "\"$column_named\" AS \"$alias\"";
             }, array_keys($selectors), array_values($selectors));
-            return $selectSrting = implode(',', $mapped_array);
+            return implode(',', $mapped_array);
         } else {
-            return $selectSrting = "*";
+            return "*";
         }
     }
     // this method provide only one JOIN 
@@ -157,7 +168,7 @@ class Database
 
         $stmt = $this->pdo->prepare(
             "SELECT $selectString FROM \"$firstTable\"
-        INNER JOIN \"$secondTable\" ON {$keys['first']} = {$keys['second']}"
+        INNER JOIN \"$secondTable\" ON {$keys['first']} = {$keys['second']} ORDER BY id ASC"
         );
 
         $stmt->execute();
