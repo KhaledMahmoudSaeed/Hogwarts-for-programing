@@ -1,6 +1,6 @@
 <?php
 // create all our routers 
-$router->get('/', 'index.php');
+$router->get('/home', 'index.php');
 $router->get('/about', 'index.php');
 $router->get('/login', 'Authentication/login.view.php');
 $router->get('/register', 'Authentication/register.view.php');
