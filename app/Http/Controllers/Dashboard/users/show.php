@@ -9,6 +9,7 @@ $user = $db->getWith2Joins(
     "wands",
     "id",
     [
+        "users.id" => "id",
         "users.role" => "",
         "users.name" => "uname",
         "houses.name" => "hname",
@@ -18,4 +19,4 @@ $user = $db->getWith2Joins(
     ],
     "users.id=$id"
 );
-require $path->view_path("dashboard/users/show.php");
+$path->view("dashboard/users/show.php", $user);
