@@ -10,12 +10,12 @@ function isActive($routes)
     <div class="logos">
       <img src="resources/assets/img/<?php echo strtolower($house) !== 'hogwarts' ? strtolower($house) : 'auth'; ?>.png"
         alt="Magical Hogwarts">
-      <a href="/" class="logo"><?= $house ?></a>
+      <a href="/home" class="logo"><?= $house ?></a>
     </div>
 
     <!-- Navigation Links -->
     <ul class="nav-links">
-      <li><a href="/" class="<?= isActive('/') ?>">Home</a></li>
+      <li><a href="/home" class="<?= isActive('/home') ?>">Home</a></li>
       <li><a href="/about" class="<?= isActive('/about') ?>">About</a></li>
 
       <?php if ($isLoggedIn): ?>
@@ -29,7 +29,7 @@ function isActive($routes)
         <li><a href="/courses" classclass="<?= isActive('/courses') ?>">Courses</a></li>
         <li><a href="/quizzes" class="<?= isActive('/quizzes') ?>">Quizzes</a></li>
       <?php endif; ?>
-      <li><a href="/contact" class="class="<?= isActive('/contact') ?>"">Contact Us</a></li>
+      <li><a href="/contact" class="class=" <?= isActive('/contact') ?>>Contact Us</a></li>
     </ul>
     <div class="buttons">
       <?php if ($isLoggedIn): ?>

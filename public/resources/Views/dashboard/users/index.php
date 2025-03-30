@@ -33,8 +33,9 @@
                     </tr>
                 </thead>
                 <tbody class="text-gray-700">
-                    <?php if (!empty($users)): ?>
-                        <?php foreach ($users as $user): ?>
+                    <?php if (!empty($data)):
+                        $counter = 1 ?>
+                        <?php foreach ($data as $user): ?>
                             <?php
                             $houseName = $user['hname'];
                             $cellColor = "";
@@ -49,7 +50,7 @@
                             }
                             ?>
                             <tr class="border-b border-gray-200 hover:bg-gray-100 transition-opacity duration-200">
-                                <td class="py-4 px-6"><?= htmlspecialchars($user['id']); ?></td>
+                                <td class="py-4 px-6"><?= htmlspecialchars($counter++); ?></td>
                                 <td class="py-4 px-6"><?= htmlspecialchars($user['uname']); ?></td>
                                 <td class="py-4 px-6"><?= htmlspecialchars($user['email']); ?></td>
                                 <td class="py-4 px-6"><?= htmlspecialchars($user['role']); ?></td>

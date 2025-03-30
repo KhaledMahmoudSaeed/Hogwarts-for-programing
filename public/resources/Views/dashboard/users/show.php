@@ -15,15 +15,15 @@
 
         <div class="space-y-4">
             <p><span class="font-semibold text-gray-400">Name:</span> <span
-                    class="text-white"><?php echo htmlspecialchars($user['uname']); ?></span></p>
+                    class="text-white"><?php echo htmlspecialchars($data['uname']); ?></span></p>
             <p><span class="font-semibold text-gray-400">Email:</span> <span
-                    class="text-white"><?php echo htmlspecialchars($user['email']); ?></span></p>
+                    class="text-white"><?php echo htmlspecialchars($data['email']); ?></span></p>
             <p><span class="font-semibold text-gray-400">Role:</span> <span
-                    class="text-white"><?php echo htmlspecialchars($user['role']); ?></span></p>
+                    class="text-white"><?php echo htmlspecialchars($data['role']); ?></span></p>
             <p><span class="font-semibold text-gray-400">House ID:</span> <span
-                    class="text-white"><?php echo htmlspecialchars($user['hname']); ?></span></p>
+                    class="text-white"><?php echo htmlspecialchars($data['hname']); ?></span></p>
             <p><span class="font-semibold text-gray-400">Wand ID:</span> <span
-                    class="text-white"><?php echo htmlspecialchars($user['wood'] . " " . $user['core']); ?></span></p>
+                    class="text-white"><?php echo htmlspecialchars($data['wood'] . " " . $data['core']); ?></span></p>
         </div>
 
         <!-- Back Button -->
@@ -31,10 +31,15 @@
             class="mt-4 bg-green-700 text-white px-4 py-2 rounded-lg font-semibold hover:bg-gray-600 transition">
             Back
         </button>
-        <button
-            class="mt-6 bg-amber-500 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-amber-400 transition">
-            Edit Profile
-        </button>
+        <form action="/dashboard/user/edit" method="POST" class="inline-block">
+            <input type="hidden" name="_method" value="GET">
+            <input type="hidden" name="id" value="<?= $data['id']; ?>">
+            <input type="hidden" name="name" value="<?= $data['uname']; ?>">
+            <input type="hidden" name="email" value="<?= $data['email']; ?>">
+            <button type="submit" class="text-green-500 hover:text-green-700">
+                Edit Profile
+            </button>
+        </form>
 
 
     </div>
