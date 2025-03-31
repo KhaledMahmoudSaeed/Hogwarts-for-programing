@@ -45,16 +45,29 @@
                 </div>
                 <?php if (!empty($data) && count($data) > 0): ?>
                     <div class="row">
-                        <?php foreach ($data as $course):
-                            ?>
+                        <?php foreach ($data as $course): ?>
                             <div class="col-md-6 mb-3">
                                 <div class="course-card p-3 shadow-sm">
-
                                     <h5 class="text-primary"> <?= htmlspecialchars($course['name']) ?> </h5>
                                     <p><strong>Professor:</strong> <?= htmlspecialchars($course['professor']) ?></p>
-                                    <p><strong>Email:</strong> <a href="mailto:<?= htmlspecialchars($course['email']) ?>">
-                                            <?= htmlspecialchars($course['email']) ?> </a></p>
-                                    <form action="/enroll/delete" method="POST">
+                                    <p><strong>Email:</strong>
+                                        <a href="mailto:<?= htmlspecialchars($course['email']) ?>">
+                                            <?= htmlspecialchars($course['email']) ?>
+                                        </a>
+                                    </p>
+
+                                    <!-- "Go to Quiz" Button -->
+                                    <?php if (empty($course['quizz_finish']) || $course['quizz_finish'] !== "done"): ?>
+                                        <a href="/quizz?course_id=<?= htmlspecialchars($course['cid']) ?>" class="btn btn-primary">
+                                            📝 Go to Quiz
+                                        </a>
+                                    <?php else: ?>
+                                        <button class="btn btn-secondary" disabled>Quiz Completed</button>
+                                    <?php endif; ?>
+
+
+                                    <!-- Unenroll Form -->
+                                    <form action="/enroll/delete" method="POST" class="mt-2">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="id" value="<?= htmlspecialchars($course['id']) ?>">
                                         <button type="submit" class="unenroll-btn text-white">Unenroll</button>

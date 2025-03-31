@@ -1,6 +1,5 @@
 <?php
 use Helpers\Auth;
-session_start();
 $id = Auth::getAuthenticatedUser()['id'];
 ?>
 <!DOCTYPE html>
