@@ -22,6 +22,9 @@ $router->get('/dashboard', "Dashboard/index.php");
 */
 $router->resources('/dashboard/users', "Dashboard/users/index.php");
 $router->resources('/dashboard/courses', "Dashboard/courses/index.php");
+$router->resources('/dashboard/quizzs', "Dashboard/quizzes/index.php");
+$router->get("/quizz", "Student/quizzes/index.php");
+$router->post("/quizz", "Student/quizzes/store.php");
 $router->resources('/enrolls', "Student/enrolls/index.php");
 $router->resources('/dashboard/purchases', "Dashboard/purchases/index.php");
 
