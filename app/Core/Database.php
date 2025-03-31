@@ -107,21 +107,34 @@ class Database
     }
 
     // Update new record 
-    public function update(string $tableName, array $data, int $id)
+    public function update(string $tableName, array $data, array $conditions)
     {
         $this->checkExitsTable($tableName);
 
         if (empty($data)) {
             throw new \Exception("No values provided for update");
         }
+        if (empty($conditions)) {
+            throw new \Exception("No conditions provided for update");
+        }
 
+        // Build SET clause dynamically
         $updateString = implode(', ', array_map(fn($key) => "\"$key\" = :$key", array_keys($data)));
 
-        $stmt = $this->pdo->prepare("UPDATE \"$tableName\" SET $updateString WHERE id = :id ");
+        // Build WHERE clause dynamically based on conditions
+        $whereConditions = implode(' AND ', array_map(fn($key) => "\"$key\" = :$key", array_keys($conditions)));
 
-        $data['id'] = $id; // Include ID for binding
-        $stmt->execute($data);
+        // Prepare SQL statement
+        $stmt = $this->pdo->prepare("UPDATE \"$tableName\" SET $updateString WHERE $whereConditions");
+
+        // Merge data and conditions for binding
+        $params = array_merge($data, $conditions);
+
+        // Execute the query
+        $stmt->execute($params);
     }
+
+
 
     public function delete(string $tableName, int $id)
     {
