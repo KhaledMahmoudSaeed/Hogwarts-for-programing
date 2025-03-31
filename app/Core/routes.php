@@ -1,5 +1,6 @@
 <?php
 // create all our routers 
+$router->get('/', 'index.php');
 $router->get('/home', 'index.php');
 $router->get('/about', 'index.php');
 $router->get('/login', 'Authentication/login.view.php');
@@ -21,6 +22,7 @@ $router->get('/dashboard', "Dashboard/index.php");
 */
 $router->resources('/dashboard/users', "Dashboard/users/index.php");
 $router->resources('/dashboard/courses', "Dashboard/courses/index.php");
+$router->resources('/enrolls', "Student/enrolls/index.php");
 $router->resources('/dashboard/purchases', "Dashboard/purchases/index.php");
 
 $router->get('/dashboard/wands', "Dashboard/wands/index.php");

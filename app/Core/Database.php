@@ -213,7 +213,7 @@ class Database
         // var_dump($stmt);
         // exit;
         $stmt->execute();
-        $result = ($condtion) ? $stmt->fetch() : $stmt->fetchAll();
+        $result = $stmt->fetchAll();
         return $result;
     }
 }
