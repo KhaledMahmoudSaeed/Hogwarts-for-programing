@@ -15,7 +15,7 @@ function isActive($routes)
 
     <!-- Navigation Links -->
     <ul class="nav-links">
-      <li><a href="/home" class="<?= isActive('/home') ?>">Home</a></li>
+      <li><a href="/home" class="<?= isActive('/home') . isActive('/') ?>">Home</a></li>
       <li><a href="/about" class="<?= isActive('/about') ?>">About</a></li>
 
       <?php if ($isLoggedIn): ?>

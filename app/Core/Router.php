@@ -83,7 +83,9 @@ class Router
         // exit;
         $path = new Path();
         require $path->base_path("app/Http/requires.php");
-        $uri = rtrim($uri, "/");
+        if (!$uri === "/") {
+            $uri = rtrim($uri, "/");
+        }
         // Extract the base URI (without query parameters) [0]
         $uriWithoutQuery = explode('?', $uri)[0];
         foreach ($this->routers as $router) {
