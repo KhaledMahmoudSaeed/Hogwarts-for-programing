@@ -49,12 +49,6 @@
                                 <td class="py-4 px-6"><?= htmlspecialchars($course['cname']); ?></td>
                                 <td class="py-4 px-6"><?= htmlspecialchars($course['description']); ?></td>
                                 <td class="py-4 px-6 flex space-x-2">
-                                    <!-- Show Icon -->
-                                    <a href="/dashboard/course?id=<?= $course['id']; ?>"
-                                        class="text-blue-500 hover:text-blue-700">
-                                        &#128065; <!-- Eye Icon -->
-                                    </a>
-
                                     <!-- Update Form -->
                                     <form action="/dashboard/course/edit" method="POST" class="inline-block">
                                         <input type="hidden" name="_method" value="GET">
