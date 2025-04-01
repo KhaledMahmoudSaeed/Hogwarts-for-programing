@@ -107,7 +107,7 @@ class Database
     }
 
     // Update new record 
-    public function update(string $tableName, array $data, array $conditions)
+    public function update(string $tableName, array $data, array|string $conditions)
     {
         $this->checkExitsTable($tableName);
 
@@ -121,18 +121,36 @@ class Database
         // Build SET clause dynamically
         $updateString = implode(', ', array_map(fn($key) => "\"$key\" = :$key", array_keys($data)));
 
-        // Build WHERE clause dynamically based on conditions
-        $whereConditions = implode(' AND ', array_map(fn($key) => "\"$key\" = :$key", array_keys($conditions)));
+        $params = $data;
+        $whereClause = "";
+
+        if (is_array($conditions)) {
+            // Build WHERE clause dynamically
+            $whereClause = implode(' AND ', array_map(fn($key) => "\"$key\" = :where_$key", array_keys($conditions)));
+
+            // Rename parameters to avoid conflicts
+            foreach ($conditions as $key => $value) {
+                $params["where_$key"] = $value;
+            }
+        } else {
+            // If conditions is a string, assume it's a primary key and build a WHERE clause
+            if (is_numeric($conditions)) {
+                $whereClause = "\"id\" = :where_id";
+                $params["where_id"] = $conditions;
+            } else {
+                // If it's a manually written WHERE clause, use it directly (ensure it's safe)
+                $whereClause = $conditions;
+            }
+        }
 
         // Prepare SQL statement
-        $stmt = $this->pdo->prepare("UPDATE \"$tableName\" SET $updateString WHERE $whereConditions");
+        $sql = "UPDATE \"$tableName\" SET $updateString WHERE $whereClause";
+        $stmt = $this->pdo->prepare($sql);
 
-        // Merge data and conditions for binding
-        $params = array_merge($data, $conditions);
-
-        // Execute the query
+        // Execute query with parameters
         $stmt->execute($params);
     }
+
 
 
 
