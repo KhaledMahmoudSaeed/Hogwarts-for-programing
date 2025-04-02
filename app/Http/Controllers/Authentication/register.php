@@ -73,6 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['new_user'] = true;
         $payload = array(
             "id" => $pdo->lastInsertId(),
+            "role" => "student",
             "house" => $house,
             "wand" => $wand,
             "iat" => time(),
