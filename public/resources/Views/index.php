@@ -1,13 +1,14 @@
 <?php
+$_SESSION['role'] = $data['role'] ?? 'guest';
 
-use Helpers\Auth;
-session_start();
-$user_date = Auth::getAuthenticatedUser();
 $newUser = (isset($_SESSION['new_user']) && $_SESSION['new_user'] === true);
-$house = isset($user_date['house']) ? $user_date['house'] : "HOGWARTS";
-$wand = isset($user_date['wand']) ?? "";
-$isLoggedIn = isset($user_date['id']) && !empty($user_date['id']);
-$content = $_SERVER['REQUEST_URI'] === '/' || '/home' ? 'home' : $_SERVER['REQUEST_URI'];
+$house = isset($data['house']) ? $data['house'] : "HOGWARTS";
+$wand = isset($data['wand']) ? $data['wand'] : "";
+$_SESSION['wand'] = $wand;
+$isLoggedIn = isset($data['id']) && !empty($data['id']);
+$content = ($_SERVER['REQUEST_URI'] === '/' || $_SERVER['REQUEST_URI'] === '/home') ? 'home' : $_SERVER['REQUEST_URI'];
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

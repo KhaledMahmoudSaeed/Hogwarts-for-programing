@@ -5,7 +5,6 @@ use App\Core\Database;
 use Firebase\JWT\JWT;
 $error = '';
 $db = new Database();
-$pdo = $db->getconnection();
 
 // some validations
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

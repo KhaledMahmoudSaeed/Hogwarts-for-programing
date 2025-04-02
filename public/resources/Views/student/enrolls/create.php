@@ -1,7 +1,3 @@
-<?php
-use Helpers\Auth;
-$id = Auth::getAuthenticatedUser()['id'];
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +19,8 @@ $id = Auth::getAuthenticatedUser()['id'];
         <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Enroll in new course</h2>
 
         <form action="/enroll/store" method="POST" class="space-y-4">
-            <input type="hidden" name="user_id" value="<?= $id ?>">
+            <input type="hidden" name="user_id" value="<?= end($data);
+            array_pop($data) ?>">
             <!-- courses Dropdown -->
             <div>
                 <label class="block text-gray-700 font-semibold">Select Course:</label>

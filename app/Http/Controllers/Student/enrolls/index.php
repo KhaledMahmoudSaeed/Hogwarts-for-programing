@@ -1,6 +1,5 @@
 <?php
 use Helpers\Auth;
-session_start();
 $id = Auth::getAuthenticatedUser()['id'];
 $courses = $db->getWith2Joins(
     "courses",
@@ -20,5 +19,5 @@ $courses = $db->getWith2Joins(
     ],
     "enrollments.user_id =$id "
 );
-    
+
 $path->view("student/enrolls/index.php", $courses);

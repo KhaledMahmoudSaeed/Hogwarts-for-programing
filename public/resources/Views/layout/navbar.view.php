@@ -22,7 +22,6 @@ function isActive($routes)
         <!-- Show Ollivander’s Store ONLY for newly registered users -->
         <?php if (isset($_SESSION['new_user']) && $_SESSION['new_user'] === true): ?>
           <li><a href="/ollivander" class="<?= isActive('/ollivander') ?>">Ollivander's Store</a></li>
-          <?php unset($_SESSION['new_user']); ?>
         <?php endif; ?>
         <!-- Visible only if user is logged in -->
         <li><a href="/dashboard" class="<?= isActive('/dashboard') ?>">Dashboard</a></li>
