@@ -1,16 +1,16 @@
 <?php
 // create all our routers 
-$router->get('/', 'index.php');
-$router->get('/home', 'index.php');
-$router->get('/about', 'index.php');
-$router->get('/login', 'Authentication/login.view.php');
-$router->get('/register', 'Authentication/register.view.php');
-$router->post('/login', 'Authentication/login.php');
-$router->post('/register', 'Authentication/register.php');
+$router->get('/', 'index.php')->addMiddleware('guest');
+$router->get('/home', 'index.php')->addMiddleware('guest');
+$router->get('/about', 'index.php')->addMiddleware('guest');
+$router->get('/login', 'Authentication/login.view.php')->addMiddleware('guest');
+$router->get('/register', 'Authentication/register.view.php')->addMiddleware('guest');
+$router->post('/login', 'Authentication/login.php')->addMiddleware('guest');
+$router->post('/register', 'Authentication/register.php')->addMiddleware('guest');
 $router->post('/logout', 'Authentication/logout.php');
 $router->get('/logout', 'Authentication/logout.php');// for now 
 
-$router->get('/dashboard', "Dashboard/index.php");
+$router->get('/dashboard', "Dashboard/index.php")->addMiddleware('professor');
 
 /* 
     index   /dashboard/users
@@ -20,10 +20,10 @@ $router->get('/dashboard', "Dashboard/index.php");
     store   /dashboard/user/store
     delete  /dashboard/user/delete 
 */
-$router->resources('/dashboard/users', "Dashboard/users/index.php");
-$router->resources('/dashboard/courses', "Dashboard/courses/index.php");
-$router->resources('/dashboard/quizzs', "Dashboard/quizzes/index.php");
-$router->resources('/dashboard/purchases', "Dashboard/purchases/index.php");
+$router->resources('/dashboard/users', "Dashboard/users/index.php", 'professor');
+$router->resources('/dashboard/courses', "Dashboard/courses/index.php", 'professor');
+$router->resources('/dashboard/quizzs', "Dashboard/quizzes/index.php", 'professor');
+$router->resources('/dashboard/purchases', "Dashboard/purchases/index.php", 'professor');
 $router->get("/quizz", "Student/quizzes/index.php");
 $router->post("/quizz", "Student/quizzes/store.php");
 $router->resources('/enrolls', "Student/enrolls/index.php");
