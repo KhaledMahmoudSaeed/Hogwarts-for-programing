@@ -63,7 +63,7 @@ class Database
     }
     public function getAll(string $tabelname)
     {
-        $stmt = $this->pdo->query("SELECT * FROM \"$tabelname\" ");
+        $stmt = $this->pdo->query("SELECT * FROM \"$tabelname\" ORDER BY id ASC");
         $stmt->execute();
         $result = $stmt->fetchAll();
         return $result;
