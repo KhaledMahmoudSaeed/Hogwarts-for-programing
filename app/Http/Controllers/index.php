@@ -1,6 +1,9 @@
 <?php
+use Helpers\Auth;
 if ($_SERVER['REQUEST_URI'] === '/') {
     $_SERVER['REQUEST_URI'] = "home";
 }
-require $path->view_path("index.php");
+
+$user_date = Auth::getAuthenticatedUser();
+$path->view("index.php", $user_date);
 

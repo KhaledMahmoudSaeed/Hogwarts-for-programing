@@ -2,6 +2,7 @@
 require "../vendor/autoload.php";
 
 use App\Core\Router;
+session_start();
 
 $router = new Router();
 require_once("../app/Core/routes.php");// use all allowed routes

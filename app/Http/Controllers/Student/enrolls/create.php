@@ -1,6 +1,5 @@
 <?php
 use Helpers\Auth;
-session_start();
 $id = Auth::getAuthenticatedUser()['id'];
 
 $pdo = $db->getconnection();
@@ -10,5 +9,5 @@ $stmt = $pdo->prepare("
 ");
 $stmt->execute([":id" => $id]);
 $courses = $stmt->fetchAll();
-
+array_push($courses, ['user_id' => $id]);
 $path->view("/student/enrolls/create.php", $courses);
