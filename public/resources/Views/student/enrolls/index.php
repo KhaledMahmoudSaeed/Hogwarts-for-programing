@@ -59,7 +59,7 @@
                                     <!-- "Go to Quiz" Button -->
                                     <?php if (empty($course['quizz_finish']) || $course['quizz_finish'] !== "done"): ?>
                                         <a href="/quizz?course_id=<?= htmlspecialchars($course['cid']) ?>" class="btn btn-primary">
-                                            📝 Go to Quiz
+                                            📝 Go to Quiz<!-- redirect to quizz index controller-->
                                         </a>
                                     <?php else: ?>
                                         <button class="btn btn-secondary" disabled>Quiz Completed</button>

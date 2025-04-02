@@ -19,7 +19,7 @@
         <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Enroll in new course</h2>
 
         <form action="/enroll/store" method="POST" class="space-y-4">
-            <input type="hidden" name="user_id" value="<?= $data[2]['user_id'];
+            <input type="hidden" name="user_id" value="<?= end($data);
             array_pop($data) ?>">
             <!-- courses Dropdown -->
             <div>
