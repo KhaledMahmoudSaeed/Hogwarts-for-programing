@@ -7,7 +7,7 @@ $quizzes = $db->where("quizzes", "course_id=$course_id", [
     "question" => "",
     "points" => ""
 ]);
-array_push($quizzes, ['user_id' => $id]);
+array_push($quizzes, $id);
 
 
 $path->view("student/quizzes/index.php", $quizzes);

@@ -9,5 +9,5 @@ $stmt = $pdo->prepare("
 ");
 $stmt->execute([":id" => $id]);
 $courses = $stmt->fetchAll();
-array_push($courses, ['user_id' => $id]);
+array_push($courses, $id);
 $path->view("/student/enrolls/create.php", $courses);
