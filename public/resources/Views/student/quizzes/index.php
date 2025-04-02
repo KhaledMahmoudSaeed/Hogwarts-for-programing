@@ -35,7 +35,7 @@
             <div class="card-body">
                 <?php if (!empty($data)): ?>
                     <form action="/quizz" method="POST">
-                        <input type="hidden" name="user_id" value="<?= $data[2]['user_id'];
+                        <input type="hidden" name="user_id" value="<?= end($data);
                         array_pop($data) ?>"><!-- get the user id-->
                         <input type="hidden" name="course_id" value="<?= $_GET['course_id'] ?>">
                         <?php foreach ($data as $quizz): ?>
