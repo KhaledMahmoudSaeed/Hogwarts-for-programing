@@ -7,8 +7,7 @@ $newUser = (isset($_SESSION['new_user']) && $_SESSION['new_user'] === true);
 $house = isset($user_date['house']) ? $user_date['house'] : "HOGWARTS";
 $wand = isset($user_date['wand']) ?? "";
 $isLoggedIn = isset($user_date['id']) && !empty($user_date['id']);
-$content = $_SERVER['REQUEST_URI'] === ('/home' || '/') ? 'home' : $_SERVER['REQUEST_URI'];
-
+$content = $_SERVER['REQUEST_URI'] === '/' || '/home' ? 'home' : $_SERVER['REQUEST_URI'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
