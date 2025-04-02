@@ -23,11 +23,13 @@ $router->get('/dashboard', "Dashboard/index.php");
 $router->resources('/dashboard/users', "Dashboard/users/index.php");
 $router->resources('/dashboard/courses', "Dashboard/courses/index.php");
 $router->resources('/dashboard/quizzs', "Dashboard/quizzes/index.php");
+$router->resources('/dashboard/purchases', "Dashboard/purchases/index.php");
 $router->get("/quizz", "Student/quizzes/index.php");
 $router->post("/quizz", "Student/quizzes/store.php");
 $router->resources('/enrolls', "Student/enrolls/index.php");
-$router->resources('/dashboard/purchases', "Dashboard/purchases/index.php");
-
+$router->get("/items", "Student/items/index.php");
+$router->post("/items", "Student/items/store.php");
+$router->delete("/items", "Student/items/delete.php");
 $router->get('/dashboard/wands', "Dashboard/wands/index.php");
 
 $router->get('/ollivander', "Ollivander.php");
