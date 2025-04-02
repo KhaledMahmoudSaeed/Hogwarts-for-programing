@@ -36,7 +36,7 @@
         </a>
         <a href="/dashboard/purchases"
             class="m-4 w-64 h-40 flex items-center justify-center bg-black bg-opacity-70 border-4 border-yellow-300 rounded-xl transform hover:scale-105 transition duration-300 drop-shadow-lg">
-            <span class="text-white text-2xl">Purchases</span>
+            <span class="text-white text-2xl">Items</span>
         </a>
     </main>
 </body>
