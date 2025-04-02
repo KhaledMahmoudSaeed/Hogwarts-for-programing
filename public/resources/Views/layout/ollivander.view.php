@@ -1,7 +1,8 @@
 <?php
-session_start();
 // Only allow access if the user is registered (has a wand name set)
-if (!isset($_SESSION['user_id']) || !isset($_SESSION['wand'])) {
+
+if (!isset($_SESSION['new_user'])) {
+
     header("Location: /");
     exit;
 }

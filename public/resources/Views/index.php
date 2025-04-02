@@ -1,11 +1,13 @@
 <?php
-
+$_SESSION['role'] = $data['role'] ?? 'guest';
 
 $newUser = (isset($_SESSION['new_user']) && $_SESSION['new_user'] === true);
 $house = isset($data['house']) ? $data['house'] : "HOGWARTS";
-$wand = isset($data['wand']) ?? "";
+$wand = isset($data['wand']) ? $data['wand'] : "";
+$_SESSION['wand'] = $wand;
 $isLoggedIn = isset($data['id']) && !empty($data['id']);
 $content = ($_SERVER['REQUEST_URI'] === '/' || $_SERVER['REQUEST_URI'] === '/home') ? 'home' : $_SERVER['REQUEST_URI'];
+
 
 ?>
 <!DOCTYPE html>
