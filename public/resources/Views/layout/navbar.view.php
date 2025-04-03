@@ -26,7 +26,7 @@ function isActive($routes)
         <!-- Visible only if user is logged in -->
         <li><a href="/dashboard" class="<?= isActive('/dashboard') ?>">Dashboard</a></li>
         <li><a href="/enrolls" classclass="<?= isActive('/courses') ?>">Courses</a></li>
-        <li><a href="/quizzes" class="<?= isActive('/quizzes') ?>">Quizzes</a></li>
+        <li><a href="/leaderboard" class="<?= isActive('/leaderboard') ?>">Leaderboard</a></li>
         <li><a href="/items" class="<?= isActive('/items') ?>">Items</a></li>
       <?php endif; ?>
       <li><a href="/contact" class="class=" <?= isActive('/contact') ?>>Contact Us</a></li>
