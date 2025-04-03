@@ -30,6 +30,7 @@ $router->resources('/enrolls', "Student/enrolls/index.php");
 $router->get("/items", "Student/items/index.php");
 $router->post("/items", "Student/items/store.php");
 $router->delete("/items", "Student/items/delete.php");
+$router->get("/leaderboard", "Student/leaderboard.php");
 $router->get('/dashboard/wands', "Dashboard/wands/index.php");
 
 $router->get('/ollivander', "Ollivander.php");

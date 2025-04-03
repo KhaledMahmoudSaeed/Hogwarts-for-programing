@@ -19,6 +19,7 @@ class Professor
         '/enrolls',
         '/logout',
         '/dashboard',
+        "/leaderboard",
         // users
         '/dashboard/users',
         '/dashboard/user',
