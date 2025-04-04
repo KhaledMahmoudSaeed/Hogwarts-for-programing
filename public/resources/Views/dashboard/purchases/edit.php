@@ -13,10 +13,51 @@
     <div class="bg-gray-800 shadow-lg rounded-2xl p-6 w-96">
         <h2 class="text-2xl font-bold text-amber-500 mb-4 text-center">Edit Purchase</h2>
 
-        <form action="/dashboard/purchase/update" method="POST" class="space-y-4">
+        <form action="/dashboard/purchase/update" method="POST" class="space-y-4" enctype="multipart/form-data">
             <!-- Hidden Fields -->
             <input type="hidden" name="_method" value="PUT">
             <input type="hidden" name="id" value="<?= htmlspecialchars($data['id']); ?>">
+
+            <!-- Current Image Preview -->
+            <div>
+                <label class="block text-gray-400 font-semibold mb-2">Current Image:</label>
+                <div class="flex justify-center">
+                    <?php if (!empty($data['img'])): ?>
+                        <img src="<?= $GLOBALS['img']->image($data['img'], 'purchases'); ?>" alt="Current Item Image"
+                            class="w-32 h-32 object-cover rounded-lg border-2 border-amber-500">
+                    <?php else: ?>
+                        <div
+                            class="w-32 h-32 bg-gray-700 rounded-lg border-2 border-dashed border-gray-600 flex items-center justify-center">
+                            <span class="text-gray-400">No Image</span>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+
+            <!-- Image Upload -->
+            <div>
+                <label class="block text-gray-400 font-semibold">Update Image:</label>
+                <div class="mt-2">
+                    <label for="image-upload" class="cursor-pointer">
+                        <div
+                            class="bg-gray-700 border-2 border-dashed border-gray-600 rounded-lg p-4 hover:border-amber-500 transition-colors duration-200">
+                            <div class="flex flex-col items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-400" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                                <span class="text-sm text-gray-400 mt-2">Click to change image</span>
+                                <span class="text-xs text-gray-500">(JPEG, PNG, max 2MB)</span>
+                            </div>
+                        </div>
+                        <input id="image-upload" type="file" name="img" accept="image/*" class="hidden">
+                    </label>
+                </div>
+                <div id="image-preview" class="mt-2 hidden">
+                    <img id="preview" class="w-32 h-32 object-cover rounded-lg border-2 border-amber-500 mx-auto">
+                </div>
+            </div>
 
             <!-- Name Field -->
             <div>
@@ -59,6 +100,21 @@
             </a>
         </form>
     </div>
+
+    <script>
+        // Image preview functionality
+        document.getElementById('image-upload').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    document.getElementById('preview').src = event.target.result;
+                    document.getElementById('image-preview').classList.remove('hidden');
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 
 </body>
 
