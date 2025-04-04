@@ -140,6 +140,10 @@
                 <h2><i class="fas fa-envelope"></i> Email</h2>
                 <p><?= $data[0]['email'] ?></p>
             </div>
+            <div class="detail-card">
+                <h2><i class="fas fa-envelope"></i> Money</h2>
+                <p><?= $data[0]['money'] ?></p>
+            </div>
 
             <div class="profile-wand">
                 <h2><i class="fas fa-magic"></i> Wand</h2>
