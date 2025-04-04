@@ -8,8 +8,10 @@ function isActive($routes)
   <div class="container">
     <!-- Logo / Brand -->
     <div class="logos">
-      <img src="resources/assets/img/<?php echo strtolower($house) !== 'hogwarts' ? strtolower($house) : 'auth'; ?>.png"
+
+      <img src="<?= $GLOBALS['img']->image(strtolower($house) !== 'hogwarts' ? strtolower($house) : 'auth') ?>.png"
         alt="Magical Hogwarts">
+
       <a href="/home" class="logo"><?= $house ?></a>
     </div>
 
@@ -19,7 +21,7 @@ function isActive($routes)
       <li><a href="/about" class="<?= isActive('/about') ?>">About</a></li>
 
       <?php if ($isLoggedIn): ?>
-        <!-- Show Ollivander’s Store ONLY for newly registered users -->
+        <!-- Show Ollivander's Store ONLY for newly registered users -->
         <?php if (isset($_SESSION['new_user']) && $_SESSION['new_user'] === true): ?>
           <li><a href="/ollivander" class="<?= isActive('/ollivander') ?>">Ollivander's Store</a></li>
         <?php endif; ?>
@@ -33,11 +35,14 @@ function isActive($routes)
     </ul>
     <div class="buttons">
       <?php if ($isLoggedIn): ?>
-
-        <form action="/logout" method="POST">
-          <button type="submit">Logout</button>
-        </form>
-        </li>
+        <div class="profile-logout-container">
+          <a href="/profile">
+            <img src="<?= $GLOBALS['img']->image($_SESSION['img'], 'users') ?>" alt="Profile" class="profile-circle">
+          </a>
+          <form action="/logout" method="POST">
+            <button type="submit">Logout</button>
+          </form>
+        </div>
       <?php else: ?>
         <!-- Visible only if user is NOT logged in -->
         <button><a href="/login">Login</a></button></li>

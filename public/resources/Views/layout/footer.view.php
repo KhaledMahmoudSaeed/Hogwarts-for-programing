@@ -1,7 +1,7 @@
 <footer class="magic-footer <?php echo $newUser ? 'hidden' : ''; ?>">
     <div class="footer-container">
         <div class="footer-logo">
-            <img src="resources/assets/img/footer-logo.png" alt="Hogwarts Crest">
+            <img src="<?= $GLOBALS['img']->image("footer-logo.png") ?>" alt="Hogwarts Crest">
         </div>
         <div class="footer-content">
             <h2>Hogwarts School of Witchcraft and Wizardry</h2>

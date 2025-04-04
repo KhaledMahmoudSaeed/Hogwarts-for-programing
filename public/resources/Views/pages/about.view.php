@@ -42,26 +42,27 @@
             <h2>Our Founders</h2>
             <div class="founder-cards">
                 <div class="founder-card">
-                    <img src="../resources/assets/img/godric.gif" alt="Godric Gryffindor">
+
+                    <img src="<?= $GLOBALS['img']->image("godric.gif") ?>" alt="Godric Gryffindor">
                     <h3>Godric Gryffindor</h3>
                     <p>Champion of bravery, Godric believed in courage and determination, qualities essential to
                         overcome even the darkest magic.</p>
                 </div>
                 <div class="founder-card">
-                    <img src="../resources/assets/img/helga.gif" alt="Helga Hufflepuff">
+                    <img src="<?= $GLOBALS['img']->image("helga.gif") ?>" alt="Helga Hufflepuff">
                     <h3>Helga Hufflepuff</h3>
                     <p>A kind and patient soul, Helga valued hard work and loyalty, welcoming all with an open
                         heart.
                     </p>
                 </div>
                 <div class="founder-card">
-                    <img src="../resources/assets/img/rowena.gif" alt="Rowena Ravenclaw">
+                    <img src="<?= $GLOBALS['img']->image("rowena.gif") ?>" alt="Rowena Ravenclaw">
                     <h3>Rowena Ravenclaw</h3>
                     <p>Wise and creative, Rowena prized learning and wit, inspiring generations of scholars to seek
                         knowledge.</p>
                 </div>
                 <div class="founder-card">
-                    <img src="../resources/assets/img/salazar.gif" alt="Salazar Slytherin">
+                    <img src="<?= $GLOBALS['img']->image("salazar.gif") ?>" alt="Salazar Slytherin">
                     <h3>Salazar Slytherin</h3>
                     <p>A cunning and resourceful wizard, Salazar believed in ambition and the purity of magic,
                         though
