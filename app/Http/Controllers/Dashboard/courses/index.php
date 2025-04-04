@@ -8,7 +8,8 @@ $courses = $db->getWithJoin(
         "courses.id" => "id",
         "users.name" => "pname",
         "courses.name" => "cname",
-        "courses.description" => "description"
+        "courses.description" => "description",
+        "courses.img" => "img"
     ]
 );
 
