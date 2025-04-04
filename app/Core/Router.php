@@ -110,6 +110,7 @@ class Router
                         // exit;
                         return require $controllerPath;
                     } catch (\Throwable $th) {
+                        throw $th;
                         $this->abort();
                     }
                 } else {

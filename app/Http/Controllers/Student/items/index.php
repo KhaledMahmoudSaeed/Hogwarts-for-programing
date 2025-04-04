@@ -9,7 +9,8 @@ $items = $db->where(
         "id" => "id",
         "name" => "name",
         "type" => "type",
-        "price" => "price"
+        "price" => "price",
+        "img" => "img"
     ]
 );
 

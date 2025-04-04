@@ -1,2 +1,4 @@
 <?php
-require $path->view_path("dashboard/users/edit.php");
+$user = $_POST;
+
+$path->view("dashboard/users/edit.php", $user);

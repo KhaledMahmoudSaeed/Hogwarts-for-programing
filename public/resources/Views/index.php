@@ -29,7 +29,7 @@ $content = ($_SERVER['REQUEST_URI'] === '/' || $_SERVER['REQUEST_URI'] === '/hom
     <?php if ($newUser): ?>
         <!-- Overlay with Sorting Hat -->
         <div id="overlay" class="img">
-            <img id="sortingHat" src="../resources/assets/img/sorting_hat.png" alt="Sorting Hat">
+            <img id="sortingHat" src="<?= $GLOBALS['img']->image("sorting_hat.png") ?>" alt="Sorting Hat">
         </div>
 
         <!-- Pop-up Message -->

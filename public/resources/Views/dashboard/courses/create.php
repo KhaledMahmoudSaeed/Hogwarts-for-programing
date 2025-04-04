@@ -18,7 +18,7 @@
     <div class="w-full max-w-3xl bg-white p-6 rounded-lg shadow-lg">
         <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Create a New Course</h2>
 
-        <form action="/dashboard/course/store" method="POST" class="space-y-4">
+        <form action="/dashboard/course/store" method="POST" enctype="multipart/form-data" class="space-y-4">
 
             <!-- Course Name -->
             <div>
@@ -46,6 +46,13 @@
                         </option>
                     <?php endforeach; ?>
                 </select>
+            </div>
+
+            <!-- Course Image Upload -->
+            <div>
+                <label class="block text-gray-700 font-semibold">Course Image:</label>
+                <input type="file" name="img" accept="image/*"
+                    class="w-full mt-2 p-2 border rounded-md focus:ring focus:ring-blue-300">
             </div>
 
             <!-- Submit Button -->

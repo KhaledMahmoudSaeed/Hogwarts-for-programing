@@ -6,6 +6,24 @@
   --hogwarts: #232035;
 }
 
+/* new for profile */
+.profile-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+  border: 2px solid #fff;
+}
+
+.profile-logout-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* end for profile */
+
 * {
   margin: 0;
   padding: 0;

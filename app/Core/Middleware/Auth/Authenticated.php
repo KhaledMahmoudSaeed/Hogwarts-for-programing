@@ -21,7 +21,8 @@ class Authenticated implements AuthInterface
         '/enroll/update',
         '/enroll/delete',
         '/logout',
-        "/quizz"
+        "/quizz",
+        "/profile"
     ];
 
     public function handle($uri)

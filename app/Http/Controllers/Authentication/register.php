@@ -81,6 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         );
         $jwt = JWT::encode($payload, $_ENV['JWT_SECRET_KEY'], "HS256");
         $_SESSION['jwt'] = $jwt;
+        $_SESSION['img'] = "user" . $house_id . ".png";
         echo "Registration successful. Redirecting to home page...<br>";
         header("Location: /home");
         exit;

@@ -2,7 +2,9 @@
 require "../vendor/autoload.php";
 
 use App\Core\Router;
+use Helpers\Path;
 session_start();
+$GLOBALS['img'] = new Path;
 
 $router = new Router();
 require_once("../app/Core/routes.php");// use all allowed routes

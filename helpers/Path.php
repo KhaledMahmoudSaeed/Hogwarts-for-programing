@@ -6,6 +6,8 @@ class Path
     // method to reach the root directory
     public array $data = [];
     private const BATH_PATH = __DIR__ . "/../";
+    public const IMAGE_PATH = "/resources/assets/img/";
+
     public function base_path($path)
     {
         return $this::BATH_PATH . $path;
@@ -21,4 +23,14 @@ class Path
         }
         require $this->view_path($viewPath);
     }
+    public function image(string $imageName, string|null $directory = null): string
+    {
+        $imagePath = $this::IMAGE_PATH;
+        if ($directory) {
+            $imagePath .= $directory . "/";
+        }
+
+        return $imagePath . $imageName;
+    }
+
 }

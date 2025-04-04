@@ -14,6 +14,7 @@ $courses = $db->getWith2Joins(
         "enrollments.quizz_finish" => "quizz_finish",
         "courses.id" => "cid",
         "courses.name" => "name",
+        "courses.img" => "img",
         "users.name" => "professor",
         "users.email" => "email",
     ],

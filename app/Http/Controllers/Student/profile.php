@@ -1,4 +1,6 @@
 <?php
+use Helpers\Auth;
+$id = Auth::getAuthenticatedUser()['id'];
 $users = $db->getWith2Joins(
     "users",
     "house_id",
@@ -8,15 +10,15 @@ $users = $db->getWith2Joins(
     "wands",
     "id",
     [
-        "users.id" => "",
-        "users.role" => "",
         "users.name" => "uname",
         "users.img" => "img",
+        "users.money" => "money",
         "houses.name" => "hname",
         "users.email" => "",
         "wands.wood" => "wood",
         "wands.core" => "core",
-    ]
+    ],
+    "users.id=$id"
 );
 
-$path->view("dashboard/users/index.php", $users);
+$path->view("student/profile.php", $users);
