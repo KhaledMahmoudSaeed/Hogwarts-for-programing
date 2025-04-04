@@ -21,7 +21,8 @@ class Database
         'magical_items',
         'enrollments',
         'courses',
-        'student_quiz'
+        'student_quiz',
+        'owls'
     ];
     public function __construct()
     {

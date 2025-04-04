@@ -106,8 +106,6 @@ class Router
                             $this->abort();
                         }
 
-                        // var_dump($controllerPath);
-                        // exit;
                         return require $controllerPath;
                     } catch (\Throwable $th) {
                         throw $th;
