@@ -49,6 +49,7 @@ class Database
             die("❌ Connection failed: " . $e->getMessage());
         }
     }
+    // whether you want to use PDO instance direct you can ues this method to get it 
     public function getconnection()
     {
         return $this->pdo;
@@ -62,6 +63,7 @@ class Database
             }
         }
     }
+    // Get all data from specific table
     public function getAll(string $tabelname)
     {
         $stmt = $this->pdo->query("SELECT * FROM \"$tabelname\" ORDER BY id ASC");
@@ -69,6 +71,7 @@ class Database
         $result = $stmt->fetchAll();
         return $result;
     }
+    // Get one row from one table
     public function getOne(string $tabelname, int $id)
     {
         $stmt = $this->pdo->prepare("SELECT * FROM \"$tabelname\" WHERE id=:id");
@@ -76,8 +79,8 @@ class Database
         $stmt->execute([":id" => $id]);
         $result = $stmt->fetch();
         return $result;
-
     }
+    // whenever you want a condtion either simple or complex use where
     public function where(string $tabelname, string $condtion, array $selectors = [])
     {
         $this->checkExitsTable($tabelname);
@@ -151,10 +154,7 @@ class Database
         // Execute query with parameters
         $stmt->execute($params);
     }
-
-
-
-
+    // delete record from specific table
     public function delete(string $tableName, int $id)
     {
         $this->checkExitsTable($tableName);

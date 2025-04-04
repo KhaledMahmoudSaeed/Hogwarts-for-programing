@@ -12,21 +12,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
     // create the SQL statment
     $user = $db->where("users", "email='$email'");// return array of objects
-
+// check password 
     if ($user[0] && password_verify($password, $user[0]['password'])) {
+        // get some data to pass it to JWT Token
         $id = $user[0]['id'];
         $role = $user[0]['role'];
         $img = $user[0]['img'];
         $house_id = $db->getOne("houses", $user[0]['house_id'])['name'];
+        // prepare payload token
         $payload = array(
             "id" => $id,
             "role" => $role,
             "house" => $house_id,
-
             "iat" => time(),
             "exp" => time() + (7 * 3600),
         );
         $jwt = JWT::encode($payload, $_ENV['JWT_SECRET_KEY'], "HS256");
+        // send token and img to session to easy asccess them
         $_SESSION['jwt'] = $jwt;
         $_SESSION['img'] = $img;
         header("Location: /home");
@@ -34,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $error = "Invalid email or password.";
     }
-
+    // handel errors
     $_SESSION['error'] = $error;
     $_SESSION['old_post'] = $_POST;
     header("location: /login");

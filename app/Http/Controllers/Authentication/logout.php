@@ -1,6 +1,6 @@
 <?php
 
-// Finally, destroy the session
+//  destroy the session
 session_unset();
 session_destroy();
 

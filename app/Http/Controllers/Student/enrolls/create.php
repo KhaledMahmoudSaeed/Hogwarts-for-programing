@@ -1,6 +1,6 @@
 <?php
 use Helpers\Auth;
-$id = Auth::getAuthenticatedUser()['id'];
+$id = Auth::getAuthenticatedUser()['id'];// get the id from JWT
 
 $pdo = $db->getconnection();
 $stmt = $pdo->prepare("
@@ -9,5 +9,5 @@ $stmt = $pdo->prepare("
 ");
 $stmt->execute([":id" => $id]);
 $courses = $stmt->fetchAll();
-array_push($courses, $id);
+array_push($courses, $id);// pass all courses which user is enrolled in 
 $path->view("/student/enrolls/create.php", $courses);

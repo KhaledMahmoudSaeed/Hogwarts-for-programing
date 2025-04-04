@@ -1,4 +1,5 @@
 <?php
+// grap necessary data from session or data which is coming from controller 
 $_SESSION['role'] = $data['role'] ?? 'guest';
 
 $newUser = (isset($_SESSION['new_user']) && $_SESSION['new_user'] === true);
@@ -29,6 +30,7 @@ $content = ($_SERVER['REQUEST_URI'] === '/' || $_SERVER['REQUEST_URI'] === '/hom
     <?php if ($newUser): ?>
         <!-- Overlay with Sorting Hat -->
         <div id="overlay" class="img">
+            <!-- this is why $GLOBALS work everywhere -->
             <img id="sortingHat" src="<?= $GLOBALS['img']->image("sorting_hat.png") ?>" alt="Sorting Hat">
         </div>
 

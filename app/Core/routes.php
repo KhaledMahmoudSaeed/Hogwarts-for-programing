@@ -8,7 +8,7 @@ $router->get('/register', 'Authentication/register.view.php')->addMiddleware('gu
 $router->post('/login', 'Authentication/login.php')->addMiddleware('guest');
 $router->post('/register', 'Authentication/register.php')->addMiddleware('guest');
 $router->post('/logout', 'Authentication/logout.php');
-$router->get('/logout', 'Authentication/logout.php');// for now 
+// $router->get('/logout', 'Authentication/logout.php');// for now 
 $router->get('/profile', 'Student/profile.php');
 $router->POST('/owl', 'Student/owls/choose_reciver.php');
 $router->post('/chat', 'Student/owls/chat.php');

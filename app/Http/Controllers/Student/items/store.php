@@ -1,8 +1,8 @@
 <?php
 use Helpers\Auth;
-$id = Auth::getAuthenticatedUser()['id'];
+$id = Auth::getAuthenticatedUser()['id'];// get the id from JWT
 $user = $db->getOne("users", $id);
-
+// update the user's money
 if ($user['money'] >= $_POST['price']) {
     $user['money'] -= $_POST['price'];
     $db->update("users", [

@@ -1,6 +1,6 @@
 <?php
 use Helpers\Auth;
-$id = Auth::getAuthenticatedUser()['id'];
+$id = Auth::getAuthenticatedUser()['id'];// get the id from JWT
 $users = $db->getWith2Joins(
     "users",
     "house_id",

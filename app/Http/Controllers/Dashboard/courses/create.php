@@ -1,4 +1,5 @@
 <?php
+// render view page to create new course
 $professors = $db->where(
     "users",
     "role = 'professor'",

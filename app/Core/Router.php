@@ -19,6 +19,7 @@ class Router
         ];
         return $this;
     }
+    // to add middleware automatically to $this->routes
     public function addMiddleware($middleware)
     {
         $this->routers[array_key_last($this->routers)]['middleware'] = $middleware;
@@ -29,7 +30,6 @@ class Router
         return $this->add($uri, $controller, "GET", $middleware);
     }
     //handel all post routes
-
     public function post($uri, $controller, $middleware = 'auth')
     {
         return $this->add($uri, $controller, "POST", $middleware);
@@ -44,7 +44,7 @@ class Router
     {
         return $this->add($uri, $controller, "DELETE", $middleware);
     }
-
+    // handel all METHODs above
     public function resources($uri, $controller, $middleware = 'auth')
     {
         //index   /dashboard/users  
@@ -97,17 +97,18 @@ class Router
         $uriWithoutQuery = explode('?', $uri)[0];
         foreach ($this->routers as $router) {
             if ($router['uri'] === $uriWithoutQuery && $router['method'] === $method) {
+                // check the Authorization by calling resolve that redirect to middleware map
                 $message = (new Middleware)->resolve($router['middleware'], $uriWithoutQuery);
-                if ($message === "200") {
+                if ($message === "200") {// if you are authorized
                     $controllerPath = $path->base_path("app/Http/Controllers/" . $router['controller']);
                     // to handel if route is exits and controller not exits when using resource method
                     try {
-                        if (!file_exists($controllerPath)) {
+                        if (!file_exists($controllerPath)) {// check if controller found or not
                             $this->abort();
                         }
 
                         return require $controllerPath;
-                    } catch (\Throwable $th) {
+                    } catch (\Throwable $th) {// if you are not authorized
                         throw $th;
                         $this->abort();
                     }

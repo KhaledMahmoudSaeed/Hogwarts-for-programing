@@ -6,6 +6,7 @@ use Firebase\JWT\Key;
 
 class Auth
 {
+    // get all data from JWT token
     public static function getAuthenticatedUser()
     {
         if (!isset($_SESSION["jwt"])) {
