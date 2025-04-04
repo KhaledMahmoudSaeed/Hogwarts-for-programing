@@ -22,7 +22,9 @@ class Authenticated implements AuthInterface
         '/enroll/delete',
         '/logout',
         "/quizz",
-        "/profile"
+        "/profile",
+        "/owl",
+        "/chat"
     ];
 
     public function handle($uri)
