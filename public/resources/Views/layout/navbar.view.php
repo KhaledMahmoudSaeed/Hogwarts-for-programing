@@ -4,6 +4,22 @@ function isActive($routes)
   return $_SERVER['REQUEST_URI'] === $routes ? "active" : "";
 }
 ?>
+<style>
+  .inline-form {
+    display: inline;
+  }
+
+  .inline-form button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font: inherit;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+  }
+</style>
 <nav class="navbar <?php echo $newUser ? 'hidden' : ''; ?>" style="background-color:var(--<?= strtolower($house) ?>);">
   <div class="container">
     <!-- Logo / Brand -->
@@ -30,7 +46,12 @@ function isActive($routes)
         <li><a href="/enrolls" classclass="<?= isActive('/courses') ?>">Courses</a></li>
         <li><a href="/leaderboard" class="<?= isActive('/leaderboard') ?>">Leaderboard</a></li>
         <li><a href="/items" class="<?= isActive('/items') ?>">Items</a></li>
-      <?php endif; ?>
+        <li>
+          <form action="/owl" method="POST" class="inline-form">
+            <input type="hidden" name="user_id" value="<?= $data['id'] ?>">
+            <button type="submit" class="<?= isActive('/owl') ?>">Owl Post</button>
+          </form>
+        </li> <?php endif; ?>
       <li><a href="/contact" class="class=" <?= isActive('/contact') ?>>Contact Us</a></li>
     </ul>
     <div class="buttons">
