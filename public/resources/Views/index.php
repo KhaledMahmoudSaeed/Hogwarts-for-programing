@@ -46,6 +46,13 @@ $content = ($_SERVER['REQUEST_URI'] === '/' || $_SERVER['REQUEST_URI'] === '/hom
     <?php require('resources/Views/layout/navbar.view.php'); ?>
 
     <?php require("pages/" . $content . ".view.php") ?>
+
+    <?php if ($isLoggedIn): ?>
+        <a href="/diagon-alley" class="diagon-icon" title="Diagon Alley">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </a>
+    <?php endif; ?>
+    
     <!-- Magical Footer -->
     <?php require("resources/Views/layout/footer.view.php"); ?>
 
