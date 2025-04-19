@@ -758,3 +758,43 @@ a {
   color: #3e2723;
   text-shadow: 0 0 10px rgba(255, 223, 0, 0.5);
 }
+
+/* style diagon icon */
+.diagon-icon {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #DD852D;
+  padding: 12px;
+  display: inline-block;
+  z-index: 1000;
+  border-radius: 50%;
+  -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  -ms-border-radius: 5;
+  -o-border-radius: 5;
+  -webkit-border-radius: 5;
+  box-shadow: 0 0 0 0 rgba(221, 133, 45, 0.5);
+  animation: shadow 1.5s ease infinite;
+  -webkit-animation: shadow 1.5s ease infinite;
+}
+
+@keyframes shadow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(221, 133, 45, 0.5);
+  }
+
+  75% {
+    box-shadow: 0 0 0 15px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+.diagon-icon i {
+  font-size: 23px;
+  color: #fff;
+  display: block;
+}
