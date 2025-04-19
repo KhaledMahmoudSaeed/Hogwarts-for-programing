@@ -12,7 +12,7 @@ class Authenticated implements AuthInterface
         "/about",
         '/ollivander',
         "/leaderboard",
-        '/items',
+        '/diagon-alley',
         '/enrolls',
         '/enroll',
         '/enroll/create',
