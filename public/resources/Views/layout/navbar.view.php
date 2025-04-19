@@ -45,7 +45,6 @@ function isActive($routes)
         <li><a href="/dashboard" class="<?= isActive('/dashboard') ?>">Dashboard</a></li>
         <li><a href="/enrolls" classclass="<?= isActive('/courses') ?>">Courses</a></li>
         <li><a href="/leaderboard" class="<?= isActive('/leaderboard') ?>">Leaderboard</a></li>
-        <li><a href="/items" class="<?= isActive('/items') ?>">Items</a></li>
         <li>
           <form action="/owl" method="POST" class="inline-form">
             <input type="hidden" name="user_id" value="<?= $data['id'] ?>">
