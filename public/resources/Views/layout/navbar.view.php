@@ -42,8 +42,11 @@ function isActive($routes)
           <li><a href="/ollivander" class="<?= isActive('/ollivander') ?>">Ollivander's Store</a></li>
         <?php endif; ?>
         <!-- Visible only if user is logged in -->
-        <li><a href="/dashboard" class="<?= isActive('/dashboard') ?>">Dashboard</a></li>
-        <li><a href="/enrolls" classclass="<?= isActive('/courses') ?>">Courses</a></li>
+        <?php if (strtolower($data['role']) == "professor"): ?>
+          <li><a href="/dashboard" class="<?= isActive('/dashboard') ?>">Dashboard</a></li>
+        <?php else: ?>
+          <li><a href="/enrolls" classclass="<?= isActive('/courses') ?>">Courses</a></li>
+        <?php endif; ?>
         <li><a href="/leaderboard" class="<?= isActive('/leaderboard') ?>">Leaderboard</a></li>
         <li>
           <form action="/owl" method="POST" class="inline-form">
