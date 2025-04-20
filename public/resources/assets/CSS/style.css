@@ -346,7 +346,7 @@ a {
   margin-bottom: 40px;
 }
 
-.house {
+.houses .house {
   background: #161320;
   color: #fff;
   border-radius: 10px;
@@ -360,7 +360,7 @@ a {
   -o-transition: all ease 0.5s;
 }
 
-.house:hover {
+.houses .house:hover {
   box-shadow: 1px 4px 10px rgba(221, 133, 45, 0.3);
   transform: scale(1.1);
   -webkit-transform: scale(1.1);
@@ -369,7 +369,7 @@ a {
   -o-transform: scale(1.1);
 }
 
-.house img {
+.houses .house img {
   height: 150px;
   object-fit: contain;
   transition: all ease-in-out 0.3s;
@@ -379,7 +379,7 @@ a {
   -o-transition: all ease-in-out 0.3s;
 }
 
-.house:hover img {
+.houses .house:hover img {
   transform: scale(1.2);
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
@@ -387,7 +387,7 @@ a {
   -o-transform: scale(1.2);
 }
 
-.house h3 {
+.houses .house h3 {
   margin: 15px 0 10px;
   font-size: 1.8em;
   transition: all ease-in-out 0.3s;
@@ -397,23 +397,23 @@ a {
   -o-transition: all ease-in-out 0.3s;
 }
 
-.house:first-child:hover h3 {
+.houses .house:first-child:hover h3 {
   color: var(--gryffindor);
 }
 
-.house:nth-child(2):hover h3 {
+.houses .house:nth-child(2):hover h3 {
   color: var(--slytherin);
 }
 
-.house:nth-child(3):hover h3 {
+.houses .house:nth-child(3):hover h3 {
   color: var(--ravenclaw);
 }
 
-.house:last-child:hover h3 {
+.houses .house:last-child:hover h3 {
   color: var(--hufflepuff);
 }
 
-.house p {
+.houses .house p {
   padding: 0 15px 15px;
   font-size: 1em;
   color: #999;
@@ -1114,4 +1114,101 @@ a {
 #errors .scroll-card a:hover {
   transform: scale(1.1) rotate(-3deg);
   box-shadow: 0 0 12px #000;
+}
+
+/* leaderboard style */
+#leaderboard {
+  height: 100vh;
+  background: url('../img/leaderboard.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #fceec7;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+h1 {
+  font-size: 3em;
+  color: #ecb939;
+  text-shadow: 3px 3px 6px #000;
+  margin-bottom: 40px;
+  text-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+
+}
+
+#leaderboard .leaderboard {
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 12px;
+  border: 2px solid var(--gold);
+  background: rgba(0, 0, 0, 0.95);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
+  padding: 20px 0;
+}
+
+#leaderboard .leaderboard .house {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  margin: 10px 15px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-left: 8px solid transparent;
+  transition: all 0.3s ease;
+}
+
+#leaderboard .leaderboard .house:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+#leaderboard .leaderboard .house-name {
+  font-size: 1.5em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+#leaderboard .leaderboard .house-points {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: #fcd34d;
+}
+
+#leaderboard .leaderboard .house-icon {
+  width: 36px;
+  height: 36px;
+  margin-right: 15px;
+  border-radius: 5px;
+}
+
+.gryffindor {
+  color: var(--gryffindor);
+  border-left-color: var(--gryffindor) !important;
+}
+
+.slytherin {
+  color: var(--slytherin);
+  border-left-color: var(--slytherin) !important;
+}
+
+.ravenclaw {
+  color: var(--ravenclaw);
+  border-left-color: var(--ravenclaw) !important;
+}
+
+.hufflepuff {
+  color: var(--hufflepuff);
+  border-left-color: var(--hufflepuff) !important;
+}
+
+.first-place {
+  background: linear-gradient(90deg, rgba(252, 211, 77, 0.2), rgba(252, 211, 77, 0.05));
+  box-shadow: 0 0 15px rgba(252, 211, 77, 0.3);
+}
+
+.trophy {
+  margin-left: 12px;
+  color: #ecb939;
+  font-size: 1.2em;
 }
