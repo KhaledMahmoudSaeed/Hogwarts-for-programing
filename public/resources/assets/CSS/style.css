@@ -904,8 +904,8 @@ a {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-#profile  .detail-card h2,
-#profile  .profile-wand h2 {
+#profile .detail-card h2,
+#profile .profile-wand h2 {
   margin-top: 0;
   border-bottom: 1px solid #555;
   padding-bottom: 0.5rem;
@@ -913,15 +913,15 @@ a {
   align-items: center;
 }
 
-#profile  .detail-card p,
-#profile  .profile-wand .wand-value {
+#profile .detail-card p,
+#profile .profile-wand .wand-value {
   margin-left: 0.7rem;
   margin-top: 1rem;
 }
 
-#profile  .detail-card h2 i,
-#profile  .profile-wand h2 i,
-#profile  .detail-card p i {
+#profile .detail-card h2 i,
+#profile .profile-wand h2 i,
+#profile .detail-card p i {
   margin-right: 0.5rem;
   color: var(--gold);
 }
@@ -1032,7 +1032,86 @@ a {
     grid-template-columns: 1fr;
   }
 
-    #profile .wand-details {
+  #profile .wand-details {
     grid-template-columns: 1fr;
   }
+}
+
+/* errors style */
+#errors {
+  background: radial-gradient(circle at center, #0e0e2c 40%, #000000 70%);
+  color: #f5f5dc;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Glowing Floating Stars */
+#errors::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../img/shooting-stars.png') repeat;
+  animation: stars 100s linear infinite;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+@keyframes stars {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 10000px 5000px;
+  }
+}
+
+#errors .scroll-card {
+  background: url('../img/error.png') no-repeat;
+  background-size: cover;
+  border: 3px solid #d4af37;
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+  z-index: 1;
+}
+
+#errors .scroll-card h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 3.5rem;
+  color: #ffd700;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px #000;
+}
+
+#errors .scroll-card p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  color: #000;
+}
+
+#errors .scroll-card a {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.5rem;
+  background-color: #ffd700;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: 'Cinzel Decorative', serif;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#errors .scroll-card a:hover {
+  transform: scale(1.1) rotate(-3deg);
+  box-shadow: 0 0 12px #000;
 }
