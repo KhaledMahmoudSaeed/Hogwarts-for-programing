@@ -11,6 +11,7 @@ $users = $db->getWith2Joins(
     "id",
     [
         "users.name" => "uname",
+        "users.role" => "role",
         "users.img" => "img",
         "users.money" => "money",
         "houses.name" => "hname",
