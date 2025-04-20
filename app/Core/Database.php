@@ -200,7 +200,7 @@ class Database
 
         $stmt = $this->pdo->prepare(
             "SELECT $selectString FROM \"$firstTable\"
-        INNER JOIN \"$secondTable\" ON {$keys['first']} = {$keys['second']} ORDER BY id ASC"
+        INNER JOIN \"$secondTable\" ON {$keys['first']} = {$keys['second']} ORDER BY \"$firstTable\".\"id\" ASC"
         );
 
         $stmt->execute();

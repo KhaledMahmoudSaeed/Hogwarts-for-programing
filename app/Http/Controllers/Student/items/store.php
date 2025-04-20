@@ -17,4 +17,4 @@ if ($user['money'] >= $_POST['price']) {
 
 }
 
-header("Location:/items");
+header("Location:/diagon-alley");

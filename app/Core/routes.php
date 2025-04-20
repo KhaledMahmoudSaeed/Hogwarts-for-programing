@@ -30,9 +30,9 @@ $router->resources('/dashboard/purchases', "Dashboard/purchases/index.php", 'pro
 $router->get("/quizz", "Student/quizzes/index.php");
 $router->post("/quizz", "Student/quizzes/store.php");
 $router->resources('/enrolls', "Student/enrolls/index.php");
-$router->get("/items", "Student/items/index.php");
-$router->post("/items", "Student/items/store.php");
-$router->delete("/items", "Student/items/delete.php");
+$router->get("/diagon-alley", "Student/items/index.php");
+$router->post("/diagon-alley", "Student/items/store.php");
+$router->delete("/diagon-alley", "Student/items/delete.php");
 $router->get("/leaderboard", "Student/leaderboard.php");
 $router->get('/dashboard/wands', "Dashboard/wands/index.php");
 

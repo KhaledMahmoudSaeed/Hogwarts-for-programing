@@ -15,7 +15,7 @@ class Professor
         "/register",
         // auth
         '/ollivander',
-        '/items',
+        '/diagon-alley',
         '/enrolls',
         '/logout',
         '/dashboard',

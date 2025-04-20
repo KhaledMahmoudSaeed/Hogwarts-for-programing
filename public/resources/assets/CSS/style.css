@@ -4,6 +4,7 @@
   --ravenclaw: #113243;
   --slytherin: #1E7352;
   --hogwarts: #232035;
+  --gold: #d4af37;
 }
 
 /* new for profile */
@@ -345,7 +346,7 @@ a {
   margin-bottom: 40px;
 }
 
-.house {
+.houses .house {
   background: #161320;
   color: #fff;
   border-radius: 10px;
@@ -359,7 +360,7 @@ a {
   -o-transition: all ease 0.5s;
 }
 
-.house:hover {
+.houses .house:hover {
   box-shadow: 1px 4px 10px rgba(221, 133, 45, 0.3);
   transform: scale(1.1);
   -webkit-transform: scale(1.1);
@@ -368,7 +369,7 @@ a {
   -o-transform: scale(1.1);
 }
 
-.house img {
+.houses .house img {
   height: 150px;
   object-fit: contain;
   transition: all ease-in-out 0.3s;
@@ -378,7 +379,7 @@ a {
   -o-transition: all ease-in-out 0.3s;
 }
 
-.house:hover img {
+.houses .house:hover img {
   transform: scale(1.2);
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
@@ -386,7 +387,7 @@ a {
   -o-transform: scale(1.2);
 }
 
-.house h3 {
+.houses .house h3 {
   margin: 15px 0 10px;
   font-size: 1.8em;
   transition: all ease-in-out 0.3s;
@@ -396,23 +397,23 @@ a {
   -o-transition: all ease-in-out 0.3s;
 }
 
-.house:first-child:hover h3 {
+.houses .house:first-child:hover h3 {
   color: var(--gryffindor);
 }
 
-.house:nth-child(2):hover h3 {
+.houses .house:nth-child(2):hover h3 {
   color: var(--slytherin);
 }
 
-.house:nth-child(3):hover h3 {
+.houses .house:nth-child(3):hover h3 {
   color: var(--ravenclaw);
 }
 
-.house:last-child:hover h3 {
+.houses .house:last-child:hover h3 {
   color: var(--hufflepuff);
 }
 
-.house p {
+.houses .house p {
   padding: 0 15px 15px;
   font-size: 1em;
   color: #999;
@@ -757,4 +758,446 @@ a {
   margin-top: 20px;
   color: #3e2723;
   text-shadow: 0 0 10px rgba(255, 223, 0, 0.5);
+}
+
+/* style diagon icon */
+.diagon-icon {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #DD852D;
+  padding: 12px;
+  display: inline-block;
+  z-index: 1000;
+  border-radius: 50%;
+  -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  -ms-border-radius: 5;
+  -o-border-radius: 5;
+  -webkit-border-radius: 5;
+  box-shadow: 0 0 0 0 rgba(221, 133, 45, 0.5);
+  animation: shadow 1.5s ease infinite;
+  -webkit-animation: shadow 1.5s ease infinite;
+}
+
+@keyframes shadow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(221, 133, 45, 0.5);
+  }
+
+  75% {
+    box-shadow: 0 0 0 15px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+.diagon-icon i {
+  font-size: 23px;
+  color: #fff;
+  display: block;
+}
+
+/* Profile page style */
+#profile .profile-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+  border-radius: 15px;
+  animation: glow 3s infinite;
+  text-align: left;
+}
+
+#profile .profile-header {
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  border-bottom: 2px solid var(--gold);
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#profile .profile-header::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: #ddd;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  z-index: 10;
+}
+
+#profile .profile-image {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  border: 3px solid var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+  overflow: hidden;
+}
+
+#profile .profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#profile .profile-header h1 {
+  font-size: 2.5rem;
+  margin: 1rem 0 0.5rem;
+  letter-spacing: 1px;
+  font-weight: bold;
+  position: relative;
+  display: inline-block;
+}
+
+#profile .profile-header h1::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+#profile .profile-header .house-badge {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  background-color: transparent;
+  color: white;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-top: 1rem;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+#profile .profile-details {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  background-color: rgba(23, 23, 23, 0.6);
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+#profile .detail-card:hover,
+#profile .profile-wand:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+#profile .detail-card h2,
+#profile .profile-wand h2 {
+  margin-top: 0;
+  border-bottom: 1px solid #555;
+  padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+#profile .detail-card p,
+#profile .profile-wand .wand-value {
+  margin-left: 0.7rem;
+  margin-top: 1rem;
+}
+
+#profile .detail-card h2 i,
+#profile .profile-wand h2 i {
+  margin-right: 0.5rem;
+  color: var(--gold);
+}
+
+#profile .wand-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+#profile .wand-property {
+  background-color: rgba(31, 31, 31, 0.3);
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: 1px solid #555;
+}
+
+#profile .wand-label {
+  font-weight: bold;
+  color: #8b4513;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+#profile .wand-value {
+  font-style: italic;
+}
+
+#profile .purchase-history {
+  grid-column: 1 / -1;
+}
+
+#profile .purchase-history ul {
+  list-style: none;
+  padding: 0 0.7rem;
+}
+
+#profile .purchase-history li {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px dashed #555;
+}
+
+#profile .purchase-history li:last-child {
+  border-bottom: none;
+}
+
+#profile .purchase-thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+  border-radius: 5px;
+  margin-right: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#profile .purchase-info {
+  flex: 1;
+}
+
+#profile .purchase-info .type {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+#profile .purchase-info .price {
+  color: var(--gold);
+  font-weight: bold;
+}
+
+#profile .purchase-info .date {
+  color: #999;
+  font-size: 0.8rem;
+}
+
+/* Magical Animations */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.9);
+  }
+
+  100% {
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #profile .profile-details {
+    grid-template-columns: 1fr;
+  }
+
+  #profile .wand-details {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* errors style */
+#errors {
+  background: radial-gradient(circle at center, #0e0e2c 40%, #000000 70%);
+  color: #f5f5dc;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Glowing Floating Stars */
+#errors::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../img/shooting-stars.png') repeat;
+  animation: stars 100s linear infinite;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+@keyframes stars {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 10000px 5000px;
+  }
+}
+
+#errors .scroll-card {
+  background: url('../img/error.png') no-repeat;
+  background-size: cover;
+  border: 3px solid #d4af37;
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+  z-index: 1;
+}
+
+#errors .scroll-card h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 3.5rem;
+  color: #ffd700;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px #000;
+}
+
+#errors .scroll-card p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  color: #000;
+}
+
+#errors .scroll-card a {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.5rem;
+  background-color: #ffd700;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: 'Cinzel Decorative', serif;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#errors .scroll-card a:hover {
+  transform: scale(1.1) rotate(-3deg);
+  box-shadow: 0 0 12px #000;
+}
+
+/* leaderboard style */
+#leaderboard {
+  height: 100vh;
+  background: url('../img/leaderboard.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #fceec7;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+#leaderboard h1 {
+  font-size: 3em;
+  color: #ecb939;
+  text-shadow: 3px 3px 6px #000;
+  margin-bottom: 40px;
+  text-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+
+}
+
+#leaderboard .leaderboard {
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 12px;
+  border: 2px solid var(--gold);
+  background: rgba(0, 0, 0, 0.95);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
+  padding: 20px 0;
+}
+
+#leaderboard .leaderboard .house {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  margin: 10px 15px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-left: 8px solid transparent;
+  transition: all 0.3s ease;
+}
+
+#leaderboard .leaderboard .house:hover:not(.first-place) {
+  transform: translateY(-3px) scale(1.02);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+#leaderboard .leaderboard .house-name {
+  font-size: 1.5em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+#leaderboard .leaderboard .house-points {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: #fcd34d;
+}
+
+#leaderboard .leaderboard .house-icon {
+  width: 36px;
+  height: 36px;
+  margin-right: 15px;
+  border-radius: 5px;
+}
+
+#leaderboard .leaderboard .gryffindor {
+  color: var(--gryffindor);
+  border-left-color: var(--gryffindor) !important;
+}
+
+#leaderboard .leaderboard .slytherin {
+  color: var(--slytherin);
+  border-left-color: var(--slytherin) !important;
+}
+
+#leaderboard .leaderboard .ravenclaw {
+  color: var(--ravenclaw);
+  border-left-color: var(--ravenclaw) !important;
+}
+
+#leaderboard .leaderboard .hufflepuff {
+  color: var(--hufflepuff);
+  border-left-color: var(--hufflepuff) !important;
+}
+
+#leaderboard .leaderboard .first-place {
+  background: linear-gradient(90deg, rgba(252, 211, 77, 0.2), rgba(252, 211, 77, 0.05));
+  box-shadow: 0 0 15px rgba(252, 211, 77, 0.3);
+  transform: translateY(-3px) scale(1.02);
+}
+
+#leaderboard .leaderboard .trophy {
+  margin-left: 12px;
+  color: #ecb939;
+  font-size: 1.2em;
 }
