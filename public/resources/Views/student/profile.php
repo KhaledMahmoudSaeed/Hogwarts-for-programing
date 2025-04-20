@@ -55,7 +55,8 @@
     <section id="profile">
         <div class="overlay">
             <div class="profile-container">
-                <div class="profile-header" style="background-color: var(--<?= strtolower($data[0]['hname']) ?>);">
+                <?php $bgcolor = strtolower($data[0]['role']) == 'professor'? '#000' : "var(--".strtolower($data[0]['hname']).")" ?>
+                <div class="profile-header" style="background-color: <?= $bgcolor ?>;">
                     <div class="profile-image">
                         <img src="<?= $GLOBALS['img']->image($data[0]['img'], "users") ?>" alt="Profile Picture">
                     </div>
@@ -69,9 +70,9 @@
                         <p><?= $data[0]['email'] ?></p>
                     </div>
                     <div class="detail-card">
-                        <h2><i class="fas fa-envelope"></i> Money</h2>
+                        <h2><i class="fas fa-coins"></i> Money</h2>
                         <p>
-                            <i class="fas fa-coins"></i> <?= $data[0]['money'] ?>
+                            <?= $data[0]['money'] ?>
                         </p>
                     </div>
 
