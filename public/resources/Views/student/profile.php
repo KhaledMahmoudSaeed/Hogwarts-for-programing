@@ -10,6 +10,9 @@
     <!-- Load Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="resources/assets/CSS/style.css">
+
+    <?php $bgcolor = strtolower($data[0]['role']) == 'professor' ? '#000' : "var(--" . strtolower($data[0]['hname']) . ")" ?>
+
     <style>
         #profile {
             background: url('<?= $GLOBALS['img']->image($data[0]['hname'], "users") . ".gif" ?>') no-repeat center center fixed;
@@ -30,9 +33,22 @@
             padding: 1.5rem;
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-left: 5px solid var(<?php echo "--" . strtolower($data[0]['hname']); ?>);
+            border-left: 5px solid
+                <?= $bgcolor ?>
+            ;
             position: relative;
             overflow: hidden;
+            transition: transform 0.5s ease;
+        }
+
+        #profile .profile-wand {
+            background-color: rgba(31, 31, 31, 0.5);
+            padding: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid <?= $bgcolor ?>;
+            grid-column: 1 / -1;
+            position: relative;
             transition: transform 0.5s ease;
         }
 
@@ -44,7 +60,9 @@
             right: 0;
             width: 30px;
             height: 30px;
-            background-color: var(<?= "--" . strtolower($data[0]['hname']) ?>);
+            background-color:
+                <?= $bgcolor ?>
+            ;
             clip-path: polygon(0 0, 100% 0, 100% 100%);
             border-top-right-radius: 5px;
         }
@@ -55,7 +73,6 @@
     <section id="profile">
         <div class="overlay">
             <div class="profile-container">
-                <?php $bgcolor = strtolower($data[0]['role']) == 'professor'? '#000' : "var(--".strtolower($data[0]['hname']).")" ?>
                 <div class="profile-header" style="background-color: <?= $bgcolor ?>;">
                     <div class="profile-image">
                         <img src="<?= $GLOBALS['img']->image($data[0]['img'], "users") ?>" alt="Profile Picture">
