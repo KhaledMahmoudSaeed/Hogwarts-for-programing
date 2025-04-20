@@ -9,6 +9,46 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     <!-- Load Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="resources/assets/CSS/style.css">
+    <style>
+        #profile {
+            background: url('<?= $GLOBALS['img']->image($data[0]['hname'], "users") . ".gif" ?>') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #profile .overlay {
+            flex: 1;
+            width: 100%;
+        }
+
+        #profile .detail-card {
+            background-color: rgba(31, 31, 31, 0.5);
+            padding: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(<?php echo "--" . strtolower($data[0]['hname']); ?>);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.5s ease;
+        }
+
+        #profile .detail-card::before,
+        #profile .profile-wand::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            background-color: var(<?= "--" . strtolower($data[0]['hname']) ?>);
+            clip-path: polygon(0 0, 100% 0, 100% 100%);
+            border-top-right-radius: 5px;
+        }
+    </style>
 </head>
 
 <body>
