@@ -6,14 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diagon Alley</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="<?= $GLOBALS['img']->style("style.css") ?>">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=IM+Fell+English+SC&display=swap');
-
         body,
         html {
-            font-family: 'IM Fell English SC', serif;
             margin: 0;
             padding: 0;
         }
