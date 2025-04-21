@@ -23,7 +23,6 @@
             object-fit: cover;
             border: 3px solid #CA8D0F;
         }
-
         .file-upload {
             position: relative;
             overflow: hidden;
@@ -59,11 +58,11 @@
             <form action="/dashboard/user/update" method="POST" enctype="multipart/form-data" class="space-y-6">
                 <input type="hidden" name="_method" value="PUT">
                 <input type="hidden" name="id" value="<?= htmlspecialchars($_POST['id']); ?>">
-                <input type="hidden" name="img" value="<?= htmlspecialchars($_POST['img']); ?>">
+                <input type="hidden" name="img" value="<?= htmlspecialchars($user['img']); ?>">
 
                 <!-- Profile Picture Section -->
                 <div class="flex flex-col items-center">
-                    <div class="relative mb-4">
+                    <div class="flex flex-col items-center mb-4">
                         <?php if (!empty($_POST['img'])): ?>
                             <img src="<?= $GLOBALS['img']->image($_POST['img'], 'users'); ?>"
                                 class="profile-picture rounded-full" alt="Profile Picture">
@@ -86,20 +85,20 @@
                 <!-- Name Field -->
                 <div>
                     <label class="block text-black font-medium mb-2">
-                        <i class="fas fa-user mr-2 text-blue-500"></i> Full Name
+                        <i class="fas fa-user mr-2 text-orange-500"></i> Full Name
                     </label>
                     <input type="text" name="name" value="<?= htmlspecialchars($_POST['name']); ?>"
-                        class="w-full bg-gray-50 text-gray-800 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 border border-gray-300 transition"
+                        class="w-full bg-gray-50 text-gray-800 px-4 py-3 rounded-lg focus:outline-none border border-gray-300 transition"
                         required>
                 </div>
 
                 <!-- Email Field -->
                 <div>
                     <label class="block text-black font-medium mb-2">
-                        <i class="fas fa-envelope mr-2 text-blue-500"></i> Email Address
+                        <i class="fas fa-envelope mr-2 text-orange-500"></i> Email Address
                     </label>
                     <input type="email" name="email" value="<?= htmlspecialchars($_POST['email']); ?>"
-                        class="w-full bg-gray-50 text-gray-800 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 border border-gray-300 transition"
+                        class="w-full bg-gray-50 text-gray-800 px-4 py-3 rounded-lg focus:outline-none border border-gray-300 transition"
                         required>
                 </div>
 
