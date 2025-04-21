@@ -112,15 +112,12 @@
 </head>
 
 <body>
-    <?php
-    require __DIR__ . "/../../layout/navbar.view.php"
-        ?>
     <div class="container mt-5 quiz-container">
         <div class="card shadow-lg">
             <div class="card-header text-center">
                 <h3>Quiz Questions</h3>
             </div>
-            <div class="card-body">
+            <div class="card-body text-start">
                 <?php if (!empty($data)): ?>
                     <form action="/quizz" method="POST">
                         <input type="hidden" name="user_id" value="<?= end($data);
