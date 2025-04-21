@@ -92,8 +92,8 @@ $id = Auth::getAuthenticatedUser()['id'];// get the id from JWT
                         <input type="hidden" name="name" value="<?= $data[0]['uname']; ?>">
                         <input type="hidden" name="email" value="<?= $data[0]['email']; ?>">
                         <input type="hidden" name="img" value="<?= $data[0]['img']; ?>">
-                        <button type="submit" class="text-green-500 hover:text-green-700" title="Edit">
-                            Edit Your Profile
+                        <button type="submit" class="btn text-green-500 hover:text-green-700" title="Edit">
+                            <i class="fa-solid fa-pen"></i>
                         </button>
                     </form>
                     <h1><?= $data[0]['uname'] ?></h1>
