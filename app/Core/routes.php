@@ -10,7 +10,7 @@ $router->post('/register', 'Authentication/register.php')->addMiddleware('guest'
 $router->post('/logout', 'Authentication/logout.php');
 // $router->get('/logout', 'Authentication/logout.php');// for now 
 $router->get('/profile', 'Student/profile.php');
-$router->POST('/owl', 'Student/owls/choose_reciver.php');
+$router->get('/owl', 'Student/owls/choose_reciver.php');
 $router->post('/chat', 'Student/owls/chat.php');
 
 $router->get('/dashboard', "Dashboard/index.php")->addMiddleware('professor');
@@ -35,5 +35,7 @@ $router->post("/diagon-alley", "Student/items/store.php");
 $router->delete("/diagon-alley", "Student/items/delete.php");
 $router->get("/leaderboard", "Student/leaderboard.php");
 $router->get('/dashboard/wands', "Dashboard/wands/index.php");
+$router->get("/profile/edit", 'Dashboard/users/edit.php');
+$router->post("/profile", 'Dashboard/users/update.php');
 
 $router->get('/ollivander', "Ollivander.php");
