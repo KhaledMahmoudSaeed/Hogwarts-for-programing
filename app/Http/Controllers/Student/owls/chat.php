@@ -13,8 +13,8 @@ $data = [];
 $email = htmlspecialchars(trim($_POST['email']));
 $id = $db->where("users", "email='$email'", ['id' => '']);
 if (!$id) {
-    var_dump('this email doesnot exits');
-    exit;
+    $_SESSION['Owl_error'] = "This Email donesn't exits";
+    header("Location: /owl");
 }
 $receiver_id = $id[0]['id'];
 $sender_id = $_POST['sender_id'];
