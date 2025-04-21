@@ -116,6 +116,7 @@
             font-family: 'Cinzel Decorative', cursive;
             font-size: 1.3rem;
             color: goldenrod;
+            margin-top: 1rem;
             margin-bottom: 1rem;
         }
 
