@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>403 - Forbidden Magic</title>
-    
-    <link rel="stylesheet" href="resources/assets/CSS/style.css">
+
+    <link rel="stylesheet" href="<?= $GLOBALS['img']->style("style.css") ?>">
 
 </head>
 
