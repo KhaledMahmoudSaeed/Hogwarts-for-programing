@@ -17,7 +17,7 @@
             width: 100px;
             height: 100px;
             object-fit: cover;
-            border: 3px solid #3b82f6;
+            border: 3px solid #CA8D0F;
         }
 
         .house-badge {
@@ -57,7 +57,8 @@
         }
 
         .hh {
-            background: linear-gradient(to right, #1e3c2d, #2e7d32);
+            background: linear-gradient(to right, #CA8D0F, #ecb648);
+
         }
     </style>
 </head>
@@ -99,36 +100,36 @@
                     <!-- User Info -->
                     <div class="w-full space-y-4 font-bold">
                         <div class="flex justify-between border-b pb-2 ">
-                            <span class="text-black font-bold"><i class="fas fa-user mr-2 text-blue-500"></i>
+                            <span class="text-black font-bold"><i class="fas fa-user mr-2 text-orange-500"></i>
                                 Name:</span>
                             <span class="text-black font-semibold"><?= htmlspecialchars($user['uname']) ?></span>
                         </div>
 
                         <div class="flex justify-between border-b pb-2">
-                            <span class="text-black font-bold"><i class="fas fa-envelope mr-2 text-blue-500"></i>
+                            <span class="text-black font-bold"><i class="fas fa-envelope mr-2 text-orange-500"></i>
                                 Email:</span>
                             <span class="text-black"><?= htmlspecialchars($user['email']) ?></span>
                         </div>
 
                         <div class="flex justify-between border-b pb-2">
-                            <span class="text-black font-bold"><i class="fas fa-user-tag mr-2 text-blue-500"></i>
+                            <span class="text-black font-bold"><i class="fas fa-user-tag mr-2 text-orange-500"></i>
                                 Role:</span>
                             <span class="text-black">
                                 <span
-                                    class="<?= $user['role'] === 'admin' ? 'bg-purple-100 text-purple-800' : 'bg-blue-100 text-blue-800' ?> px-2 py-1 rounded-full text-xs">
+                                    class="<?= $user['role'] === 'admin' ? 'bg-purple-100' : 'bg-blue-100' ?> px-2 py-1 rounded-full text-xs">
                                     <?= htmlspecialchars($user['role']) ?>
                                 </span>
                             </span>
                         </div>
 
                         <div class="flex justify-between border-b pb-2">
-                            <span class="text-black font-bold"><i class="fas fa-home mr-2 text-blue-500"></i>
+                            <span class="text-black font-bold"><i class="fas fa-home mr-2 text-orange-500"></i>
                                 House:</span>
                             <span class="house-badge <?= $houseClass ?>"><?= htmlspecialchars($houseName) ?></span>
                         </div>
 
                         <div class="flex justify-between border-b pb-2">
-                            <span class="text-black font-bold"><i class="fas fa-magic mr-2 text-blue-500"></i>
+                            <span class="text-black font-bold"><i class="fas fa-magic mr-2 text-orange-500"></i>
                                 Wand:</span>
                             <span
                                 class="text-black font-serif italic"><?= htmlspecialchars($user['wood'] . " & " . $user['core']) ?></span>
@@ -148,6 +149,7 @@
                         <input type="hidden" name="id" value="<?= $user['id'] ?>">
                         <input type="hidden" name="name" value="<?= $user['uname'] ?>">
                         <input type="hidden" name="email" value="<?= $user['email'] ?>">
+                        <input type="hidden" name="img" value="<?= $user['img']; ?>">
                         <button type="submit"
                             class="hh text-white px-4 py-2 rounded-lg font-medium transition flex items-center">
                             <i class="fas fa-edit mr-2"></i> Edit Profile
