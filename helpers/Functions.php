@@ -14,8 +14,7 @@ class Functions
     }
     public function insertImage(string $ImageDirectory)
     {
-
-        if (!isset($_FILES['img']) && $_FILES['img']['error'] !== UPLOAD_ERR_OK) {
+        if (!isset($_FILES['img']) || $_FILES['img']['error'] !== UPLOAD_ERR_OK) {
             return null;
         }
         $allowedExtentions = ['image/jpeg', 'image/png', 'image/jpg'];
