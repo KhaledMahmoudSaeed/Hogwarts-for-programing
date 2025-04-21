@@ -7,6 +7,7 @@ class Path
     public array $data = [];
     private const BATH_PATH = __DIR__ . "/../";
     public const IMAGE_PATH = "/resources/assets/img/";
+    public const STYLE_PATH = "/resources/assets/CSS/";
     // return the view root path
     public function base_path($path)
     {
@@ -36,6 +37,15 @@ class Path
         }
 
         return $imagePath . $imageName;
+    }
+    public function style(string $stylefile, string|null $directory = null): string
+    {
+        $stylePath = $this::STYLE_PATH;
+        if ($directory) {
+            $stylePath .= $directory . "/";
+        }
+
+        return $stylePath . $stylefile;
     }
 
 }
