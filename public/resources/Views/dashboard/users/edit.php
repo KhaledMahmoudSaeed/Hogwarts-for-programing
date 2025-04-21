@@ -9,19 +9,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
-            background: url('<?= $GLOBALS['img']->image("dashboardhogwarts.jpg") ?>') no-repeat center center fixed;
+            background: url('<?= $GLOBALS['img']->image("landing.png") ?>') no-repeat center center fixed;
             background-size: cover;
         }
 
         .header-button {
-            background: linear-gradient(to right, #1e3c2d, #2e7d32);
+            background: linear-gradient(to right, #CA8D0F,#ecb648);
         }
 
         .profile-picture {
             width: 100px;
             height: 100px;
             object-fit: cover;
-            border: 3px solid #3b82f6;
+            border: 3px solid #CA8D0F;
         }
 
         .file-upload {
