@@ -47,7 +47,7 @@ function isActive($routes)
         <?php if (strtolower($_SESSION['role']) == "professor"): ?>
           <li><a href="/dashboard" class="<?= isActive('/dashboard') ?>">Dashboard</a></li>
         <?php else: ?>
-          <li><a href="/enrolls" classclass="<?= isActive('/enrolls') ?>">Courses</a></li>
+          <li><a href="/enrolls" class="<?= isActive('/enrolls') ?>">Courses</a></li>
         <?php endif; ?>
         <li><a href="/leaderboard" class="<?= isActive('/leaderboard') ?>">Leaderboard</a></li>
         <li>
