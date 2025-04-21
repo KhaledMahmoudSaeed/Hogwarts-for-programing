@@ -14,27 +14,27 @@
         }
 
         thead {
-            background: linear-gradient(to right, #1e3c2d, #2e7d32);
+            background: #000;
         }
 
-        .house-gryffindor {
-            background-color: #b22222;
+        .house-gryffindor:hover {
+            background-color: #8b0000;
             color: white;
         }
 
-        .house-slytherin {
-            background-color: #1e5128;
+        .house-slytherin:hover {
+            background-color: #1E7352;
             color: white;
         }
 
-        .house-ravenclaw {
-            background-color: #0e1a40;
+        .house-ravenclaw:hover {
+            background-color: #113243;
             color: white;
         }
 
-        .house-hufflepuff {
-            background-color: #f5e042;
-            color: #333;
+        .house-hufflepuff:hover {
+            background-color: #CA8D0F;
+            color: white;
         }
 
         .user-avatar {
@@ -110,7 +110,7 @@
                                     $houseClass = "house-hufflepuff";
                                 }
                                 ?>
-                                <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                <tr class="transition-colors duration-150 <?= $houseClass ?>">
                                     <td class="py-4 px-6"><?= htmlspecialchars($counter++); ?></td>
                                     <td class="py-4 px-6">
                                         <?php if (!empty($user['img'])): ?>
@@ -126,12 +126,12 @@
                                     <td class="py-4 px-6"><?= htmlspecialchars($user['email']); ?></td>
                                     <td class="py-4 px-6">
                                         <span
-                                            class="px-2 py-1 rounded-full text-xs 
-                                        <?= $user['role'] === 'admin' ? 'bg-purple-100 text-purple-800' : 'bg-blue-100 text-blue-800' ?>">
+                                            class="px-2 py-1 rounded-full text-xs text-black 
+                                        <?= $user['role'] === 'admin' ? 'bg-purple-100' : 'bg-blue-100' ?>">
                                             <?= htmlspecialchars($user['role']); ?>
                                         </span>
                                     </td>
-                                    <td class="py-4 px-6 <?= $houseClass ?> font-semibold rounded">
+                                    <td class="py-4 px-6 font-semibold rounded">
                                         <?= htmlspecialchars($houseName); ?>
                                     </td>
                                     <td class="py-4 px-6 wand-info">
