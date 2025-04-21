@@ -84,11 +84,6 @@
         </a>
     </main>
 
-    <footer class="text-center py-6 text-gray-400 text-sm">
-        <p>Hogwarts School of Witchcraft and Wizardry © 2023</p>
-        <p class="mt-1">"Nitwit! Blubber! Oddment! Tweak!"</p>
-    </footer>
-
     <!-- Animated floating parchment -->
     <div
         class="fixed bottom-4 left-4 w-16 h-16 bg-amber-100 rounded-lg opacity-80 rotate-12 animate-float-parchment hidden md:block">

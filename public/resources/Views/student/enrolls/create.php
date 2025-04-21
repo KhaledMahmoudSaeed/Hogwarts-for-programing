@@ -6,6 +6,7 @@
     <title>Create Course</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Eagle+Lake&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="<?= $GLOBALS['img']->style("style.css") ?>">
@@ -44,7 +45,6 @@
 
         /* Label Styling */
         label {
-            font-family: 'Cinzel', serif;
             font-size: 1rem;
             color: #f7b924;
             /* Golden yellow */
@@ -64,32 +64,28 @@
         /* Submit Button Styling */
         .submit-btn {
             background: linear-gradient(135deg, #f7b924, #d3a625);
-            /* Golden yellow gradient */
-            border: none;
-            color: #fff;
             font-weight: bold;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: all 0.3s ease;
+            padding: 0.5rem !important;
+            font-size: 1rem !important;
         }
 
         .submit-btn:hover {
             background: linear-gradient(135deg, #e6a819, #c2951e);
-            /* Darker gradient on hover */
         }
 
         /* Back Button Styling */
         .back-btn {
-            color: #f7b924;
-            /* Golden yellow */
+            color: #f7b924 !important;
             text-decoration: none;
             font-weight: bold;
-            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all ease 0.5s;
         }
 
         .back-btn:hover {
-            color: #fff;
-            /* White on hover */
+            color: #fff !important;
+            background: linear-gradient(135deg, #e6a819, #c2951e) !important;
         }
 
         select {
@@ -138,8 +134,7 @@
 
 <body class=" flex flex-col items-center justify-center ">
     <?php
-    require __DIR__ . "/../../layout/navbar.view.php"
-        ?><br>
+    ?><br>
     <div class="container-all bg-opacity-90 rounded-lg shadow-lg">
         <h2>Enroll in a New Course</h2>
 
@@ -150,7 +145,7 @@
             <div>
                 <label class="block font-semibold">Select Course:</label>
                 <select name="course_id" required
-                    class="w-full mt-2 p-2 border rounded-md focus:ring focus:ring-blue-300 block font-semibold">
+                    class="w-full mt-5 p-2 border rounded-md focus:ring focus:ring-blue-300 block font-semibold">
                     <option value="" disabled selected>-- Choose Course --</option>
                     <?php foreach ($data as $course): ?>
                         <option value="<?= htmlspecialchars($course['id']); ?>" class="dropdown-option">
@@ -169,7 +164,7 @@
         </form>
 
         <!-- Back Button -->
-        <div class="mt-4 text-center">
+        <div class="mt-7 text-center">
             <a href="/enrolls" class="back-btn"> Back to Your Courses</a>
         </div>
     </div>

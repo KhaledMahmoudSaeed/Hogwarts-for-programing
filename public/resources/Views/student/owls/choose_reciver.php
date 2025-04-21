@@ -44,18 +44,20 @@ if ($errorMessage) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Owl Post - Find Recipient</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
         /* General Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Cinzel', sans-serif;
         }
 
         /* Body Styling */
         body {
-            background: url('<?= $GLOBALS['img']->image("dashboardhogwarts.jpg") ?>') no-repeat center center fixed;
+            background: url('<?= $GLOBALS['img']->image("landing.png") ?>') no-repeat center center fixed;
             background-size: cover;
 
         }
@@ -68,6 +70,7 @@ if ($errorMessage) {
             max-width: 500px;
             width: 90%;
             margin: 0 auto;
+            margin-bottom: 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
@@ -76,6 +79,7 @@ if ($errorMessage) {
             width: 150px;
             height: auto;
             margin-bottom: 1rem;
+            border-radius: 50%;
         }
 
         /* Headings */

@@ -8,7 +8,7 @@
 
 /* Body Styling */
 body {
-    background: url('../img/dashboardhogwarts.jpg') no-repeat center center fixed;
+    background: url('../img/landing.png') no-repeat center center fixed;
     background-size: cover;
     color: #fff;
     line-height: 1.6;
@@ -29,6 +29,7 @@ body {
     /* Increased width */
     width: 90%;
     margin: 0 auto;
+    margin-bottom: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -143,6 +144,7 @@ body {
     color: #fff;
     resize: none;
     transition: background 0.3s ease;
+    margin-bottom: 2rem;
 }
 
 .message-input:focus {
@@ -161,6 +163,7 @@ body {
     cursor: pointer;
     transition: background 0.3s ease;
     text-align: center;
+    margin-top: 0 !important;
 }
 
 .send-button:hover {
