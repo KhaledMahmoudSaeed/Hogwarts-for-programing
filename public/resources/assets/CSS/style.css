@@ -247,7 +247,7 @@ a {
   background-image: url('../img/landing.png');
   background-size: cover;
   background-repeat: no-repeat;
-  height: 90vh;
+  height: 91vh;
   position: relative;
   display: flex;
   align-items: center;
@@ -325,6 +325,7 @@ a {
 
 /* Houses Section */
 .houses {
+  min-height: 101vh;
   padding: 55px 20px;
   background-image: url("../img/train.png"), url("../img/stars.png"), linear-gradient(180deg, #15111d, #323657 110%);
   background-position: center 100%, 50%, bottom;
@@ -422,6 +423,7 @@ a {
 
 /* Activities Section */
 .activities {
+  min-height: 101vh;
   padding: 83px 20px;
   background-image: url("../img/quidditch.png"), url("../img/stars.png"),
     linear-gradient(180deg, #18150e, #554936 110%);
