@@ -31,6 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // send token and img to session to easy asccess them
         $_SESSION['jwt'] = $jwt;
         $_SESSION['img'] = $img;
+        $_SESSION['house'] = $house;
+        $_SESSION['islogged'] = true;
         header("Location: /home");
         exit;
     } else {
