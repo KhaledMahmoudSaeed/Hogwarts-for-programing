@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diagon Alley</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="<?= $GLOBALS['img']->style("style.css") ?>">
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=IM+Fell+English+SC&display=swap');
@@ -32,7 +33,7 @@
             background: rgba(0, 0, 0, 0.2);
         }
 
-        .container {
+        .container-all {
             background: rgba(25, 20, 20, 0.85);
             border: 2px solid goldenrod;
             border-radius: 15px;
@@ -172,9 +173,12 @@
 </head>
 
 <body>
+    <?php
+    require __DIR__ . "/../../layout/navbar.view.php"
+        ?>
     <section id="diagon-alley">
         <div class="overlay">
-            <div class="container">
+            <div class="container-all">
                 <div class="header">
                     <h1><i class="fas fa-hat-wizard"></i> Diagon Alley</h1>
                     <h2>Magical Items & Artifacts</h2>

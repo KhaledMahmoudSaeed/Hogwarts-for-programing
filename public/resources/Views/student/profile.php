@@ -1,3 +1,7 @@
+<?php
+use Helpers\Auth;
+$id = Auth::getAuthenticatedUser()['id'];// get the id from JWT
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     <!-- Load Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="resources/assets/CSS/style.css">
+    <link rel="stylesheet" href="<?= $GLOBALS['img']->style("style.css") ?>">
 
     <?php $bgcolor = strtolower($data[0]['role']) == 'professor' ? '#000' : "var(--" . strtolower($data[0]['hname']) . ")" ?>
 
@@ -46,7 +50,9 @@
             padding: 1.5rem;
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-left: 5px solid <?= $bgcolor ?>;
+            border-left: 5px solid
+                <?= $bgcolor ?>
+            ;
             grid-column: 1 / -1;
             position: relative;
             transition: transform 0.5s ease;
@@ -70,6 +76,9 @@
 </head>
 
 <body>
+    <?php
+    require __DIR__ . "/../layout/navbar.view.php"
+        ?>
     <section id="profile">
         <div class="overlay">
             <div class="profile-container">
@@ -77,11 +86,22 @@
                     <div class="profile-image">
                         <img src="<?= $GLOBALS['img']->image($data[0]['img'], "users") ?>" alt="Profile Picture">
                     </div>
+                    <form action="/profile/edit" method="POST" class="inline-block">
+                        <input type="hidden" name="_method" value="GET">
+                        <input type="hidden" name="id" value="<?= $id; ?>">
+                        <input type="hidden" name="name" value="<?= $data[0]['uname']; ?>">
+                        <input type="hidden" name="email" value="<?= $data[0]['email']; ?>">
+                        <input type="hidden" name="img" value="<?= $data[0]['img']; ?>">
+                        <button type="submit" class="text-green-500 hover:text-green-700" title="Edit">
+                            Edit Your Profile
+                        </button>
+                    </form>
                     <h1><?= $data[0]['uname'] ?></h1>
                     <p class="house-badge"><?= $data[0]['hname'] ?></p>
                 </div>
 
                 <div class="profile-details">
+
                     <div class="detail-card">
                         <h2><i class="fas fa-envelope"></i> Email</h2>
                         <p><?= $data[0]['email'] ?></p>
@@ -131,7 +151,10 @@
                             </ul>
                         <?php else: ?>
                             <p>You haven’t acquired any magical items yet.</p>
-                        <?php endif; ?>
+                            <button onclick="window.location.href='/diagon-alley'"
+                                class="inline-block bg-yellow-300 text-gray-900 font-bold py-2 px-4 rounded-md shadow-md hover:bg-yellow-400 transition-colors duration-300 cursor-pointer">
+                                Go Buy Some
+                            </button> <?php endif; ?>
                     </div>
                 </div>
             </div>

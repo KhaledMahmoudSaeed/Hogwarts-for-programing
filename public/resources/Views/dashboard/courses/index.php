@@ -3,10 +3,21 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Courses Dashboard</title>
+    <title>Hogwarts Courses Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Import Merriweather Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
     <style>
+        body {
+            /* Hogwarts Castle Background */
+            background: url('<?= $GLOBALS['img']->image("dashboardhogwarts.jpg") ?>') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Merriweather', serif;
+            color: #fff;
+            /* Ensure text is visible against the dark background */
+        }
+
         .course-image {
             width: 60px;
             height: 60px;
@@ -35,30 +46,72 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+
+        /* Hogwarts-themed styles */
+        .hogwarts-header {
+            font-family: 'Merriweather', serif;
+            color: #7f0909;
+            /* Maroon */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .hogwarts-button {
+            background: linear-gradient(to right, #b8860b, #daa520);
+            /* Gold gradient */
+            color: #fff;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .hogwarts-button:hover {
+            background: linear-gradient(to right, #daa520, #b8860b);
+        }
+
+
+
+        .hogwarts-empty-state {
+            background-color: rgba(0, 0, 0, 0.05);
+            border: 1px dashed #7f0909;
+        }
+
+        /* Semi-transparent overlay for better visibility */
+        .dark-overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            /* Adjust opacity as needed */
+            backdrop-filter: blur(5px);
+            /* Adds a subtle blur effect */
+        }
     </style>
 </head>
 
-<body class="bg-gray-50 min-h-screen py-8 px-4 sm:px-6">
+<body class="min-h-screen py-8 px-4 sm:px-6">
     <div class="max-w-7xl mx-auto">
         <!-- Header Section -->
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
             <div>
-                <h1 class="text-2xl sm:text-3xl font-bold text-gray-800">
-                    <i class="fas fa-graduation-cap text-blue-600 mr-2"></i> Courses Dashboard
+                <h1 class="text-3xl sm:text-4xl hogwarts-header font-bold text-black">
+                    <i class="fas fa-hat-wizard text-white mr-2"></i> Hogwarts Courses Dashboard
                 </h1>
-                <p class="text-gray-500 text-sm mt-1">Manage all available courses</p>
+                <p class="text-white text-sm mt-1">Manage all available courses at Hogwarts School of Witchcraft and
+                    Wizardry</p>
             </div>
+
+        </div>
+        <div class="flex justify-between mb-4">
+            <a href="/dashboard"
+                class="hogwarts-button hover:bg-gold px-4 py-2 rounded-lg shadow-md transition flex items-center whitespace-nowrap">
+                Back to Dashboard
+            </a>
             <a href="/dashboard/course/create"
-                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow-md transition flex items-center whitespace-nowrap">
-                <i class="fas fa-plus mr-2"></i> Add New Course
+                class="hogwarts-button hover:bg-gold px-4 py-2 rounded-lg shadow-md transition flex items-center whitespace-nowrap">
+                Add Course
             </a>
         </div>
-
         <!-- Table Container -->
-        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+        <div class="bg-white bg-opacity-20 rounded-xl shadow-md overflow-hidden border border-gray-100">
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gradient-to-r from-blue-600 to-blue-500">
+                    <thead class="hogwarts-table-header">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">#
                             </th>
@@ -74,7 +127,7 @@
                                 Actions</th>
                         </tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
+                    <tbody class="bg-gray-500 bg-opacity-20 divide-y divide-gray-200">
                         <?php if (!empty($data)): ?>
                             <?php foreach ($data as $index => $course): ?>
                                 <tr class="hover:bg-gray-50 transition-colors">
@@ -110,12 +163,12 @@
                                                 <input type="hidden" name="id" value="<?= $course['id'] ?>">
                                                 <input type="hidden" name="cname" value="<?= $course['cname'] ?>">
                                                 <input type="hidden" name="description" value="<?= $course['description'] ?>">
+                                                <input type="hidden" name="img" value="<?= $course['img'] ?>">
                                                 <button type="submit" class="text-blue-600 hover:text-blue-800 action-btn"
                                                     title="Edit Course">
                                                     <i class="fas fa-edit"></i>
                                                 </button>
                                             </form>
-
                                             <!-- Delete Button -->
                                             <form action="/dashboard/course/delete" method="POST" class="inline-block">
                                                 <input type="hidden" name="_method" value="DELETE">
@@ -133,7 +186,7 @@
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="6" class="px-6 py-4 text-center text-gray-500">
+                                <td colspan="6" class="px-6 py-4 text-center hogwarts-empty-state">
                                     <div class="flex flex-col items-center justify-center py-12">
                                         <i class="fas fa-book-open text-4xl text-gray-300 mb-3"></i>
                                         <p class="text-lg font-medium">No courses found</p>

@@ -20,15 +20,17 @@ function isActive($routes)
     text-decoration: none;
   }
 </style>
-<nav class="navbar <?php echo $newUser ? 'hidden' : ''; ?>" style="background-color:var(--<?= strtolower($house) ?>);">
+<nav class="navbar <?php echo $newUser ? 'hidden' : ''; ?>"
+  style="background-color:var(--<?= strtolower($_SESSION['house']) ?>);">
   <div class="container">
     <!-- Logo / Brand -->
     <div class="logos">
 
-      <img src="<?= $GLOBALS['img']->image(strtolower($house) !== 'hogwarts' ? strtolower($house) : 'auth') ?>.png"
+      <img
+        src="<?= $GLOBALS['img']->image(strtolower($_SESSION['house']) !== 'hogwarts' ? strtolower($_SESSION['house']) : 'auth') ?>.png"
         alt="Magical Hogwarts">
 
-      <a href="/home" class="logo"><?= $house ?></a>
+      <a href="/home" class="logo"><?= $_SESSION['house'] ?></a>
     </div>
 
     <!-- Navigation Links -->
@@ -36,28 +38,25 @@ function isActive($routes)
       <li><a href="/home" class="<?= isActive('/home') . isActive('/') ?>">Home</a></li>
       <li><a href="/about" class="<?= isActive('/about') ?>">About</a></li>
 
-      <?php if ($isLoggedIn): ?>
+      <?php if ($_SESSION['islogged']): ?>
         <!-- Show Ollivander's Store ONLY for newly registered users -->
         <?php if (isset($_SESSION['new_user']) && $_SESSION['new_user'] === true): ?>
           <li><a href="/ollivander" class="<?= isActive('/ollivander') ?>">Ollivander's Store</a></li>
         <?php endif; ?>
         <!-- Visible only if user is logged in -->
-        <?php if (strtolower($data['role']) == "professor"): ?>
+        <?php if (strtolower($_SESSION['role']) == "professor"): ?>
           <li><a href="/dashboard" class="<?= isActive('/dashboard') ?>">Dashboard</a></li>
         <?php else: ?>
-          <li><a href="/enrolls" classclass="<?= isActive('/courses') ?>">Courses</a></li>
+          <li><a href="/enrolls" classclass="<?= isActive('/enrolls') ?>">Courses</a></li>
         <?php endif; ?>
         <li><a href="/leaderboard" class="<?= isActive('/leaderboard') ?>">Leaderboard</a></li>
         <li>
-          <form action="/owl" method="POST" class="inline-form">
-            <input type="hidden" name="user_id" value="<?= $data['id'] ?>">
-            <button type="submit" class="<?= isActive('/owl') ?>">Owl Post</button>
-          </form>
+          <a href="/owl" class="<?= isActive('/owl') ?>">Owl Post</a>
         </li> <?php endif; ?>
       <li><a href="/contact" class="class=" <?= isActive('/contact') ?>>Contact Us</a></li>
     </ul>
     <div class="buttons">
-      <?php if ($isLoggedIn): ?>
+      <?php if ($_SESSION['islogged']): ?>
         <div class="profile-logout-container">
           <a href="/profile">
             <img src="<?= $GLOBALS['img']->image($_SESSION['img'], 'users') ?>" alt="Profile" class="profile-circle">

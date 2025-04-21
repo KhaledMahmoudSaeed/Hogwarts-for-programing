@@ -8,7 +8,8 @@ $wand = isset($data['wand']) ? $data['wand'] : "";
 $_SESSION['wand'] = $wand;
 $isLoggedIn = isset($data['id']) && !empty($data['id']);
 $content = ($_SERVER['REQUEST_URI'] === '/' || $_SERVER['REQUEST_URI'] === '/home') ? 'home' : $_SERVER['REQUEST_URI'];
-
+$_SESSION['house'] = $house;
+$_SESSION['islogged'] = $isLoggedIn;
 
 ?>
 <!DOCTYPE html>
@@ -22,7 +23,8 @@ $content = ($_SERVER['REQUEST_URI'] === '/' || $_SERVER['REQUEST_URI'] === '/hom
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     <!-- for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="resources/assets/CSS/style.css">
+    <link rel="stylesheet" href="<?= $GLOBALS['img']->style("style.css") ?>">
+
 </head>
 
 <body>
@@ -42,6 +44,8 @@ $content = ($_SERVER['REQUEST_URI'] === '/' || $_SERVER['REQUEST_URI'] === '/hom
 
     <?php endif; ?>
 
+
+
     <!-- Main Homepage Content -->
     <?php require('resources/Views/layout/navbar.view.php'); ?>
 
@@ -52,7 +56,7 @@ $content = ($_SERVER['REQUEST_URI'] === '/' || $_SERVER['REQUEST_URI'] === '/hom
             <i class="fa-solid fa-cart-shopping"></i>
         </a>
     <?php endif; ?>
-    
+
     <!-- Magical Footer -->
     <?php require("resources/Views/layout/footer.view.php"); ?>
 

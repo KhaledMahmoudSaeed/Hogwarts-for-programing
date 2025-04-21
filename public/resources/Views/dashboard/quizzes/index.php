@@ -8,8 +8,34 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            background-color: #f3f4f6;
-            /* Light gray background */
+            background: url('<?= $GLOBALS['img']->image("dashboardhogwarts.jpg") ?>') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        thead {
+            background: linear-gradient(to right, #1e3c2d, #2e7d32);
+        }
+
+        .hogwarts-button:hover {
+            background: linear-gradient(to right, #daa520, #b8860b);
+        }
+
+        .hogwarts-button {
+            background: linear-gradient(to right, #b8860b, #daa520);
+            /* Gold gradient */
+            color: #fff;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-btn {
+            transition: all 0.2s ease;
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        .action-btn:hover {
+            background-color: rgba(0, 0, 0, 0.05);
         }
     </style>
 </head>
@@ -19,16 +45,20 @@
         <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">
             Dashboard - Quizz
         </h1>
-        <div class="flex justify-end mb-4">
+        <div class="flex justify-between mb-4">
+            <a href="/dashboard"
+                class="hogwarts-button hover:bg-gold px-4 py-2 rounded-lg shadow-md transition flex items-center whitespace-nowrap">
+                Back to Dashboard
+            </a>
             <a href="/dashboard/quizz/create"
-                class="bg-green-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-green-600 transition duration-200">
-                ➕ Add Quizz
+                class="hogwarts-button hover:bg-gold px-4 py-2 rounded-lg shadow-md transition flex items-center whitespace-nowrap">
+                Add Quizz
             </a>
         </div>
 
-        <div class="overflow-x-auto shadow-lg rounded-lg">
-            <table class="min-w-full bg-white">
-                <thead class="bg-blue-500">
+        <div class="bg-white bg-opacity-20 rounded-xl shadow-md overflow-hidden border border-gray-100">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead>
                     <tr>
                         <th class="py-3 px-6 text-left text-white font-semibold">ID</th>
                         <th class="py-3 px-6 text-left text-white font-semibold">Course Name</th>
@@ -38,7 +68,7 @@
                         <th class="py-3 px-6 text-left text-white font-semibold">Actions</th>
                     </tr>
                 </thead>
-                <tbody class="text-gray-700">
+                <tbody class="bg-gray-500 bg-opacity-20 divide-y divide-gray-200">
                     <?php if (!empty($data)):
                         $counter = 1 ?>
                         <?php foreach ($data as $quizz):

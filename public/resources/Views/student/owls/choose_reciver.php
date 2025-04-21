@@ -29,6 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['recipient_email'])) {
     } else {
         $error = "Please enter an email address";
     }
+}// Check if there's an error message in the session
+$errorMessage = isset($_SESSION['Owl_error']) ? $_SESSION['Owl_error'] : null;
+
+// Clear the error message after displaying it (optional, to avoid showing it again on page refresh)
+if ($errorMessage) {
+    unset($_SESSION['Owl_error']);
 }
 ?>
 <!DOCTYPE html>
@@ -39,121 +45,170 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['recipient_email'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Owl Post - Find Recipient</title>
     <style>
-        body {
-            font-family: 'Times New Roman', serif;
-            background-color: #f0e6cc;
-            color: #372e29;
+        /* General Reset */
+        * {
             margin: 0;
-            padding: 20px;
-            background-image: url('images/parchment-texture.jpg');
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Body Styling */
+        body {
+            background: url('<?= $GLOBALS['img']->image("dashboardhogwarts.jpg") ?>') no-repeat center center fixed;
             background-size: cover;
+
         }
 
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background-color: rgba(255, 248, 220, 0.9);
-            padding: 30px;
+        /* Container Styling */
+        .container-chat {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            border: 1px solid #8b7355;
-            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            margin: 0 auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
-        h1 {
-            color: #5d2906;
-            text-align: center;
-            font-size: 2.2em;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 2px #ccc;
-        }
-
+        /* Owl Icon Styling */
         .owl-icon-large {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 20px;
+            width: 150px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        /* Headings */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #f4d35e;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Instructions Text */
+        .instructions {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #c0c0c0;
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
         .form-group {
-            margin-bottom: 20px;
-            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
         label {
-            display: block;
-            margin-bottom: 8px;
+            font-size: 1rem;
             font-weight: bold;
-            color: #5d2906;
+            color: #f4d35e;
         }
 
         input[type="email"] {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #d4c9a8;
+            padding: 0.8rem;
+            font-size: 1rem;
+            border: none;
             border-radius: 5px;
-            font-family: inherit;
-            background-color: #fff9e6;
-            font-size: 1em;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            transition: background 0.3s ease;
         }
 
+        input[type="email"]:focus {
+            background: rgba(255, 255, 255, 0.4);
+            outline: none;
+        }
+
+        input[type="email"]::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Submit Button */
         .submit-button {
-            background-color: #5d2906;
-            color: white;
+            padding: 0.8rem;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            background: #f4d35e;
             border: none;
-            padding: 12px 25px;
-            font-size: 1.1em;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
-            font-family: inherit;
-            margin-top: 10px;
+            transition: background 0.3s ease;
         }
 
         .submit-button:hover {
-            background-color: #3a1a03;
+            background: #e0b83e;
         }
 
-        .error-message {
-            color: #d32f2f;
-            margin-top: 10px;
-            font-style: italic;
-        }
-
+        /* Back Button */
         .back-button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 8px 15px;
-            background-color: #5d2906;
-            color: white;
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #f4d35e;
             text-decoration: none;
+            border: 2px solid #f4d35e;
+            padding: 0.5rem 1rem;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            transition: color 0.3s ease, border-color 0.3s ease;
         }
 
         .back-button:hover {
-            background-color: #3a1a03;
+            color: #fff;
+            border-color: #fff;
         }
 
-        .instructions {
-            font-style: italic;
-            color: #666;
-            margin-bottom: 30px;
+        /* Error Message Styling */
+        .error-message {
+            background: rgba(255, 0, 0, 0.8);
+            color: #fff;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .error-message p {
+            margin: 0;
+            font-size: 1rem;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <link rel="stylesheet" href="<?= $GLOBALS['img']->style("style.css") ?>">
+
+    <?php
+    require __DIR__ . "/../../layout/navbar.view.php"
+        ?>
+    <div>
+        <br><br><br>
+    </div>
+    <div class="container-chat">
         <img src="<?= $GLOBALS['img']->image("Hogwarts_Owl.png") ?>" alt="Owl Post" class="owl-icon-large"
             style="width: 200px; height: auto;">
         <h1>Owl Post</h1>
 
         <p class="instructions">Enter the email address of the witch or wizard you wish to send an owl to:</p>
-
+        <!-- Display Error Message -->
+        <?php if ($errorMessage): ?>
+            <div id="error-message" class="error-message">
+                <p><?= htmlspecialchars($errorMessage, ENT_QUOTES, 'UTF-8') ?></p>
+            </div>
+        <?php endif; ?>
         <form method="POST" action="/chat">
             <div class="form-group">
                 <label for="recipient_email">Recipient's Email:</label>
-                <input type="hidden" name="sender_id" value="<?= $_POST['user_id'] ?>">
+                <input type="hidden" name="sender_id" value="<?= $data['id'] ?>">
                 <input type="email" id="recipient_email" name="email" required placeholder="e.g. hermione@hogwarts.com">
             </div>
 
@@ -161,7 +216,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['recipient_email'])) {
                 Find Recipient & Send Owl
             </button>
         </form>
-
+        <br>
+        <br>
         <a href="/home" class="back-button">Back to Dashboard</a>
     </div>
 </body>

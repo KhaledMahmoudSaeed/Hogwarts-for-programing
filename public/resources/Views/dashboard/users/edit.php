@@ -8,6 +8,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        body {
+            background: url('<?= $GLOBALS['img']->image("dashboardhogwarts.jpg") ?>') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .header-button {
+            background: linear-gradient(to right, #1e3c2d, #2e7d32);
+        }
+
         .profile-picture {
             width: 100px;
             height: 100px;
@@ -38,9 +47,9 @@
 </head>
 
 <body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
-    <div class="bg-white card-shadow rounded-xl overflow-hidden w-full max-w-md">
+    <div class="bg-white card-shadow bg-opacity-20 rounded-xl overflow-hidden w-full max-w-md">
         <!-- Header with blue background -->
-        <div class="bg-gradient-to-r from-blue-600 to-blue-500 p-6 text-center">
+        <div class="header-button p-6 text-center">
             <h2 class="text-2xl font-bold text-white">
                 <i class="fas fa-user-edit mr-2"></i> Edit Profile
             </h2>
@@ -50,6 +59,7 @@
             <form action="/dashboard/user/update" method="POST" enctype="multipart/form-data" class="space-y-6">
                 <input type="hidden" name="_method" value="PUT">
                 <input type="hidden" name="id" value="<?= htmlspecialchars($_POST['id']); ?>">
+                <input type="hidden" name="img" value="<?= htmlspecialchars($_POST['img']); ?>">
 
                 <!-- Profile Picture Section -->
                 <div class="flex flex-col items-center">
@@ -65,7 +75,7 @@
 
                         <div class="file-upload mt-3">
                             <button type="button"
-                                class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium transition">
+                                class="header-button text-white px-3 py-1 rounded-full text-sm font-medium transition">
                                 <i class="fas fa-camera mr-1"></i> Change Photo
                             </button>
                             <input type="file" name="img" accept="image/*" class="file-upload-input">
@@ -75,7 +85,7 @@
 
                 <!-- Name Field -->
                 <div>
-                    <label class="block text-gray-700 font-medium mb-2">
+                    <label class="block text-black font-medium mb-2">
                         <i class="fas fa-user mr-2 text-blue-500"></i> Full Name
                     </label>
                     <input type="text" name="name" value="<?= htmlspecialchars($_POST['name']); ?>"
@@ -85,7 +95,7 @@
 
                 <!-- Email Field -->
                 <div>
-                    <label class="block text-gray-700 font-medium mb-2">
+                    <label class="block text-black font-medium mb-2">
                         <i class="fas fa-envelope mr-2 text-blue-500"></i> Email Address
                     </label>
                     <input type="email" name="email" value="<?= htmlspecialchars($_POST['email']); ?>"
@@ -96,7 +106,7 @@
                 <!-- Action Buttons -->
                 <div class="flex flex-col space-y-3 pt-4">
                     <button type="submit"
-                        class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg transition flex items-center justify-center">
+                        class="w-full header-button text-white font-bold py-3 px-4 rounded-lg transition flex items-center justify-center">
                         <i class="fas fa-save mr-2"></i> Save Changes
                     </button>
 

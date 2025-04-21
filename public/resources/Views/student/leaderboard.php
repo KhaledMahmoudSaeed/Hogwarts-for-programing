@@ -9,10 +9,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="resources/assets/CSS/style.css">
+    <link rel="stylesheet" href="<?= $GLOBALS['img']->style("style.css") ?>">
+
 </head>
 
 <body>
+    <?php
+    require __DIR__ . "/../layout/navbar.view.php"
+        ?>
     <section id="leaderboard">
         <h1><i class="fa-solid fa-trophy"></i> Hogwarts House Cup Leaderboard <i class="fa-solid fa-trophy"></i></h1>
 
@@ -41,4 +45,5 @@
         </div>
     </section>
 </body>
+
 </html>

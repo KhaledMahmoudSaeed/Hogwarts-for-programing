@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Eagle+Lake&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../resources/assets/CSS/dashboardentry.css">
+    <link rel="stylesheet" href="<?= $GLOBALS['img']->style("dashboardentry.css") ?>">
 </head>
 
 <body>
@@ -22,7 +22,13 @@
         <div class="candle" style="left: 90%; top: 30%; animation-delay: 5s;"></div>
     </div>
 
-    <header class="text-center py-12">
+    <header class="text-center py-12 relative">
+        <!-- Back Button -->
+        <a href="/home"
+            class="absolute top-4 left-4 bg-yellow-300 text-gray-900 px-4 py-2 rounded-md font-bold shadow-md hover:bg-yellow-400 transition-colors duration-300">
+            <i class="fas fa-arrow-left mr-2"></i> Back to Home
+        </a>
+
         <h1 class="title-text text-5xl md:text-6xl font-bold text-yellow-300 mb-4">
             <i class="fas fa-hat-wizard mr-4"></i>
             Hogwarts Control Panel
@@ -44,22 +50,23 @@
             </div>
         </a>
 
-        <!-- Wands Portal -->
-        <a href="/dashboard/wands" class="m-6 w-72 h-48 portal-card flex flex-col items-center justify-center relative">
-            <i class="fas fa-magic portal-icon text-4xl text-yellow-300 mb-3"></i>
-            <span class="text-white text-2xl font-bold">Wand Registry</span>
-            <span class="text-gray-300 text-sm mt-2">Ollivander's Collection</span>
-            <div class="absolute bottom-4 right-4 text-yellow-300">
-                <i class="fas fa-arrow-right"></i>
-            </div>
-        </a>
-
         <!-- Courses Portal -->
         <a href="/dashboard/courses"
             class="m-6 w-72 h-48 portal-card flex flex-col items-center justify-center relative">
             <i class="fas fa-book-open portal-icon text-4xl text-yellow-300 mb-3"></i>
             <span class="text-white text-2xl font-bold">Curriculum</span>
             <span class="text-gray-300 text-sm mt-2">Magical Subjects</span>
+            <div class="absolute bottom-4 right-4 text-yellow-300">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+        </a>
+
+        <!-- Quizz Portal -->
+        <a href="/dashboard/quizzs"
+            class="m-6 w-72 h-48 portal-card flex flex-col items-center justify-center relative">
+            <i class="fas fa-magic portal-icon text-4xl text-yellow-300 mb-3"></i>
+            <span class="text-white text-2xl font-bold">Quizz Registry</span>
+            <span class="text-gray-300 text-sm mt-2">Marks</span>
             <div class="absolute bottom-4 right-4 text-yellow-300">
                 <i class="fas fa-arrow-right"></i>
             </div>
