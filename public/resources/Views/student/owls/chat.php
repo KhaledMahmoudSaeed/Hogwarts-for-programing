@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Owl Post</title>
-    <link
-            <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 
 
     <link rel="stylesheet" href="<?= $GLOBALS['img']->style("style.css") ?>">
@@ -17,7 +16,6 @@
     <?php
     require __DIR__ . "/../../layout/navbar.view.php"
         ?>
-    <br><br>
     <div class="container-chat">
         <div class="seal"></div>
 

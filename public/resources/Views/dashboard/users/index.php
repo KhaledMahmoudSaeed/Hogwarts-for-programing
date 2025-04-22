@@ -11,6 +11,9 @@
         body {
             background: url('<?= $GLOBALS['img']->image("dashboardhogwarts.jpg") ?>') no-repeat center center fixed;
             background-size: cover;
+            background-repeat: no-repeat;
+            height: 91vh;
+
         }
 
         thead {
@@ -125,8 +128,7 @@
                                     <td class="py-4 px-6 font-medium"><?= htmlspecialchars($user['uname']); ?></td>
                                     <td class="py-4 px-6"><?= htmlspecialchars($user['email']); ?></td>
                                     <td class="py-4 px-6">
-                                        <span
-                                            class="px-2 py-1 rounded-full text-xs text-black 
+                                        <span class="px-2 py-1 rounded-full text-xs text-black 
                                         <?= $user['role'] === 'admin' ? 'bg-purple-100' : 'bg-blue-100' ?>">
                                             <?= htmlspecialchars($user['role']); ?>
                                         </span>

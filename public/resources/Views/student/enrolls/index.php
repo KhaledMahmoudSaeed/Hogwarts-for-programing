@@ -16,16 +16,16 @@
     <style>
         /* Page background and default text */
         body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Cinzel', serif;
-            color: #fff;
-        }
-        
-        /* Wrapper for the dark overlay + centered container */
-        #courses-page {
             background: url('<?= $GLOBALS['img']->image($_SESSION['house'], "users") ?>.gif') no-repeat center center fixed;
             background-size: cover;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Wrapper for the dark overlay + centered container */
+        #courses-page {
+            /* background: url('<?= $GLOBALS['img']->image($_SESSION['house'], "users") ?>.gif') no-repeat center center fixed;
+            background-size: cover; */
             display: flex;
             flex-direction: column;
         }
@@ -200,7 +200,6 @@
 <body>
 
     <?php require __DIR__ . "/../../layout/navbar.view.php"; ?>
-
     <section id="courses-page">
         <div class="overlay">
             <div class="container-all">

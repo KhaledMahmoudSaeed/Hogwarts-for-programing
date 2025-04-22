@@ -58,7 +58,7 @@ function isActive($routes)
     <div class="buttons">
       <?php if ($_SESSION['islogged']): ?>
         <div class="profile-logout-container">
-          <a href="/profile">
+          <a href="/profile?<?= $_SESSION['name'] ?>">
             <img src="<?= $GLOBALS['img']->image($_SESSION['img'], 'users') ?>" alt="Profile" class="profile-circle">
           </a>
           <form action="/logout" method="POST">

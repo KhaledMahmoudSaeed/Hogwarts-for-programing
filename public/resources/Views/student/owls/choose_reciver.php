@@ -195,7 +195,7 @@ if ($errorMessage) {
     require __DIR__ . "/../../layout/navbar.view.php"
         ?>
     <div>
-        <br><br><br>
+
     </div>
     <div class="container-chat">
         <img src="<?= $GLOBALS['img']->image("Hogwarts_Owl.png") ?>" alt="Owl Post" class="owl-icon-large"

@@ -36,6 +36,6 @@ $router->delete("/diagon-alley", "Student/items/delete.php");
 $router->get("/leaderboard", "Student/leaderboard.php");
 $router->get('/dashboard/wands', "Dashboard/wands/index.php");
 $router->get("/profile/edit", 'Dashboard/users/edit.php');
-$router->post("/profile", 'Dashboard/users/update.php');
+$router->put("/profile", 'Dashboard/users/update.php');
 
 $router->get('/ollivander', "Ollivander.php");

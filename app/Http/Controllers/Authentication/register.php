@@ -92,6 +92,7 @@ this column data will be handel by trigger
         $_SESSION['jwt'] = $jwt;
         $_SESSION['img'] = "user" . $house_id . ".png";
         $_SESSION['house'] = $house;
+        $_SESSION['name'] = $name;
         $_SESSION['islogged'] = true;
         echo "Registration successful. Redirecting to home page...<br>";
         header("Location: /home");

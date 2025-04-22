@@ -85,7 +85,7 @@ class Router
     public function route($uri, $method)
     {
         // echo "<pre>";
-        // var_dump($this->routers);
+        // var_dump($uri, $method);
         // echo "</pre>";
         // exit;
         $path = new Path();

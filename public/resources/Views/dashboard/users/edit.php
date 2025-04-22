@@ -14,7 +14,7 @@
         }
 
         .header-button {
-            background: linear-gradient(to right, #CA8D0F,#ecb648);
+            background: linear-gradient(to right, #CA8D0F, #ecb648);
         }
 
         .profile-picture {
@@ -23,6 +23,7 @@
             object-fit: cover;
             border: 3px solid #CA8D0F;
         }
+
         .file-upload {
             position: relative;
             overflow: hidden;
@@ -55,66 +56,70 @@
         </div>
 
         <div class="p-6">
-            <form action="/dashboard/user/update" method="POST" enctype="multipart/form-data" class="space-y-6">
-                <input type="hidden" name="_method" value="PUT">
-                <input type="hidden" name="id" value="<?= htmlspecialchars($_POST['id']); ?>">
-                <input type="hidden" name="img" value="<?= htmlspecialchars($user['img']); ?>">
+            <?php if ($_SESSION['role'] === "professor"): ?>
+                <form action="/dashboard/user/update" method="POST" enctype="multipart/form-data" class="space-y-6">
+                <?php else: ?>
+                    <form action="/profile" method="POST" enctype="multipart/form-data" class="space-y-6">
+                    <?php endif ?>
+                    <input type="hidden" name="_method" value="PUT">
+                    <input type="hidden" name="id" value="<?= htmlspecialchars($_POST['id']); ?>">
+                    <input type="hidden" name="img" value="<?= htmlspecialchars($user['img']); ?>">
 
-                <!-- Profile Picture Section -->
-                <div class="flex flex-col items-center">
-                    <div class="flex flex-col items-center mb-4">
-                        <?php if (!empty($_POST['img'])): ?>
-                            <img src="<?= $GLOBALS['img']->image($_POST['img'], 'users'); ?>"
-                                class="profile-picture rounded-full" alt="Profile Picture">
-                        <?php else: ?>
-                            <div class="profile-picture rounded-full bg-gray-200 flex items-center justify-center">
-                                <i class="fas fa-user text-4xl text-gray-500"></i>
+                    <!-- Profile Picture Section -->
+                    <div class="flex flex-col items-center">
+                        <div class="flex flex-col items-center mb-4">
+                            <?php if (!empty($_POST['img'])): ?>
+                                <img src="<?= $GLOBALS['img']->image($_POST['img'], 'users'); ?>"
+                                    class="profile-picture rounded-full" alt="Profile Picture">
+                            <?php else: ?>
+                                <div class="profile-picture rounded-full bg-gray-200 flex items-center justify-center">
+                                    <i class="fas fa-user text-4xl text-gray-500"></i>
+                                </div>
+                            <?php endif; ?>
+
+                            <div class="file-upload mt-3">
+                                <button type="button"
+                                    class="header-button text-white px-3 py-1 rounded-full text-sm font-medium transition">
+                                    <i class="fas fa-camera mr-1"></i> Change Photo
+                                </button>
+                                <input type="file" name="img" accept="image/*" class="file-upload-input">
                             </div>
-                        <?php endif; ?>
-
-                        <div class="file-upload mt-3">
-                            <button type="button"
-                                class="header-button text-white px-3 py-1 rounded-full text-sm font-medium transition">
-                                <i class="fas fa-camera mr-1"></i> Change Photo
-                            </button>
-                            <input type="file" name="img" accept="image/*" class="file-upload-input">
                         </div>
                     </div>
-                </div>
 
-                <!-- Name Field -->
-                <div>
-                    <label class="block text-black font-medium mb-2">
-                        <i class="fas fa-user mr-2 text-orange-500"></i> Full Name
-                    </label>
-                    <input type="text" name="name" value="<?= htmlspecialchars($_POST['name']); ?>"
-                        class="w-full bg-gray-50 text-gray-800 px-4 py-3 rounded-lg focus:outline-none border border-gray-300 transition"
-                        required>
-                </div>
+                    <!-- Name Field -->
+                    <div>
+                        <label class="block text-black font-medium mb-2">
+                            <i class="fas fa-user mr-2 text-orange-500"></i> Full Name
+                        </label>
+                        <input type="text" name="name" value="<?= htmlspecialchars($_POST['name']); ?>"
+                            class="w-full bg-gray-50 text-gray-800 px-4 py-3 rounded-lg focus:outline-none border border-gray-300 transition"
+                            required>
+                    </div>
 
-                <!-- Email Field -->
-                <div>
-                    <label class="block text-black font-medium mb-2">
-                        <i class="fas fa-envelope mr-2 text-orange-500"></i> Email Address
-                    </label>
-                    <input type="email" name="email" value="<?= htmlspecialchars($_POST['email']); ?>"
-                        class="w-full bg-gray-50 text-gray-800 px-4 py-3 rounded-lg focus:outline-none border border-gray-300 transition"
-                        required>
-                </div>
+                    <!-- Email Field -->
+                    <div>
+                        <label class="block text-black font-medium mb-2">
+                            <i class="fas fa-envelope mr-2 text-orange-500"></i> Email Address
+                        </label>
+                        <input type="email" name="email" value="<?= htmlspecialchars($_POST['email']); ?>"
+                            class="w-full bg-gray-50 text-gray-800 px-4 py-3 rounded-lg focus:outline-none border border-gray-300 transition"
+                            required>
+                    </div>
 
-                <!-- Action Buttons -->
-                <div class="flex flex-col space-y-3 pt-4">
-                    <button type="submit"
-                        class="w-full header-button text-white font-bold py-3 px-4 rounded-lg transition flex items-center justify-center">
-                        <i class="fas fa-save mr-2"></i> Save Changes
-                    </button>
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col space-y-3 pt-4">
+                        <button type="submit"
+                            class="w-full header-button text-white font-bold py-3 px-4 rounded-lg transition flex items-center justify-center">
+                            <i class="fas fa-save mr-2"></i> Save Changes
+                        </button>
 
-                    <a href="javascript:history.back()"
-                        class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded-lg transition flex items-center justify-center">
-                        <i class="fas fa-arrow-left mr-2"></i> Back
-                    </a>
-                </div>
-            </form>
+                        <a href="javascript:history.back()"
+                            class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded-lg transition flex items-center justify-center">
+                            <i class="fas fa-arrow-left mr-2"></i> Back
+                        </a>
+                    </div>
+                </form>
         </div>
     </div>
 

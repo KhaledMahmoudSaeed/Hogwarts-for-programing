@@ -18,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id = $user[0]['id'];
         $role = $user[0]['role'];
         $img = $user[0]['img'];
+        $name = $user[0]['name'];
         $house_id = $db->getOne("houses", $user[0]['house_id'])['name'];
         // prepare payload token
         $payload = array(
@@ -31,6 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // send token and img to session to easy asccess them
         $_SESSION['jwt'] = $jwt;
         $_SESSION['img'] = $img;
+        $_SESSION['name'] = $name;
         $_SESSION['house'] = $house;
         $_SESSION['islogged'] = true;
         header("Location: /home");
