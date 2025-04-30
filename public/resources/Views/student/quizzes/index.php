@@ -212,10 +212,10 @@
                     <?php endif; ?>
 
                     <div class="text-center mt-4">
-                        <a href="/enrolls" class="btn-back">
+                        <a href="/enrolls" class="btn-back" style="display:<?= !empty($data) ? 'none' : '' ?>;">
                             <i class="fas fa-arrow-left"></i> Back to Courses
                         </a>
-                        <button type="submit" class="btn-submit">
+                        <button type="submit" class="btn-submit" <?= empty($data) ? 'disabled' : '' ?>>
                             <i class="fas fa-paper-plane"></i> Submit Quiz
                         </button>
                     </div>
