@@ -145,11 +145,29 @@
                 <label for="name">Course Title</label>
                 <input id="name" name="name" type="text" required />
             </div>
+            <?php if (isset($_SESSION['errors']['name'])): ?>
+                <div class="mt-4 p-3 bg-white/10 border border-indigo-400 rounded-md" style="border-color: #b8860b;">
+                    <label class="text-red-700 text-x font-bold block">
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><?php echo htmlspecialchars($_SESSION['errors']['name']); ?></li>
+                        </ul>
+                    </label>
+                </div>
+                <?php unset($_SESSION['errors']['name']); endif; ?>
             <!-- Description -->
             <div>
                 <label for="description">Course Description</label>
                 <textarea id="description" name="description" rows="4" required></textarea>
             </div>
+            <?php if (isset($_SESSION['errors']['string'])): ?>
+                <div class="mt-4 p-3 bg-white/10 border border-indigo-400 rounded-md" style="border-color: #b8860b;">
+                    <label class="text-red-700 text-x font-bold block">
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><?php echo htmlspecialchars($_SESSION['errors']['string']); ?></li>
+                        </ul>
+                    </label>
+                </div>
+                <?php unset($_SESSION['errors']['string']); endif; ?>
             <!-- Professor / Headmaster select -->
             <div>
                 <label for="user_id">Professor In Charge</label>

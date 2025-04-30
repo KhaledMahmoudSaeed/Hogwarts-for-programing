@@ -63,7 +63,7 @@
             box-shadow: 0 0 8px var(--hover-glow);
         }
 
- /* ====== PARCHMENT-STYLE OPTIONS ====== */
+        /* ====== PARCHMENT-STYLE OPTIONS ====== */
         select {
             /* hide native arrow */
             appearance: none;
@@ -117,6 +117,7 @@
         .file-wrapper:hover {
             box-shadow: 0 0 10px var(--hover-glow);
         }
+
         #preview {
             margin-top: 1rem;
             border: 2px solid var(--gold);
@@ -173,11 +174,29 @@
                 <label for="name">Item Name</label>
                 <input id="name" type="text" name="name" required />
             </div>
+            <?php if (isset($_SESSION['errors']['name'])): ?>
+                <div class="mt-4 p-3 bg-white/10 border border-indigo-400 rounded-md" style="border-color: #b8860b;">
+                    <label class="text-red-700 text-x font-bold block">
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><?php echo htmlspecialchars($_SESSION['errors']['name']); ?></li>
+                        </ul>
+                    </label>
+                </div>
+                <?php unset($_SESSION['errors']['name']); endif; ?>
 
             <div>
                 <label for="price">Price (galleons)</label>
                 <input id="price" type="number" name="price" min="1" required />
             </div>
+            <?php if (isset($_SESSION['errors']['number'])): ?>
+                <div class="mt-4 p-3 bg-white/10 border border-indigo-400 rounded-md" style="border-color: #b8860b;">
+                    <label class="text-red-700 text-x font-bold block">
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><?php echo htmlspecialchars($_SESSION['errors']['number']); ?></li>
+                        </ul>
+                    </label>
+                </div>
+                <?php unset($_SESSION['errors']['number']); endif; ?>
 
             <div>
                 <label for="type">Item Type</label>
