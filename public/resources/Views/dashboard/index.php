@@ -64,7 +64,7 @@
         <!-- Quizz Portal -->
         <a href="/dashboard/quizzs"
             class="m-6 w-72 h-48 portal-card flex flex-col items-center justify-center relative">
-            <i class="fas fa-magic portal-icon text-4xl text-yellow-300 mb-3"></i>
+            <i class="fas fa-wand-sparkles portal-icon text-4xl text-yellow-300 mb-3"></i>
             <span class="text-white text-2xl font-bold">Quizz Registry</span>
             <span class="text-gray-300 text-sm mt-2">Marks</span>
             <div class="absolute bottom-4 right-4 text-yellow-300">
