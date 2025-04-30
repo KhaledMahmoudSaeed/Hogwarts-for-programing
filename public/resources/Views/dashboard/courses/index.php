@@ -242,6 +242,7 @@ $pageData = array_slice($data, $offset, $perPage);
                                 </td>
                                 <td class="px-5 py-4">
                                     <div class="flex space-x-3 action-icons">
+                                        <?php if (strtolower($_SESSION['role']) === 'headmaster' || (strtolower($_SESSION['name']) === strtolower($course['pname']))): ?>
                                             <!-- Edit Button -->
                                             <form action="/dashboard/course/edit" method="POST" class="inline-block">
                                                 <input type="hidden" name="_method" value="GET">
@@ -262,6 +263,7 @@ $pageData = array_slice($data, $offset, $perPage);
                                                     <i class="fas fa-skull-crossbones"></i>
                                                 </button>
                                             </form>
+                                        <?php endif; ?>
                                     </div>
                                 </td>
                             </tr>
