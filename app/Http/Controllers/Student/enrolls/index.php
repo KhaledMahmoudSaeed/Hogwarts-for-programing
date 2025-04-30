@@ -21,4 +21,19 @@ $courses = $db->getWith2Joins(
     "enrollments.user_id =$id "
 );
 
+foreach ($courses as &$course) {
+    $cid = (int) $course['cid'];
+
+    // pull just the IDs of all quizzes for this course
+    $quizRows = $db->where(
+        'quizzes',
+        "course_id = {$cid}",
+        [],          // no bindings
+        ['id']       // only fetch the id column
+    );
+
+    // quiz_count = total quizzes in this course
+    $course['quiz_count'] = count($quizRows);
+}
+
 $path->view("student/enrolls/index.php", $courses);
