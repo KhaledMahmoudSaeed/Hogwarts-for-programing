@@ -17,11 +17,9 @@
     require __DIR__ . "/../../layout/navbar.view.php"
         ?>
     <div class="container-chat">
-        <div class="seal"></div>
-
         <div class="chat-header">
             <h1>
-                <img src="<?= $GLOBALS['img']->image("Hogwarts_Owl.png") ?>" alt="Owl Post" class="owl-icon-small">
+                <img src="<?= $GLOBALS['img']->image("owl_post.png") ?>" alt="Owl Post" class="owl-icon-small">
                 Owl Post
             </h1>
             <div class="recipient-email">To: <?= htmlspecialchars($data[0][2]) ?></div>
@@ -58,7 +56,7 @@
             <button type="submit" class="send-button">Send<br>Owl</button>
         </form>
 
-        <a href="/home" class="back-link">Back to recipients</a>
+        <a href="/owl" class="back-link">Back to recipients</a>
     </div>
 </body>
 
