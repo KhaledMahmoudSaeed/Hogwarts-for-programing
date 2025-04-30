@@ -90,6 +90,7 @@ user4.png => syltherin
 this column data will be handel by trigger
         */
         $_SESSION['jwt'] = $jwt;
+        $_SESSION['id'] = $payload['id'];
         $_SESSION['img'] = "user" . $house_id . ".png";
         $_SESSION['house'] = $house;
         $_SESSION['name'] = $name;
