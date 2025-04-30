@@ -110,11 +110,29 @@
                 <label>Name</label>
                 <input type="text" name="name" value="<?= htmlspecialchars($data['cname']); ?>" required>
             </div>
+            <?php if (isset($_SESSION['errors']['name'])): ?>
+                <div class="mt-4 p-3 bg-white/10 border border-indigo-400 rounded-md" style="border-color: #b8860b;">
+                    <label class="text-red-700 text-x font-bold block">
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><?php echo htmlspecialchars($_SESSION['errors']['name']); ?></li>
+                        </ul>
+                    </label>
+                </div>
+                <?php unset($_SESSION['errors']['name']); endif; ?>
 
             <div>
                 <label>Description</label>
                 <input type="text" name="description" value="<?= htmlspecialchars($data['description']); ?>" required>
             </div>
+            <?php if (isset($_SESSION['errors']['string'])): ?>
+                <div class="mt-4 p-3 bg-white/10 border border-indigo-400 rounded-md" style="border-color: #b8860b;">
+                    <label class="text-red-700 text-x font-bold block">
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><?php echo htmlspecialchars($_SESSION['errors']['string']); ?></li>
+                        </ul>
+                    </label>
+                </div>
+                <?php unset($_SESSION['errors']['string']); endif; ?>
 
             <div>
                 <label>Upload Image</label>

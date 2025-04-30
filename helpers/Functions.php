@@ -1,10 +1,40 @@
 <?php
 namespace Helpers;
 use Helpers\Path;
+use Respect\Validation\Validator as v;
+
 
 class Functions
 {
-
+    private v $v;
+    private array $VALIDATION_RULES;
+    private array $ERROR_MESSAGES;
+    public function __construct()
+    {
+        $this->v = v::create();
+        $this->VALIDATION_RULES = [
+            "email" => $this->v::email(),
+            "name" => $this->v::alpha(" ", "-")->notEmpty()->length(1, 200),
+            "password" => $this->v::length(8)
+                ->regex('/[A-Z]/')
+                ->regex('/[a-z]/')
+                ->regex('/\d/')
+                ->regex('/[!@#$%^&*()\-_=+{};:,<.>?\[\]\/|~`"\']+/'),
+            "number" => $this->v::intVal()->positive(),
+            "string" => $this->v::stringType()
+                ->notEmpty()
+                ->length(1, 200)
+                ->alnum('-_', '.')
+        ];
+        $this->ERROR_MESSAGES = [
+            "email" => "Please enter a valid email address.",
+            "name" => "Name must be 1–200 characters and contain only letters, spaces, or hyphens.",
+            "password" => "Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.",
+            "img" => "Image must be a valid JPG, PNG file under 2MB.",
+            "number" => "Number must be a positive integer.",
+            "string" => "This field must be a string between 1–200 characters and contain only alphanumeric, underscore, dash, or dot.",
+        ];
+    }
     public function dd($content)
     {
         echo "<pre>";
@@ -53,5 +83,18 @@ class Functions
             error_log("Image deletion error: " . $th->getMessage());
             return false;
         }
+    }
+    public function validators(array $inputs)
+    {
+        foreach ($inputs as $key => $value) {
+            if (!$this->VALIDATION_RULES[$key]->validate($value)) {
+                $_SESSION['errors'][$key] = $this->ERROR_MESSAGES[$key];
+                $errorExists = true;
+            }
+        }
+        if ($errorExists) {
+            return false;
+        }
+        return true;
     }
 }

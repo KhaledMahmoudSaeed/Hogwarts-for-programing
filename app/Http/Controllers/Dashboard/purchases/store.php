@@ -1,6 +1,14 @@
 <?php
 // if there any img uploaded so it will replace the exits one unless you will have the default image
-
+$data = [
+    "name" => $_POST['name'],
+    "number" => $_POST['price'],
+];
+$fn->validators($data);
+if ($_SESSION['errors']) {
+    header("Location:/dashboard/purchase/create");
+    exit;
+}
 $img = $fn->insertImage("items");
 if ($img) {
     $db->insert("magical_items", [

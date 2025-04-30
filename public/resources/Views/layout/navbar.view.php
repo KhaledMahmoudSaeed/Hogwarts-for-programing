@@ -44,7 +44,7 @@ function isActive($routes)
           <li><a href="/ollivander" class="<?= isActive('/ollivander') ?>">Ollivander's Store</a></li>
         <?php endif; ?>
         <!-- Visible only if user is logged in -->
-        <?php if (strtolower($_SESSION['role']) == "professor"): ?>
+        <?php if (strtolower($_SESSION['role']) == "professor" || strtolower($_SESSION['role']) == "headmaster"): ?>
           <li><a href="/dashboard" class="<?= isActive('/dashboard') ?>">Dashboard</a></li>
         <?php else: ?>
           <li><a href="/enrolls" class="<?= isActive('/enrolls') ?>">Courses</a></li>

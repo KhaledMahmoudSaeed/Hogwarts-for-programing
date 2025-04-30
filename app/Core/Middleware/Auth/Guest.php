@@ -32,7 +32,7 @@ class Guest implements AuthInterface
             return "200"; // Guest can access allowed routes
         }
 
-        if ($role === "student" || $role === "professor") {
+        if (in_array($role, ['student', 'professor', 'headmaster'], true)) {
             if (!in_array($uri, $this->allowed_routes, true)) {
                 return "302"; // Redirect to dashboard for authenticated users
             }

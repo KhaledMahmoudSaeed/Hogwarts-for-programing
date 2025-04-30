@@ -61,7 +61,7 @@
             box-shadow: 0 0 8px var(--hover-glow);
         }
 
-                /* ====== PARCHMENT-STYLE OPTIONS ====== */
+        /* ====== PARCHMENT-STYLE OPTIONS ====== */
         select {
             /* hide native arrow */
             appearance: none;
@@ -160,7 +160,8 @@
                         <option value="">— Choose Course —</option>
                         <?php foreach ($data as $course): ?>
                             <option value="<?= htmlspecialchars($course['id']); ?>">
-                                <?= htmlspecialchars($course['name']); ?></option>
+                                <?= htmlspecialchars($course['name']); ?>
+                            </option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -171,6 +172,15 @@
                 <label for="question">Question</label>
                 <input id="question" type="text" name="question" required />
             </div>
+            <?php if (isset($_SESSION['errors']['string'])): ?>
+                <div class="mt-4 p-3 bg-white/10 border border-indigo-400 rounded-md" style="border-color: #b8860b;">
+                    <label class="text-red-700 text-x font-bold block">
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><?php echo htmlspecialchars($_SESSION['errors']['string']); ?></li>
+                        </ul>
+                    </label>
+                </div>
+                <?php unset($_SESSION['errors']['string']); endif; ?>
 
             <!-- Correct Answer -->
             <div>
@@ -198,6 +208,7 @@
             <a href="/dashboard/quizzs" class="back-link">&larr; Back to Quizzes</a>
         </div>
     </div>
+
 </body>
 
 </html>

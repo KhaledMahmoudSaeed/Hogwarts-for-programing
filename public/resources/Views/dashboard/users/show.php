@@ -16,6 +16,7 @@
             --ravenclaw: #113243;
             --hufflepuff: #CA8D0F;
         }
+
         body {
             font-family: 'Cinzel Decorative', cursive;
             background: url('<?= $GLOBALS['img']->image("dashboardhogwarts.jpg") ?>') no-repeat center center fixed;
@@ -45,7 +46,7 @@
             transform: scale(1.05);
         }
 
-                .student {
+        .student {
             background: #d4b483;
             color: #333;
         }
@@ -95,7 +96,8 @@
             border: 3px solid #d4af37;
             box-shadow: 0 0 10px #f9e79f;
         }
-        .profile-picture:hover{
+
+        .profile-picture:hover {
             transform: scale(1.1);
             box-shadow: 0 0 15px rgba(218, 165, 32, 0.8);
         }
@@ -148,8 +150,7 @@
                         <div class="flex justify-between border-b border-yellow-600 pb-2">
                             <span><i class="fas fa-user-tag gold-text mr-2"></i>Status:</span>
                             <span>
-                                <span
-                                    class="px-2 py-1 rounded-full text-xs <?= strtolower($user['role']) ?>">
+                                <span class="px-2 py-1 rounded-full text-xs <?= strtolower($user['role']) ?>">
                                     <?= htmlspecialchars($user['role']) ?>
                                 </span>
                             </span>
@@ -169,8 +170,7 @@
 
                 <!-- Buttons -->
                 <div class="flex justify-between items-center mt-6">
-                    <button
-                        class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition">
+                    <button class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition">
                         <a href="/dashboard/users"><i class="fas fa-arrow-left mr-1"></i> Back</a>
                     </button>
 
@@ -179,6 +179,13 @@
                             <input type="hidden" name="id" value="<?= $user['id'] ?>">
                             <button type="submit" class="hogwarts-button px-4 py-2 rounded-lg flex items-center">
                                 <i class="fas fa-hat-wizard mr-2"></i> Appoint as Professor
+                            </button>
+                        </form>
+                    <?php elseif (strtolower($_SESSION['role']) === 'headmaster' && strtolower($user['role']) === 'professor'): ?>
+                        <form action="/dashboard/user/demote" method="POST">
+                            <input type="hidden" name="id" value="<?= $user['id'] ?>">
+                            <button type="submit" class="hogwarts-button px-4 py-2 rounded-lg flex items-center">
+                                <i class="fas fa-hat-wizard mr-2"></i> Retire from the post
                             </button>
                         </form>
                     <?php endif; ?>

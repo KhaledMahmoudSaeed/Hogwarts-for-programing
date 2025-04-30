@@ -7,19 +7,7 @@ use Helpers\Auth;
 class Professor
 {
     private $allowed_routes = [
-        //guest
-        "/",
-        "/home",
-        "/about",
-        "/login",
-        "/register",
-        // auth
-        '/ollivander',
-        '/diagon-alley',
-        '/enrolls',
-        '/logout',
-        '/dashboard',
-        "/leaderboard",
+        "/dashboard",
         // users
         '/dashboard/users',
         '/dashboard/user',
@@ -57,7 +45,7 @@ class Professor
     public function handle($uri)
     {
         $role = $_SESSION['role'] ?? null; // Avoid undefined index error
-        if ($role === "professor") {
+        if (in_array($role, ['professor', 'headmaster'], true)) {
             if (!in_array(trim($uri), $this->allowed_routes, true)) {
                 return "403"; // Forbidden
             }

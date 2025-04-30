@@ -1,7 +1,7 @@
 <?php
 // check if there is a new message sent or not ,beacause there is two views redirect here and redirect here with each message sent
 if (isset($_POST['message'])) {
-    $messages = $clean_message = htmlspecialchars(trim($_POST['message']), ENT_QUOTES, 'UTF-8');// sanitize the message
+    $messages = htmlspecialchars(trim($_POST['message']), ENT_QUOTES, 'UTF-8');// sanitize the message
     // insert the message 
     $db->insert('owls', [
         'sender_id' => $_POST['sender_id'],

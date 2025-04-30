@@ -59,3 +59,108 @@ Even the wizarding world needs a **digital upgrade**!
 
 ## **Installation & Setup**  
 *(To be added)*  
+
+```mermaid
+erDiagram
+
+    users {
+        int4 id PK
+        varchar name
+        varchar email
+        varchar password
+        varchar role
+        int4 house_id FK
+        int4 wand_id FK
+        timestamp created_at
+        int4 money
+        varchar img
+    }
+
+    houses {
+        int4 id PK
+        varchar name
+        int4 points
+    }
+
+    courses {
+        int4 id PK
+        varchar name
+        int4 user_id FK
+        text description
+        timestamp created_at
+        varchar img
+    }
+
+    quizzes {
+        int4 id PK
+        int4 course_id FK
+        text question
+        text correct_answer
+        int4 points
+        timestamp created_at
+    }
+
+    student_quizzes {
+        int4 id PK
+        int4 quiz_id FK
+        int4 user_id FK
+        text answer
+        int4 earned_points
+        timestamp created_at
+    }
+
+    enrollments {
+        int4 id PK
+        int4 user_id FK
+        int4 course_id FK
+        int4 grade
+        timestamp created_at
+        varchar quiz_finish
+    }
+
+    purchases {
+        int4 id PK
+        int4 user_id FK
+        int4 item_id FK
+        timestamp created_at
+    }
+
+    owls {
+        int4 id PK
+        int4 sender_id FK
+        int4 receiver_id FK
+        varchar message
+        timestamp created_at
+    }
+
+    magical_items {
+        int4 id PK
+        varchar name
+        varchar type
+        int4 price
+        timestamp created_at
+        varchar img
+    }
+
+    wands {
+        int4 id PK
+        varchar wood
+        varchar core
+        timestamp created_at
+        varchar img
+    }
+
+    users ||--|| houses : "belongs to"
+    users ||--|| wands : "has one"
+    courses o{--|| users : "created by"
+    quizzes |{--|| courses : "belongs to"
+    student_quizzes |{--|| quizzes : "answered"
+    student_quizzes |{--|| users : "by"
+    enrollments |{--|| users : "enrolled"
+    enrollments |{--|| courses : "in"
+    purchases |{--|| users : "made by"
+    purchases |{--|| magical_items : "bought"
+    owls o{--o| users : "sent by" 
+    owls o{--o| users : "received by" 
+
+```
