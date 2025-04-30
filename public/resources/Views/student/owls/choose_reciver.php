@@ -45,21 +45,14 @@ if ($errorMessage) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Owl Post - Find Recipient</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="<?= $GLOBALS['img']->style("style.css") ?>">
 
     <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Cinzel', sans-serif;
-        }
-
         /* Body Styling */
         body {
             background: url('<?= $GLOBALS['img']->image("landing.png") ?>') no-repeat center center fixed;
             background-size: cover;
-
         }
 
         /* Container Styling */
@@ -69,17 +62,57 @@ if ($errorMessage) {
             border-radius: 10px;
             max-width: 500px;
             width: 90%;
-            margin: 0 auto;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin: 3rem auto;
+            border: 2px solid var(--gold);
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8),
+                0 0 40px rgba(212, 175, 55, 0.6);
         }
 
         /* Owl Icon Styling */
         .owl-icon-large {
             width: 150px;
-            height: auto;
             margin-bottom: 1rem;
+            filter: drop-shadow(1px 1px 5px rgba(221, 133, 45, 0.7));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Shadow under the Owl */
+        .owl-shadow {
+            width: 150px;
+            height: 20px;
+            background: rgba(0, 0, 0, 0.8);
             border-radius: 50%;
+            margin: 0 auto 20px;
+            margin-top: -20px;
+            animation: shadowPulse 4s ease-in-out infinite;
+        }
+
+        /* Keyframes for Owl Floating */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Keyframes for Shadow Pulsing */
+        @keyframes shadowPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 0.6;
+            }
         }
 
         /* Headings */
@@ -97,7 +130,7 @@ if ($errorMessage) {
         .instructions {
             font-size: 1.1rem;
             margin-bottom: 1.5rem;
-            color: #c0c0c0;
+            color: #ccc;
         }
 
         /* Form Styling */
@@ -117,6 +150,7 @@ if ($errorMessage) {
             font-size: 1rem;
             font-weight: bold;
             color: #f4d35e;
+            text-align: left;
         }
 
         input[type="email"] {
@@ -124,18 +158,18 @@ if ($errorMessage) {
             font-size: 1rem;
             border: none;
             border-radius: 5px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.3);
             color: #fff;
             transition: background 0.3s ease;
         }
 
         input[type="email"]:focus {
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.5);
             outline: none;
         }
 
         input[type="email"]::placeholder {
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.5);
         }
 
         /* Submit Button */
@@ -172,25 +206,20 @@ if ($errorMessage) {
             border-color: #fff;
         }
 
-        /* Error Message Styling */
+        /* Error Message */
         .error-message {
-            background: rgba(255, 0, 0, 0.8);
+            background: rgba(180, 0, 0, 0.7);
             color: #fff;
             padding: 1rem;
-            border-radius: 5px;
+            border-radius: 8px;
+            text-align: center;
             margin-bottom: 1rem;
-        }
-
-        .error-message p {
-            margin: 0;
-            font-size: 1rem;
+            border: 2px solid #8b0000;
         }
     </style>
 </head>
 
 <body>
-    <link rel="stylesheet" href="<?= $GLOBALS['img']->style("style.css") ?>">
-
     <?php
     require __DIR__ . "/../../layout/navbar.view.php"
         ?>
@@ -198,8 +227,9 @@ if ($errorMessage) {
 
     </div>
     <div class="container-chat">
-        <img src="<?= $GLOBALS['img']->image("Hogwarts_Owl.png") ?>" alt="Owl Post" class="owl-icon-large"
+        <img src="<?= $GLOBALS['img']->image("owl_post.png") ?>" alt="Owl Post" class="owl-icon-large"
             style="width: 200px; height: auto;">
+        <div class="owl-shadow"></div>
         <h1>Owl Post</h1>
 
         <p class="instructions">Enter the email address of the witch or wizard you wish to send an owl to:</p>
@@ -217,12 +247,12 @@ if ($errorMessage) {
             </div>
 
             <button type="submit" class="submit-button">
-                Find Recipient & Send Owl
+                <i class="fas fa-feather-alt"></i> Find Recipient & Send Owl
             </button>
         </form>
         <br>
         <br>
-        <a href="/home" class="back-button">Back to Dashboard</a>
+        <a href="/home" class="back-button">return to greate hall</a>
     </div>
 </body>
 
