@@ -52,7 +52,7 @@ $_SESSION['islogged'] = $isLoggedIn;
     <?php require("pages/" . $content . ".view.php") ?>
 
     <?php if ($isLoggedIn): ?>
-        <a href="/diagon-alley" class="diagon-icon" title="Diagon Alley">
+        <a href="/diagon-alley" class="diagon-icon <?php echo $newUser ? 'hidden' : ''; ?>" title="Diagon Alley">
             <i class="fa-solid fa-cart-shopping"></i>
         </a>
     <?php endif; ?>
@@ -71,6 +71,7 @@ $_SESSION['islogged'] = $isLoggedIn;
             document.getElementById("homepage").classList.remove("hidden");
             document.getElementsByClassName("navbar")[0].classList.remove("hidden");
             document.getElementsByClassName("magic-footer")[0].classList.remove("hidden");
+            document.querySelectorAll("diagon-icon")[0].classList.remove("hidden");
 
         }
     </script>
