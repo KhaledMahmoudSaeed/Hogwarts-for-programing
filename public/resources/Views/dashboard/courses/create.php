@@ -154,12 +154,17 @@
             <div>
                 <label for="user_id">Professor In Charge</label>
                 <div class="select-wrapper mt-1">
-                    <select id="user_id" name="user_id" required>
+                    <?php if (strtolower($_SESSION['role'] ?? '') === 'headmaster'): ?>
+                        <select id="user_id" name="user_id" required>
                             <option value="">— Select Professor —</option>
-                          <?php foreach ($data as $prof): ?>
-                            <option value="<?= (int) $prof['id'] ?>"><?= htmlspecialchars($prof['name']) ?></option>
-                        <?php endforeach; ?>
+                            <?php foreach ($data as $prof): ?>
+                                <option value="<?= (int) $prof['id'] ?>"><?= htmlspecialchars($prof['name']) ?></option>
+                            <?php endforeach; ?>
                         </select>
+                    <?php else: ?>
+                        <input type="text" value="<?= htmlspecialchars($_SESSION['name'] ?? '') ?>" disabled />
+                        <input type="hidden" name="user_id" value="<?= (int) ($_SESSION['id'] ?? 0) ?>" />
+                    <?php endif; ?>
                 </div>
             </div>
             <!-- Emblem Upload -->
