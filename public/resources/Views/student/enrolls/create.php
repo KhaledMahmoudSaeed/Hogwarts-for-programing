@@ -3,172 +3,176 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Create Course</title>
-    <!-- Tailwind CSS -->
+    <title>Enroll in a New Course | Hogwarts Academy</title>
+
+    <!-- Tailwind CSS (optional) -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Eagle+Lake&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="<?= $GLOBALS['img']->style("style.css") ?>">
+    <link href="https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap" rel="stylesheet">
 
     <style>
-        /* General Styles */
+        /* === Full‐page backdrop === */
         body {
-            background: url('<?= $GLOBALS['img']->image($_SESSION['house'], "users") . ".gif" ?>') no-repeat center center fixed;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('<?= $GLOBALS['img']->image($_SESSION['house'], "users") ?>.gif') no-repeat center center fixed;
             background-size: cover;
             font-family: 'Cinzel', serif;
-            /* Magical font */
-            color: #fff;
+            color: #f5f5dc;
         }
 
-        /* Container Styling */
+        /* === Parchment container === */
         .container-all {
-            background: rgba(0, 0, 0, 0.7);
-            /* Dark overlay */
-            border-radius: 15px;
-            padding: 2rem;
-            margin-top: 2rem;
-            max-width: 600px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 3px solid #d4af37;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
             width: 90%;
+            max-width: 600px;
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.5);
         }
 
-        /* Header Styling */
+        /* === Header styling === */
         h2 {
-            font-family: 'Eagle Lake', cursive;
-            /* Cursive font for title */
-            font-size: 2rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            color: #f7b924;
-            /* Golden yellow */
+            font-size: 2.25rem !important;
+            font-weight: 800 !important;
+            color: #ffd700;
             text-align: center;
+            margin-bottom: 1.5rem !important;
         }
 
-        /* Label Styling */
+        /* === Form labels === */
         label {
-            font-size: 1rem;
-            color: #f7b924;
-            /* Golden yellow */
+            display: block;
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: #ffd700;
+            margin-bottom: 0.5rem;
         }
 
-        /* Dropdown Styling */
+        /* === Select dropdown === */
         select {
-            background: rgba(255, 255, 255, 0.1);
-            /* Semi-transparent background */
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            color: #fff;
-            padding: 0.5rem;
-            border-radius: 5px;
             width: 100%;
+            padding: 0.6rem !important;
+            font-size: 1rem !important;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            border-radius: 8px;
+            color: #ccc !important;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
-        /* Submit Button Styling */
-        .submit-btn {
-            background: linear-gradient(135deg, #f7b924, #d3a625);
+        select:focus {
+            outline: none;
+            border-color: #ffd700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+        }
+
+        select option {
+            background: #000;
+            color: #f5f5dc;
+        }
+
+        /* === Buttons === */
+        .btn {
+            font-family: 'Cinzel', serif;
             font-weight: bold;
-            padding: 0.5rem !important;
-            font-size: 1rem !important;
+            border-radius: 50px;
+            padding: 0.6em 1.2em;
+            border: 2px solid #fff8dc !important;
+            box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+            transition: all 0.4s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4em;
+            text-decoration: none;
+            justify-content: center;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #b8860b, #ffd700);
+            color: #000;
+            margin-top: 1rem;
+            border: none;
         }
 
         .submit-btn:hover {
-            background: linear-gradient(135deg, #e6a819, #c2951e);
+            background: linear-gradient(45deg, #ffcc00, #daa520);
+            box-shadow: 0 0 20px #ffd700, 0 0 5px #fff;
         }
 
-        /* Back Button Styling */
         .back-btn {
-            color: #f7b924 !important;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: all ease 0.5s;
+            background: none;
+            color: #ffd700;
+            margin-top: 2rem;
+            font-size: 0.95rem;
         }
 
         .back-btn:hover {
-            color: #fff !important;
-            background: linear-gradient(135deg, #e6a819, #c2951e) !important;
-        }
-
-        select {
-            background: rgba(255, 255, 255, 0.1);
-            /* Semi-transparent background */
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            /* Subtle border */
-            color: #fff;
-            /* White text for dropdown */
-            padding: 0.5rem;
-            border-radius: 5px;
-            width: 100%;
-            font-family: 'Cinzel', serif;
-            /* Magical font */
-            font-size: 1rem;
-        }
-
-        /* Option Styling */
-        select option {
-            background: #000;
-            /* Black background for options */
-            color: #fff;
-            /* White text for options */
-            padding: 0.5rem;
-            font-family: 'Cinzel', serif;
-            /* Consistent font */
-        }
-
-        /* Hover Effect for Options */
-        select option:hover {
-            background: #f7b924;
-            /* Golden yellow on hover */
+            background: linear-gradient(45deg, #ffcc00, #daa520);
             color: #000;
-            /* Black text on hover */
+            box-shadow: 0 0 20px #ffd700, 0 0 5px #fff;
         }
 
-        /* Placeholder Styling */
-        select option[value=""][disabled] {
-            color: #aaa;
-            /* Grayed-out placeholder text */
-            font-style: italic;
-            /* Italicize placeholder */
+        /* === Form layout spacing === */
+        form>div {
+            margin-bottom: 1.5rem;
+        }
+
+        /* === Responsive tweak === */
+        @media (max-width: 480px) {
+            .container-all {
+                padding: 2rem 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 
-<body class=" flex flex-col items-center justify-center ">
-    <?php
-    ?><br>
-    <div class="container-all bg-opacity-90 rounded-lg shadow-lg">
-        <h2>Enroll in a New Course</h2>
+<body>
+    <div class="container-all">
+        <h2><i class="fas fa-hat-wizard"></i> Enroll in a New Course</h2>
 
-        <form action="/enroll/store" method="POST" class="space-y-4">
+        <form action="/enroll/store" method="POST">
             <input type="hidden" name="user_id" value="<?= end($data);
             array_pop($data) ?>">
-            <!-- Courses Dropdown -->
+
+            <!-- Course Selection -->
             <div>
-                <label class="block font-semibold">Select Course:</label>
-                <select name="course_id" required
-                    class="w-full mt-5 p-2 border rounded-md focus:ring focus:ring-blue-300 block font-semibold">
+                <label for="course_id"><i class="fas fa-book-open"></i> Select Course:</label>
+                <select id="course_id" name="course_id" required>
                     <option value="" disabled selected>-- Choose Course --</option>
                     <?php foreach ($data as $course): ?>
-                        <option value="<?= htmlspecialchars($course['id']); ?>" class="dropdown-option">
+                        <option value="<?= htmlspecialchars($course['id']); ?>">
                             <?= htmlspecialchars($course['name']); ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
             </div>
 
-            <!-- Submit Button -->
-            <div class="flex justify-end">
-                <button type="submit" class="submit-btn">
-                    Enroll Course
+            <!-- Submit -->
+            <div class="text-right">
+                <button type="submit" class="btn submit-btn">
+                    <i class="fas fa-plus-circle"></i> Enroll Now
                 </button>
             </div>
         </form>
 
-        <!-- Back Button -->
-        <div class="mt-7 text-center">
-            <a href="/enrolls" class="back-btn"> Back to Your Courses</a>
+        <!-- Back Link -->
+        <div class="text-center">
+            <a href="/enrolls" class="btn back-btn">
+                <i class="fas fa-arrow-left"></i> Back to My Courses
+            </a>
         </div>
     </div>
-
 </body>
 
 </html>
