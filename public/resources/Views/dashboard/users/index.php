@@ -328,6 +328,8 @@ $pageData = array_slice($data, $offset, $perPage);
                                                 <i class="fas fa-eye"></i>
                                             </a>
 
+                                            <!-- Edit (headmaster or professor-for-students) -->
+                                            <?php if (strtolower($_SESSION['role']) === 'headmaster' || (strtolower($_SESSION['role']) === 'professor' && strtolower($user['role']) === 'student')): ?>
                                                 <form action="/dashboard/user/edit" method="POST" class="inline-block">
                                                     <input type="hidden" name="_method" value="GET">
                                                     <input type="hidden" name="id" value="<?= $user['id'] ?>">
@@ -347,6 +349,7 @@ $pageData = array_slice($data, $offset, $perPage);
                                                         <i class="fas fa-skull-crossbones"></i>
                                                     </button>
                                                 </form>
+                                            <?php endif; ?>
                                         </div>
                                     </td>
                                 </tr>
