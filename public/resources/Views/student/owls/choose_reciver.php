@@ -227,7 +227,7 @@ if ($errorMessage) {
 
     </div>
     <div class="container-chat">
-        <img src="<?= $GLOBALS['img']->image("owl_post.png") ?>" alt="Owl Post" class="owl-icon-large"
+        <img src="<?= $GLOBALS['img']->image("Hogwarts_Owl.png") ?>" alt="Owl Post" class="owl-icon-large"
             style="width: 200px; height: auto;">
         <div class="owl-shadow"></div>
         <h1>Owl Post</h1>

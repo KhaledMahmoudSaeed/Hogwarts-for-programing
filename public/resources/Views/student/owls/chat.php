@@ -19,7 +19,7 @@
     <div class="container-chat">
         <div class="chat-header">
             <h1>
-                <img src="<?= $GLOBALS['img']->image("owl_post.png") ?>" alt="Owl Post" class="owl-icon-small">
+                <img src="<?= $GLOBALS['img']->image("Hogwarts_Owl.png") ?>" alt="Owl Post" class="owl-icon-small">
                 Owl Post
             </h1>
             <div class="recipient-email">To: <?= htmlspecialchars($data[0][2]) ?></div>

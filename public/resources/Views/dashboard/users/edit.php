@@ -28,7 +28,7 @@ require __DIR__ . "/../../layout/dashboard/edit&CreatePageStart.php"
 
                     <div class="file-upload mt-4">
                         <button type="button" class="btn-gold text-sm font-medium">
-                            <i class="fas fa-camera mr-1"></i> Change Photo
+                            Change Photo
                         </button>
                         <input type="file" name="img" accept="image/*" class="file-upload-input">
                     </div>

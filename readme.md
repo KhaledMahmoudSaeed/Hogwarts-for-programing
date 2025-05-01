@@ -1,5 +1,6 @@
 # **Project Overview**  
-Welcome to the **Hogwarts Student Management System**, an innovative platform that blends student management with e-commerce functionality. Designed through a **creative and immersive storyline**, this project makes learning more engaging and productive.  
+Welcome to the Hogwarts Student Management System , an innovative platform that blends student management with e-commerce functionality. Designed through a creative and immersive storyline , this project makes learning more engaging and productive.
+This project is built entirely using PHP (no frameworks) and follows the MVC pattern within a monolithic architecture .
 
 ## **A New Era at Hogwarts**  
 
@@ -14,9 +15,22 @@ You are among the first graduates of this **new-age Hogwarts curriculum**, and a
 
 Even the wizarding world needs a **digital upgrade**!  
 
+## Advanced Features
+
+- Use 3 triggers for : 
+  - Update earned points for a student after submitting a quiz , done by comparing their answers with the correct answers.
+  - Update the img field in the User entity with an image corresponding to the house they were selected into (e.g., user1.png if house.id = 1), which changes the color of the cat's jacket.
+  - Update house points whenever one of its students submits a quiz, so we can determine which house has the most points.
+- use some usefull pakages like (respect/validation-JWT-vlucas/phpdotenv-symfony)
+- Use Supabase as a PostgreSQL-based serverless backend for secure storage and auto-scaling capabilities. 
+- Implement ORM methods like:
+getAll(), getOne(), insert(), update(), delete(), getWithJoin(), getWith2Joins()
+inside the Database class : [Database.php](app/Core/Database.php)
+- Make awesome helper methods you can see it here [FunctionClass](helpers/Functions.php)
+- Apply routing system and middelware for (guest,student,professor,headmster)
 ---
 
-## **Key Features**  
+## **Basic Features**  
 
 ### 🏰 **House Assignment**  
 - **Sorting Hat Magic** 🧙‍♂️  
@@ -49,12 +63,31 @@ Even the wizarding world needs a **digital upgrade**!
 - **Magical Items & E-Commerce Store**  
   - Students can **collect or purchase** brooms, potion ingredients, spell books, and other magical items as they progress.  
 
-### 🎓 **Admin Dashboard (For Professors & Staff)**  
+### 🎓 **Admin Dashboard (For Professors & Headmaster)**  
 - **Student & Course Management**  
-  - Professors can **add and manage students, assign tasks, quizzes, and track house points**.  
+  - Professors can 
+    - **create new course which will be assigned to them only**.  
+    - **manage students, make quizzes, and add magical items**.  
 - **Full Administrative Control**  
-  - **Dumbledore** has **ultimate authority**, capable of overriding any professor’s actions if needed.  
+  - **Dumbledore(headmaster)** has **ultimate authority**, capable of overriding any professor’s actions if needed.  
+    - can appoint student to professor or retire the professor.
+    - can edit professors data or make new courses to them  
 
+
+### There are some screenshots form website 
+![](https://res.cloudinary.com/dweffiohi/image/upload/v1746130146/32_eyvw2s.png)
+![](https://res.cloudinary.com/dweffiohi/image/upload/v1746130148/33_u3sp8b.png)
+![](https://res.cloudinary.com/dweffiohi/image/upload/v1746130138/22_ge6evf.png)
+![](https://res.cloudinary.com/dweffiohi/image/upload/v1746130144/30_tqx7zs.png)
+![](https://res.cloudinary.com/dweffiohi/image/upload/v1746130145/31_fqfglg.png)
+![](https://res.cloudinary.com/dweffiohi/image/upload/v1746130143/29_vilgaf.png)
+![](https://res.cloudinary.com/dweffiohi/image/upload/v1746130067/1_t682sn.png)
+![](https://res.cloudinary.com/dweffiohi/image/upload/v1746130106/15_asgquh.png)
+![](https://res.cloudinary.com/dweffiohi/image/upload/v1746130107/2_piy7g5.png)
+![](https://res.cloudinary.com/dweffiohi/image/upload/v1746130144/3_qzutkr.png)
+![](https://res.cloudinary.com/dweffiohi/image/upload/v1746130151/4_sf5x7i.png)
+
+if you want to see more vist this [Link](https://drive.google.com/drive/folders/1J3s4oHFzddSGnMe_z5nAaLsMus6UVnvt?usp=sharing)
 ---
 
 ## **Installation & Setup**  

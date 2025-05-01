@@ -24,7 +24,7 @@ class Functions
             "string" => $this->v::stringType()
                 ->notEmpty()
                 ->length(1, 200)
-                ->alnum('-_', '.')
+                ->alnum('-_', '.', ' ')
         ];
         $this->ERROR_MESSAGES = [
             "email" => "Please enter a valid email address.",
