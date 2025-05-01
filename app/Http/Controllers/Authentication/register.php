@@ -82,15 +82,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         );
         $jwt = JWT::encode($payload, $_ENV['JWT_SECRET_KEY'], "HS256");
         /* set JWT token and img which depends on your house to session 
-user1.png => gryffindor
-user2.png => hufflepuff
-user3.png => ravenclaw
-user4.png => syltherin
-
+        
+        user1.png => gryffindor
+        user2.png => hufflepuff
+        user3.png => ravenclaw
+        user4.png => syltherin
 this column data will be handel by trigger
         */
         $_SESSION['jwt'] = $jwt;
-        $_SESSION['id'] = $payload['id'];
         $_SESSION['img'] = "user" . $house_id . ".png";
         $_SESSION['house'] = $house;
         $_SESSION['name'] = $name;
