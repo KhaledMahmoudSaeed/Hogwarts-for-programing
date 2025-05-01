@@ -1,5 +1,8 @@
 <?php
 // if there any img uploaded so it will replace the exits one unless you will have the default image
+$data = [
+    'name' => $_POST['name'],
+];
 $fn->validators($data);
 if ($_SESSION['errors']) {
     $purchase = [

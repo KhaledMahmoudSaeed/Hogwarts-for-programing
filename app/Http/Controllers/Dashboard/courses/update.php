@@ -16,10 +16,9 @@ if ($_SESSION['errors']) {
     exit;
 }
 $img = $fn->insertImage("courses");
-if ($_POST['img'] !== "course.png") {
-    $fn->deleteImage("courses", $_POST['img']);
+if ($_POST['img'] !== "course.png" && !strlen($_FILES['img']['name']) === 0) {
+    $fn->deleteImage("users", $_POST['img']);
 }
-
 if ($img) {
     $db->update("courses", [
         "name" => $_POST['name'],

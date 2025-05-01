@@ -31,7 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $jwt = JWT::encode($payload, $_ENV['JWT_SECRET_KEY'], "HS256");
         // send token and img to session to easy asccess them
         $_SESSION['jwt'] = $jwt;
-        $_SESSION['id'] = $id;
         $_SESSION['img'] = $img;
         $_SESSION['name'] = $name;
         $_SESSION['house'] = $house;

@@ -124,7 +124,7 @@ class Router
         return $_SERVER['HTTP_REFERER'];
     }
     // routes to the 404 or 403,etc pages
-    public function abort($code = 404)
+    public static function abort($code = 404)
     {
         $path = new Path();
         http_response_code($code);

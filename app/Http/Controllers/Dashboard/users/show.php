@@ -1,4 +1,8 @@
 <?php
+use App\Core\Router;
+if (!isset($_GET['id'])) {
+    Router::abort(404);
+}
 $id = $_GET['id'];
 $user = $db->getWith2Joins(
     "users",

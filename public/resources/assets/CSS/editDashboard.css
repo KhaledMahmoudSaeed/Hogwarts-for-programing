@@ -1,0 +1,176 @@
+ :root {
+     --parchment: #f4e7c5;
+     --ink: #3d2b1f;
+     --gold: #daa520;
+     --hover-glow: rgba(218, 165, 32, 0.6);
+ }
+
+ body {
+     background: url(../img/dashboardhogwarts.jpg) no-repeat center center fixed;
+     background-size: cover;
+     font-family: 'Cinzel', serif;
+     color: var(--parchment);
+ }
+
+ .card {
+     background: rgba(0, 0, 0, 0.6);
+     backdrop-filter: blur(8px);
+     border: 2px solid var(--gold);
+     border-radius: 1rem;
+     box-shadow: 0 0 20px var(--gold);
+     max-width: 32rem;
+     margin: auto;
+     padding: 2rem;
+ }
+
+ h2 {
+     color: var(--gold);
+     text-shadow: 2px 2px #000;
+ }
+
+ label {
+     color: var(--gold);
+     font-weight: 600;
+ }
+
+ /* Base styling for inputs, selects, file inputs, and textareas */
+ input,
+ textarea,
+ select,
+ input[type="file"] {
+     background: rgba(255, 255, 255, 0.1);
+     color: #fff !important;
+     border: 1px solid rgba(255, 255, 255, 0.3);
+     border-radius: .5rem;
+     width: 100%;
+     padding: .75rem !important;
+     font-family: 'Cinzel', serif;
+     font-size: 1rem;
+ }
+
+ /* Remove default appearance for select to allow custom styling */
+ select {
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+     background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+     background-repeat: no-repeat;
+     background-position: right 1rem center;
+     background-size: 1.2em auto;
+     padding-right: 2.5rem;
+     /* Make space for arrow */
+ }
+
+ /* Optional: Add a hover effect */
+ select:hover {
+     border-color: rgba(255, 255, 255, 0.6);
+ }
+
+ /* Focus styles */
+ input:focus,
+ select:focus,
+ textarea:focus {
+     outline: none;
+     border-color: var(--hover-gold, #b8860b);
+     box-shadow: 0 0 8px var(--hover-glow, rgba(184, 134, 11, 0.5));
+ }
+
+ /* Style individual options */
+ select option {
+     background-color: #1a1a1a;
+     color: #fff;
+     padding: 0.5rem;
+ }
+
+ .btn-gold {
+     background: linear-gradient(to right, #b8860b, var(--gold));
+     color: #1e1e1e;
+     padding: .5rem 1.25rem;
+     border: 2px solid var(--gold);
+     border-radius: .75rem;
+     font-weight: 700 !important;
+     transition: all .3s ease;
+     font-family: 'Cinzel', serif;
+ }
+
+ .btn-gold:hover {
+     background: linear-gradient(to right, var(--gold), #b8860b);
+     box-shadow: 0 0 20px var(--parchment);
+     color: #000;
+ }
+
+ .back-link {
+     color: var(--parchment);
+     text-decoration: underline;
+     display: inline-block;
+     margin-top: 1.5rem;
+     transition: color .3s;
+     font-family: 'Cinzel', serif;
+ }
+
+ .back-link:hover {
+     color: var(--gold);
+ }
+
+ .picture {
+     width: 110px;
+     height: 110px;
+     object-fit: cover;
+     border: 3px solid var(--gold);
+     box-shadow: 0 0 12px rgba(218, 165, 32, 0.6);
+ }
+
+ .picture:hover {
+     transform: scale(1.1);
+     box-shadow: 0 0 15px rgba(218, 165, 32, 0.8);
+ }
+
+ .file-upload {
+     position: relative;
+     overflow: hidden;
+     display: inline-block;
+ }
+
+ .file-upload-input {
+     display: none;
+     position: absolute;
+     left: 0;
+     top: 0;
+     opacity: 0;
+     width: 100%;
+     height: 100%;
+     cursor: pointer;
+ }
+
+ .radio-group {
+     display: flex;
+     gap: 1.5rem;
+     margin-top: .5rem;
+ }
+
+ .radio-group label {
+     display: inline-flex;
+     align-items: center;
+     color: var(--parchment);
+ }
+
+ .radio-group input {
+     margin-right: .5rem;
+     accent-color: var(--gold);
+ }
+
+ .radio-group input {
+     background: rgba(255, 255, 255, 0.1);
+     color: #fff !important;
+     border: 1px solid rgba(255, 255, 255, 0.3);
+     border-radius: .5rem;
+     width: 100%;
+     padding: .75rem;
+     font-family: 'Cinzel', serif;
+ }
+
+
+ .radio-group input:focus {
+     outline: none;
+     box-shadow: 0 0 8px var(--hover-glow);
+ }

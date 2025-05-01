@@ -97,4 +97,22 @@ class Functions
         }
         return true;
     }
+    public function pagination(array $data): array
+    {
+        // PAGINATION SETTINGS
+        $perPage = 10;
+        $currentPage = isset($_GET['page']) ? max(1, (int) $_GET['page']) : 1;
+        $totalItems = count($data);
+        $totalPages = (int) ceil($totalItems / $perPage);
+        $offset = ($currentPage - 1) * $perPage;
+
+        // SLICE DATA FOR CURRENT PAGE
+        return [
+            "totalPages" => $totalPages,
+            "currentPage" => $currentPage,
+            "offset" => $offset,
+            "pageData" => array_slice($data, $offset, $perPage),
+        ];
+    }
+
 }
