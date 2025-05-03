@@ -37,7 +37,6 @@ $router->get("/leaderboard", "Student/leaderboard.php");
 $router->get('/dashboard/wands', "Dashboard/wands/index.php");
 $router->get("/profile/edit", 'Dashboard/users/edit.php');
 $router->post("/dashboard/user/promote", 'Dashboard/users/promote.php', 'headmaster');
-$router->post("/dashboard/user/demote", 'Dashboard/users/demote.php', 'headmaster');
 $router->put("/profile", 'Dashboard/users/update.php');
 
 $router->get('/ollivander', "Ollivander.php");
