@@ -1,9 +1,9 @@
 <?php
-$editPageName = "User";
+$editPageName = "profile";
 $pageType = "edit";
 require __DIR__ . "/../../layout/dashboard/edit&CreatePageStart.php"
     ?>
-<?php if ($_SESSION['role'] === "professor"): ?>
+<?php if ($_SESSION['role'] !== "student"): ?>
     <form action="/dashboard/user/update" method="POST" enctype="multipart/form-data" class="space-y-6">
     <?php else: ?>
         <form action="/profile" method="POST" enctype="multipart/form-data" class="space-y-6">
