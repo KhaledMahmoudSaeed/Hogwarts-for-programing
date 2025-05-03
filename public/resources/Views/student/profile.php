@@ -15,7 +15,7 @@ $id = Auth::getAuthenticatedUser()['id'];// get the id from JWT
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="<?= $GLOBALS['img']->style("style.css") ?>">
 
-    <?php $bgcolor = strtolower($data[0]['role']) == 'professor' ? '#000' : "var(--" . strtolower($data[0]['hname']) . ")" ?>
+    <?php $bgcolor = strtolower($data[0]['role']) !== 'student' ? '#000' : "var(--" . strtolower($data[0]['hname']) . ")" ?>
 
     <style>
         #profile {
@@ -50,9 +50,7 @@ $id = Auth::getAuthenticatedUser()['id'];// get the id from JWT
             padding: 1.5rem;
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-left: 5px solid
-                <?= $bgcolor ?>
-            ;
+            border-left: 5px solid <?= $bgcolor ?>;
             grid-column: 1 / -1;
             position: relative;
             transition: transform 0.5s ease;
