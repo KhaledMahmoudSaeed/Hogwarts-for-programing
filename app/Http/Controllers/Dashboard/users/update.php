@@ -36,7 +36,7 @@ $db->update("users", [
     'email' => $_POST['email'],
 ], $_POST['id']);
 
-if ($_SESSION['role'] === "professor" && $_POST['id'] !== $id) {
+if ($_SESSION['role'] !== "student" && (string)$_POST['id'] !== (string)$id) {
     header("Location: /dashboard/users");
 } else {
     header("Location: /profile");

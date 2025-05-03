@@ -1,5 +1,5 @@
 <?php
-$tableName = "Users";
+$tableName = "wizards";
 require __DIR__ . "/../../layout/dashboard/indexPageStart.php"
     ?>
 <tr>
@@ -45,7 +45,7 @@ require __DIR__ . "/../../layout/dashboard/indexPageStart.php"
                     <?php endif; ?>
                 </td>
                 <td class="py-4 px-5"><?= htmlspecialchars($user['uname']) ?></td>
-                <td class="py-4 px-5"><?= htmlspecialchars($user['email']) ?></td>
+                <td class="py-4 px-5 font-semibold"><?= htmlspecialchars($user['email']) ?></td>
                 <td class="py-4 px-5">
                     <span class="role-badge <?= strtolower($user['role']); ?>">
                         <?= htmlspecialchars(ucfirst($user['role'])); ?>
@@ -63,7 +63,7 @@ require __DIR__ . "/../../layout/dashboard/indexPageStart.php"
                         </a>
 
                         <!-- Edit (headmaster or professor-for-students) -->
-                        <?php if (strtolower($_SESSION['role']) === 'headmaster' || (strtolower($_SESSION['role']) === 'professor' && strtolower($user['role']) === 'student')): ?>
+                        <?php if (($_SESSION['role'] === 'headmaster' && $user['role'] !== 'headmaster') || ($_SESSION['role'] === 'professor' && $user['role'] === 'student')): ?>
                             <form action="/dashboard/user/edit" method="POST" class="inline-block">
                                 <input type="hidden" name="_method" value="GET">
                                 <input type="hidden" name="id" value="<?= $user['id'] ?>">

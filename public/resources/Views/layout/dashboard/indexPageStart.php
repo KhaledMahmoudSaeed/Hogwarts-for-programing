@@ -30,7 +30,7 @@ $offset = $paginationData['offset'];
                 <div class="flex space-x-4 mt-4 sm:mt-0">
                     <a href="/dashboard" class="hogwarts-button glow-hover flex items-center"><i
                             class="fas fa-undo mr-2"></i>Back to dashboard</a>
-                    <?php if ($tableName !== "Users"): ?>
+                    <?php if ($tableName !== "wizards"): ?>
                         <?php $tableName = substr($tableName, 0, -1); ?>
                         <a href="/dashboard/<?= $url ?>/create" class="hogwarts-button glow-hover flex items-center"><i
                                 class="fas fa-plus mr-2"></i>Add

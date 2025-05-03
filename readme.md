@@ -92,7 +92,41 @@ if you want to see more vist this [Link](https://drive.google.com/drive/folders/
 ---
 
 ## **Installation & Setup**  
-*(To be added)*  
+To run this project locally, follow these steps:
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/KhaledMahmoudSaeed/Hogwarts-for-programing.git
+cd Hogwarts-for-programing 
+```
+
+### 2. Install PHP Dependencies
+
+Make sure you have [Composer](https://getcomposer.org/) installed, then run:
+
+```bash
+composer install
+```
+### 2. Install Required Packages
+
+```bash
+composer require vlucas/phpdotenv
+composer require firebase/php-jwt
+composer require respect/validation
+```
+### 4. Set Up Environment Variables
+Copy .env.example to .env:
+```bash
+cp .env.example .env
+```
+Open .env and fill in your actual database credentials and secret keys.
+
+### 5. Run the Application
+Make sure your web server (e.g. Apache, Nginx, or PHP’s built-in server) points to the public/ folder:
+```bash
+php -S localhost:8000 -t public
+```
 
 ```mermaid
 erDiagram
