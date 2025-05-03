@@ -24,7 +24,7 @@
         }
 
         .magic-box {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.6);
             color: #fff;
             backdrop-filter: blur(5px);
             border: 2px solid #ffd700;
@@ -85,7 +85,7 @@
         }
 
         .house-hufflepuff {
-            background-color: var(---hufflepuff);
+            background-color: var(--hufflepuff);
             color: #3b3b3b;
         }
 
@@ -162,7 +162,7 @@
                         </div>
 
                         <div class="flex justify-between border-b border-yellow-600 pb-2">
-                            <span><i class="fas fa-magic gold-text mr-2"></i>Wand:</span>
+                            <span><i class="fas fa-wand-sparkles gold-text mr-2"></i>Wand:</span>
                             <span><em><?= htmlspecialchars($user['wood'] . " & " . $user['core']) ?></em></span>
                         </div>
                     </div>
@@ -174,18 +174,11 @@
                         <a href="/dashboard/users"><i class="fas fa-arrow-left mr-1"></i> Back</a>
                     </button>
 
-                    <?php if (strtolower($_SESSION['role']) === 'headmaster' && strtolower($user['role']) !== 'professor'): ?>
+                    <?php if (strtolower($_SESSION['role']) === 'headmaster' && strtolower($user['role']) === 'student'): ?>
                         <form action="/dashboard/user/promote" method="POST">
                             <input type="hidden" name="id" value="<?= $user['id'] ?>">
                             <button type="submit" class="hogwarts-button px-4 py-2 rounded-lg flex items-center">
                                 <i class="fas fa-hat-wizard mr-2"></i> Appoint as Professor
-                            </button>
-                        </form>
-                    <?php elseif (strtolower($_SESSION['role']) === 'headmaster' && strtolower($user['role']) === 'professor'): ?>
-                        <form action="/dashboard/user/demote" method="POST">
-                            <input type="hidden" name="id" value="<?= $user['id'] ?>">
-                            <button type="submit" class="hogwarts-button px-4 py-2 rounded-lg flex items-center">
-                                <i class="fas fa-hat-wizard mr-2"></i> Retire from the post
                             </button>
                         </form>
                     <?php endif; ?>
