@@ -53,7 +53,7 @@ function isActive($routes)
         <li>
           <a href="/owl" class="<?= isActive('/owl') ?>">Owl Post</a>
         </li> <?php endif; ?>
-      <li><a href="/contact" class="class=" <?= isActive('/contact') ?>>Contact Us</a></li>
+      <li><a href="/contact" class="<?= isActive('/contact') ?>">Contact Us</a></li>
     </ul>
     <div class="buttons">
       <?php if ($_SESSION['islogged']): ?>
